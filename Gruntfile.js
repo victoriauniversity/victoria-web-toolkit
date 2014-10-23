@@ -112,7 +112,7 @@ module.exports = function (grunt) {
         bless: {
             css: {
                 files: {
-                    '/assets/css/style.css': '/assets/css/grunt_css/style.css'
+                    'assets/css/style.css': 'assets/css/grunt_css/style.css'
                 }
             },
         },

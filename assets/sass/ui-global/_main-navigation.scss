@@ -297,6 +297,11 @@ nav#mobile_masthead,
         border-bottom-width: $masthead_border_width;
         border-bottom-style: solid;
 
+        @include theme-color(
+                $use: key,
+                $property: border-bottom-color
+            );
+        
         .vic_logo {
             background: url(/assets/images/vic-logo-mobile.png) no-repeat 10px 50%;
             // Experimental Base64 encoded version
