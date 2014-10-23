@@ -1,0 +1,55 @@
+<h2 class="rule">Buttons</h2>
+<p>The button suite should be consistent across anchors, inputs and button elements. There are 4 style options and 3 size options, x-large remains unused at this stage but may prove useful.</p>
+<h3>Anchors</h3>
+<p>The standard
+    <code>.button</code> without other classes is the default primary action. There is no inheritance logic to change styling simply add
+    <code>.secondary</code>,
+    <code>.tertiary</code>, or
+    <code>.transparent</code> to modify. Buttons with
+    <code>.transparent</code> look like simple links but behave as buttons and maintain the large hit state - they should stack nicely next to other more important actions.</p>
+<p>
+        {{>atoms/buttons/button_primary}}
+        {{>button_secondary}}
+        {{>button_tertiary}}
+</p>
+
+<pre><code class="language-markup">
+{{>button_primary}}
+
+{{>button_secondary}}
+
+{{>button_tertiary}}
+</code>
+</pre>
+
+<p>
+    <a class='button large'>Primary large</a>
+    <a class='button secondary large'>Secondary large</a>
+    <a class='button tertiary large'>Tertiary large</a>
+</p>
+<p>
+    <a class='button x_large disabled'>Primary x-large</a>
+    <a class='button secondary x_large'>Secondary x-large</a>
+    <a class='button tertiary x_large'>Tertiary x-large</a>
+</p>
+
+<pre><code class="language-markup">
+<a class='button x_large disabled'>Primary x-large</a>
+<a class='button secondary x_large'>Secondary x-large</a>
+<a class='button tertiary x_large'>Tertiary x-large</a>
+</code></pre>
+
+
+<pre>
+<code class="language-markup">
+  <div class="grid-row">
+    <div class="column-half">
+      <p>Content</p>
+    </div>
+    <div class="column-half">
+      <p>Content</p>
+    </div>
+  </div>
+</code>
+</pre>
+ 

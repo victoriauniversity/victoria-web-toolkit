@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
         partialsDir: [  
                     'views/partials/',
                     'views/partials/_inc',
-                    'views/partials/_1_atoms',
+                    'views/partials/atoms',
                     'views/partials/_2_mocules',
                     'views/partials/_3_organisms'
                     ] 
