@@ -1,14 +1,14 @@
 dir = File.dirname(__FILE__) # path to this file
 # including custom extensions
 #require File.join(dir, 'lib', 'custom_extensions.rb')
-require File.join(dir, 'www/assets/lib', 'custom_extensions.rb')
+require File.join(dir, 'assets/lib', 'custom_extensions.rb')
 
 # environment
 environment = :development
 
 # Set this to the root of your project when deployed:
-project_path = "www/assets/" #http://stackoverflow.com/q/17544779/1081234
-http_path = "/assets/"
+project_path = "assets/" #http://stackoverflow.com/q/17544779/1081234
+http_path = "assets/"
 css_dir = "css"
 sass_dir = "sass"
 images_dir = "images"
