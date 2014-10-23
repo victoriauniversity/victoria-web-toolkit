@@ -1,0 +1,74 @@
+@import 'compass';
+@import 'helper-functions/theme-colors';
+
+// Helper page to see colour pallettes side by side
+
+@mixin square($width: 100px, $background: transparent)
+{
+    width: $width;
+    height: $width;
+    background: $background;
+}
+
+// GP: I'm not sure what this file is doing, have made it a partial so it stops compiling to it's own file
+// DG: this is for colours.php to show colours in each theme, doesn't need to be a partial as it is for internal use only
+
+.pallette {
+	margin: 2em 0;
+	@include clearfix;
+	
+	ul {
+		@include horizontal-list;	
+		
+		li {
+			color: #000;
+			white-space: pre;
+		}
+		
+		li b { display: block}
+		
+	}
+	
+	
+}
+
+@for $i from 1 through length($themes) {
+	$theme: nth($themes, $i);
+	$theme-name: nth($theme, 1);
+	$theme-features: nth($theme, 2);
+	$theme-string: '.'+$theme-name;
+	
+	
+	div#{$theme-string} {
+		
+		@for $i from 1 through length($theme-features) {
+			$feature: nth($theme-features, $i);
+			$feature-name: nth($feature, 1);
+			$color: nth($feature, 2);
+			$color-string: ''+$color;
+			
+			ul li:nth-child(1n+#{$i}) {
+				&:before {
+					content: ''+$feature-name+'\A'$color-string
+				}
+					
+				b {
+					@include square(6em, #{$color});
+					
+					//&:before {
+					//	content: $color-string
+					//}
+				}
+				
+				
+				
+			}
+			
+		
+		}
+	}
+	
+
+}
+
+//ul li:nth-child(1n+#{$i})

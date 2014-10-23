@@ -1,0 +1,214 @@
+
+// Pull out of grid - BLEED
+//----------------------------------
+
+
+// This would be deprecated as the bleed function in core/_utilities is improved (it calcuates the correct negative margin of the $page_padding variable)
+
+
+
+.bleed {
+    
+    @include mobile {
+        margin-left: -$page_padding;
+        margin-right: -$page_padding;
+        padding-left: $page_padding !important;
+        padding-right: $page_padding !important;
+    }
+    
+    @include skinny {
+        margin-left: -$page_padding;
+        margin-right: -$page_padding;
+        padding-left: $page_padding !important;
+        padding-right: $page_padding !important;
+    }
+    
+    
+//     > img {
+//         margin: -3.7%;
+//         max-width: 100%;
+//     }
+	
+	//.search_page & {
+	//	margin-left: 0
+		
+	//}
+	
+}
+
+// Bleeding things into gutters
+// Calculates the negative margin required to pull a child element out to the
+// horizontal egdes of a parent that has percentage padding (ONLY ACCEPTS PERCENTAGES)
+//----------------------------------
+
+@function bleed($n: $page_padding){ 				
+	@return -(percentage(1/(100-($n * 2)) * $n));
+}
+
+
+// These mixins are designed to be used as includes on a case-by-case basis left/right/top/bottom
+// adding (mobile) restricts it to only mobile  
+
+
+@mixin left_bleed($n: all) {
+
+    @if $n == mobile {
+        @include mobile { 				
+            margin-left: bleed($page_padding);
+        }        
+    }
+    
+    @else {
+
+    margin-left: bleed($page_padding);
+            
+        .homepage &,
+        .columns &,
+        aside.secondary & { 
+    
+            margin-left: bleed($sidebar_padding);
+    
+            @include mobile { 				
+                margin-left: bleed($page_padding);
+            }        
+        				
+        }
+        
+    }
+    
+}
+
+
+@mixin right_bleed($n: all) {
+
+    @if $n == mobile {
+        @include mobile { 				
+            margin-right: bleed($page_padding);
+        }        
+    }
+    
+    @else {
+    
+    margin-right: bleed($page_padding);
+    
+    .homepage &,
+    .columns &,
+        aside.secondary & { 
+    
+            margin-right: bleed($sidebar_padding);
+    
+            @include mobile { 				
+                margin-right: bleed($page_padding);
+            }        
+        				
+        }
+    
+    }
+
+}
+
+
+@mixin top_bleed {
+    
+    margin-top: bleed($page_padding);
+
+    .homepage &,
+    .columns &,
+    aside.secondary & { 
+
+        margin-top: bleed($sidebar_padding);
+
+        @include mobile { 				
+            margin-top: bleed($page_padding);
+        }        
+    				
+    }
+
+    // .old_ie & {
+    //     position: relative;
+    //     top: bleed($sidebar_padding);
+    // }
+
+}
+
+@mixin bottom_bleed {
+    
+    margin-bottom: bleed($page_padding);
+
+    .homepage &,
+    .columns &,
+    aside.secondary & { 
+
+        margin-bottom: bleed($sidebar_padding);
+
+        @include mobile { 				
+            margin-bottom: bleed($page_padding);
+        }        
+    				
+    }
+
+}
+
+
+@mixin box_padding {
+    
+    padding: $page_padding;
+    
+    
+    // If they're in a narrow wrapper we use the sidebar_padding variable for everything (then reset it for mobile)
+    
+    .homepage &,
+    .columns &,
+    aside.secondary & { 				
+        
+        padding: $sidebar_padding;
+    
+        @include mobile { 				
+        	
+            padding: $page_padding;
+        
+        }
+    
+    }
+
+}
+
+
+.bleed_box {
+    
+    @include left_bleed();
+    @include right_bleed();        
+
+}
+
+.bleed_me { 
+
+    display: block;				
+    
+    @include left_bleed();
+    @include right_bleed();  
+    
+    &:first-child { 				
+        @include top_bleed();
+    }
+    
+    &:last-child { 				
+        @include bottom_bleed();
+    }
+
+}
+
+
+// if a toggle is active it gives padding to the bottom
+// of the active bleed element, so it doesn't sit flush
+// Migth be OK to delete this - not sure it is used
+.active {
+    .bleed {
+        padding-bottom: 1em;
+    }
+}
+
+
+
+
+

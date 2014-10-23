@@ -1,0 +1,76 @@
+//  Breadcrumbs
+//----------------------------------
+
+.breadcrumb li.accessibility,
+.accessibility {
+    display: none;
+}
+
+.breadcrumb {
+    display: none !important; /// move to base of page
+    list-style: none;
+    padding: 0;
+    display: block;
+    font-size: px-to-em(13);
+    @include ui-clearfix();
+    @include mobile {
+
+        width: 75%;
+        white-space: nowrap;
+        position: absolute;
+        top: 0;
+        z-index: 99;
+        overflow: scroll;
+        margin: 0;
+        height: 40px;
+        line-height: 40px;
+        padding: {
+            top: 0;
+            right: px-to-em(50);
+            bottom: 0;
+            left: 0;
+        }
+        a {
+            color: $white;
+        }
+    }
+    @include skinny-only {
+        white-space: nowrap;
+        position: absolute;
+        top: 0;
+        left: 125px;
+        z-index: 99;
+        overflow: scroll;
+        margin: 0;
+        height: 38px;
+        line-height: 38px;
+        padding: {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+    @include desktop {
+        margin: 1em 0 0 0;
+        line-height: 1;
+    }
+    > li {
+        display: inline-block;
+        color: #929292;
+        &:after {
+            content: "\003E";
+            color: rgba(0,0,0, .6);
+            @include font_display_semibold;
+            font-size: 18px;
+        }
+        &:last-child {
+            &:after {
+                content: " ";
+            }
+        }
+    }
+    a {
+        padding: 0 6px;
+    }
+}

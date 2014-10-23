@@ -1,0 +1,20 @@
+@mixin rgba($attribute, $color, $background: white) {
+
+  // this part sets the solid color for browsers with no transparency support
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);  
+
+  #{$attribute}: $solid-color;
+
+  // this part sets the color using IE filter trickery
+  $ie-color: ie-hex-str($color);
+  
+  .old_ie & {
+    #{$attribute}: transparent;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$ie-color,endColorstr=$ie-color);
+  }
+
+  // and this part sets the normal rgba() color
+  #{$attribute}: $color;
+}

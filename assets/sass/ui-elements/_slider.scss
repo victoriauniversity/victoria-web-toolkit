@@ -1,0 +1,145 @@
+// Slider
+//-----------------
+$slider-anim-dur: 800ms;
+$slider-aspect-ratio: 187/105;
+
+.slider {
+    position: relative;
+    .slides {
+        position: relative;
+        padding: 0;
+        list-style: none;
+         @include theme-color(
+            $use: key-light,
+            $property: background-color
+        );
+		
+		> li {
+			width: 100%;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			@include opacity(0);
+
+			@include transition(
+				opacity $slider-anim-dur ease-out 0ms,
+				visibility $slider-anim-dur linear 0ms,
+				height 0ms linear $slider-anim-dur,
+				position 0ms linear $slider-anim-dur
+			);
+
+			img{
+				position: absolute;
+				height: 100%;
+                width: auto;
+			}
+
+			&.active{
+				position: relative;
+				@include opacity(1);
+				z-index: 1;
+			}
+
+			.ie6 &,
+			.ie7 &,
+			.ie8 & {
+				display: none;
+                filter: none!important; // overriding the filter from compass opacity, causes weird text rendering in <= IE8
+				&.active{
+					display: block;
+                    filter: none!important; // overriding the filter from compass opacity, causes weird text rendering in <= 
+				}
+			}
+		}
+
+    }
+    
+
+    .slider_img {
+        height: 0;
+        padding-bottom: round( 100% / $slider-aspect-ratio );
+        position: relative;
+        .ie6 &,
+        .ie7 &,
+        .ie8 &{
+            // height: round( 100% / $slider-aspect-ratio );
+            height: 100%;
+            padding-bottom: 0;
+
+            img {
+                position: relative;
+                height: auto;
+            }
+        }
+    }
+    &.fullwidth{
+        li {
+            img {
+                position: static;
+                height: auto;
+                width: 100%;
+            }
+        }
+        .slider_img {
+            &,
+            .ie6 &,
+            .ie7 &,
+            .ie8 &{
+                height: auto;
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    .caption {
+    	background: #fff;
+    	padding: 0.7em 0;
+    	border-bottom: 1px solid $color_border;
+    }
+
+}
+
+// specific styling for slideshows in the main contant area
+
+.entry .slider {
+
+    margin: 2em 0 2.2em 0;
+
+
+}
+
+.slider_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    height: 27px;
+    width: 27px;
+    color: $white;
+    text-align: center;
+    //text-indent: -9999px;
+    @include font_display_semibold;
+    font-size: 18px;
+    text-align: center;
+    z-index: 3;
+    &.slider_prev {
+    background: #3c77be;
+    }
+    &.slider_next {
+        background: #3468b0;
+        left: 27px;
+    }
+}
+
+
+.button {
+  display: inline-block;
+  color: #fff;
+  padding: 0.3em 0.75em;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #eee;
+}

@@ -1,0 +1,99 @@
+.promo {
+
+	display: block;
+
+    @include left_bleed(mobile);
+    @include right_bleed(mobile);        
+
+	& a p {
+		margin-bottom: 1em;
+		//color: $color_heading;
+	}
+	
+	& a:last-child p {
+		margin-bottom: 0;
+	}
+
+	.promo_headline, 
+	h2 {
+		text-transform: uppercase;
+		@include font_display_extrabold;
+		font-size: px-to-em(24);
+		line-height: 1;
+		margin-bottom: 7px;
+	}
+
+	& img {
+		float: left;
+		width: 37%;
+		margin: 3%;
+
+	}
+
+	h3[itemprop="datePublished"] + h2,
+	h3[itemprop="datePublished"] + h3,
+	h3[itemprop="datePublished"] + h4,
+	h6[itemprop="datePublished"] + h2, 
+	h6[itemprop="datePublished"] + h3,
+	h6[itemprop="datePublished"] + h4 {
+		margin-top: 0;
+	}
+
+	h3[itemprop="datePublished"] {
+		color: inherit !important;
+	}
+
+}
+
+a.promo:hover { 				
+	opacity: 0.8;
+}
+
+.promo_text {
+	
+	padding-left: 43%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	padding-right: 3%;
+
+	& h2, & h3 {
+		margin-top: 0px !important;
+	}
+
+	& h3 {
+		margin-bottom: 0.3em !important;
+		color: inherit !important;
+	}
+
+}
+
+
+.promo_with_image {
+	overflow: auto;
+	margin-bottom: 1.5em;
+	padding: 0;
+
+	@include mobile {
+		.promo_img {
+			float: none;
+			width: 100%;
+			margin: 0;
+		}
+		
+		.promo_text {
+			padding-left: 3%;
+		}
+	}
+
+
+
+}
+
+h3[itemprop="datePublished"] {
+		text-transform: inherit;
+		display: block !important;
+		font-size: 17px;
+		margin-bottom: 0.3em;
+}
+	
+	

@@ -1,0 +1,141 @@
+// /* ------------------------------------------------------------------- *
+//  |  TYPE:           Button styles
+//  |  AUTHOR(S):      Frej
+//  |  DATE CREATED:   2012
+//  |  DATE UPDATED:   23/10/2012
+//  |  DESCRIPTION:    All button styles
+//  |
+//  |                  * COLOURS
+//  |                  * SIZES
+//  |                  * ICONS
+//  |                  * ICON ONLY BUTTONS
+//  |                  * TAB BUTTONS
+//  |
+//  * ------------------------------------------------------------------- *
+//     EXAMPLE
+//     -------
+// 
+// 
+// 
+//     MIXIN REFERENCE (all options)
+//     -----------------------------
+// 
+//     @include button-ui(
+//         $background-color: #background-color,
+//         $background-color-hover: #hover-background-color,
+//         $color: #text-color,
+//         $padding: px px px px,
+//         $border-color: #border-color,
+//         $border-color-hover: #border-color-hover,
+//         $font-size: px-to-em(16),
+//         $line-height: px-to-em(16),
+//         $icon: 'icon-name',
+//         //$icon-hover: 'icon-name-hover',
+//         $icon-position: 'left/right',
+//         $icon-padding: num,
+//         $icon-offset-x: px,
+//         $icon-offset-y: px,
+//         $icon-only: false/true,
+//         $text-transform: true // default is set to uppercase true=lowercase
+//     );
+// 
+// 
+//  * ------------------------------------------------------------------- */
+
+
+@import "../ui-library/mixin-buttons-new";
+
+
+// ------------------------------------------------------------------- *
+// DEFAULT
+// -------
+
+.ui_button{
+    @extend %ui_button_default;
+}
+
+// ------------------------------------------------------------------- *
+// COLOURS
+// -------
+
+$ui-button-default: #3468b0;
+
+
+.ui_button,
+.ui_color_a{
+    @include button-ui(
+        $background-color: $ui-button-default,
+        $background-color-hover: lighten($ui-button-default,10%)
+    );
+}
+
+.ui_color_b{
+    @include button-ui(
+        $background-color: #282828,
+        $background-color-hover: lighten(#282828,10%),
+        $text-transform: true
+    );
+}
+
+.ui_color_c{
+    @include button-ui(
+        $background-color: #3c77be,
+        $background-color-hover: lighten(#3c77be,10%),
+        $border-radius: true
+    );
+}
+
+.ui_color_w{
+    @include button-ui(
+        $background-color: #fff,
+        $background-color-hover: #ededed,
+        $border-color: #d7d8d7,
+        $color: #353C2E
+    );
+}
+
+// ------------------------------------------------------------------- *
+// SIZES
+// -----
+
+.ui_large_a{
+    @include button-ui(
+        $padding: $button-padding-lrg,
+        $font-size: px-to-em(15)
+    );
+}
+
+
+// ------------------------------------------------------------------- *
+// TAB BUTTONS
+// -----------------------
+// We need to re-think this at some point - here's a temp thing for The Panel
+
+// .ui_tab{
+//     @extend %ui_button_default;
+//     margin-right: 0;
+//     margin-left: -4px;
+//     border-left: 1px solid #EAEAEA;
+//     &:first-child{
+//         border-left: none;
+//     }
+//     @include button-ui(
+//         $background-color: #fff,
+//         $background-color-hover: $ui-button-light-grey,
+//         $color: $link-blue
+//     );
+//     &.active{
+//         @include button-ui(
+//             $background-color: $ui-button-light-grey,
+//             $color: $theme-text-color,
+//             //$icon: 'ui-tab-arr',
+//             $icon-position: 'center'
+//         );
+//         i{
+//             display: block;
+//             bottom: 0;
+//             margin-bottom: - sprite-height('button','ui-tab-arr');
+//             top: auto;
+//         }
+//     }
+// }

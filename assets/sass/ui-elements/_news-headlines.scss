@@ -1,0 +1,157 @@
+
+// featured news items in
+// secondary_highlight or a bleed box
+// -----------------------------------
+.news_headlines {
+    h2 {
+        @include theme-color(
+            $use: key,
+            $property: color
+        );
+    }
+    
+    p {
+        font-size: 13px;
+    }
+    
+    article {
+        
+        border-bottom: 1px solid;
+        padding: 1em 0;
+        
+        @include theme-color(
+            $use: key-border,
+            $property: border-bottom-color
+        );
+        
+        &:first-child {
+            padding-top: 0;
+        }
+        
+        h6 {
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0px;
+            margin-top: 0;
+            color: $grey_light;
+        }
+    }
+}
+
+.featured {
+    @include pie-clearfix;
+    padding-top: 0;
+    img {
+        float: left;
+        width: 45%;
+        margin: {
+            top: 0;
+            bottom: 1em;
+            left: 0;
+            right: 3%;
+        }
+        @include mobile {
+            width: 100%;
+        }
+    }
+}
+
+
+article {
+    &.feature_message {
+        background: $color_highlight_tertiary;
+        padding: 6% 6% 0;
+        margin-bottom: 2em;
+
+        & h3 {
+            margin-top: 0;
+        }
+
+        header {
+            background-color: #ddd;
+        }
+    
+        footer {
+            border-top: 1px solid $color_border;
+            position: relative;
+            padding-top: 2.2em;
+    
+            h2, h5 {
+                position: relative;
+                z-index: 99;
+                margin-top: 0;
+            }
+
+            h2{
+                padding-bottom: 1em;
+                margin-right: 4em;
+            }
+    
+            h5 {
+                margin-bottom: 0;
+                text-transform: capitalize;
+            }
+    
+            .feature_thumb {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                height: 80px;
+            }
+        }
+
+        footer.clear {
+                padding-top: 5%;
+                border-top: 0px none;
+                min-height: 72px;
+                background-color: inherit;
+        }
+
+        @include mobile {
+            margin-left: -3.19149%;
+            margin-right: -3.19149%;
+        }
+
+    }
+}
+
+
+
+
+.item {
+    
+    border-bottom: 1px solid $color_border;
+    padding: 0.75em 0;
+    
+    //&:first-child {
+        //padding-top: 0;
+    //}
+}
+
+// This is too loosely scoped not every footer needs borders on links.
+// .entry {
+//     footer {
+//         padding: 1em 0 0;
+//         font-size: 13px;
+//         line-height: 2;
+//         a {
+//             @include theme-color(
+//                $use: key-border,
+//                $property: border-right-color
+//             );
+//             margin-right: 2%;
+//             border-right: 1px solid;
+//             padding-right: 2%;
+//             display: inline-block;
+//             &:last-child {
+//                 border-right: none;
+//             }
+//         }
+//     }
+// }
+
+.tab_conatiner { 				
+    select {
+        margin-bottom: 1em;
+    }
+}

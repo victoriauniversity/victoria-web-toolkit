@@ -1,0 +1,119 @@
+
+// info block - used sitewide,
+// feature on the homepage and complementary
+//--------------------------------------------
+
+//     1. General setup
+//     2. Area specific overrides
+
+// 1. General Setup
+//---------------------------------------------
+
+
+
+
+.info_block {
+    float: left;
+    padding-right: 2%;
+    margin-bottom: 1.75em;
+    cursor: pointer;
+    @include box-sizing(border-box);
+    @include pie-clearfix();
+    h2 {
+        font-size: px-to-em(19);
+        @include theme-color(
+            $use: key,
+            $property: color
+        );
+    }
+}
+
+.info_block {
+    @include mobile {
+        width: 100%;
+		padding-right: 0;
+        @include box-sizing(border-box);
+        @include pie-clearfix();
+        .info_block_secondary {
+            margin-bottom: 5px;
+            float: left;
+            margin: 0 5% 0 0;
+            img {
+                max-height: 60px;
+            }
+        }
+        .info_block_primary {
+            clear: right;
+            display: block;
+            overflow: hidden;
+            p {
+                display: none;
+            }
+        }
+        h2 {
+            margin: 0;
+            line-height: 1;
+        }
+    }
+    @include skinny {
+        width: 25%;
+        color: $color_text;
+        margin-bottom: 1.5em;
+        display: block;
+        .info_block_secondary {
+            margin-bottom: 5px;
+            img {
+                max-width: 100%;
+            }
+        }
+        h2 {
+            margin: 0.15em 0;
+            line-height: 1;
+        }
+        p {
+            font-size: 13px;
+        }
+    }
+    @include desktop {
+        width: 19%;
+    }
+    .ie7 & {
+        width: 15.5%;
+    }
+}
+
+
+
+
+// 2. Area specific overrides
+//---------------------------------------------
+
+aside[role='complementary'] {
+	
+	
+	
+	.info_block {
+		
+		margin-bottom: 0;
+		
+		h2 {
+			@include look_linky;
+		}
+		
+	}
+	
+	// .date_block h2 {
+ //        text-transform: inherit;
+ //        margin: 0.15em 0;
+ //    }
+
+
+    @include skinny {
+        .info_block {
+            width: 100%;
+            float: none;
+        }
+    }
+}
+
+

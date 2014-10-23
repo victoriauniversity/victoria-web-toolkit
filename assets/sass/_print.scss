@@ -1,0 +1,80 @@
+// Victoria University Setup.
+// -------------------------------------------------------------
+
+// Include the Compass framework
+// ==================================
+@import 'compass';
+
+
+// Our helper funtions
+// ==================================
+@import 'helper-functions/media-queries';
+@import 'helper-functions/px-to-em';
+@import 'helper-functions/clearfix';
+@import 'helper-functions/background-image';
+
+
+// Include variables for global use
+// ==================================
+@import 'core/variables';
+
+
+// Include the mixins needed (comment out if not)
+// ==================================
+@import 'ui-library/mixin-theme-library';
+
+
+
+// Include base styles
+// ==================================
+@import 'core/reset';
+@import 'core/base';
+@import 'core/typography';
+//@import 'core/utilities';
+
+
+// Include UI Global
+// ==================================
+ @import 'ui-global/main-navigation';
+// @import 'ui-global/footer';
+// @import 'ui-global/aside-navigation';
+// @import 'ui-global/search' */;
+
+
+// Include UI elements
+// ==================================
+// @import 'ui-elements/tables';
+// @import 'ui-elements/hero';
+// @import 'ui-elements/slider';
+// @import 'ui-elements/tabs';
+// @import 'ui-elements/icons';
+// @import 'ui-elements/link-lists';
+// @import 'ui-elements/block-lists';
+// @import 'ui-elements/breadcrumbs';
+// @import 'ui-elements/widgets';
+// @import 'ui-elements/bleed';
+// @import 'ui-elements/thumbnail-link';
+// @import 'ui-elements/media';
+// @import 'ui-elements/info-block';
+// @import 'ui-elements/promo';
+// @import 'ui-elements/alerts';
+// @import 'ui-elements/connect-vic';
+// @import 'ui-elements/news-headlines';
+// @import 'ui-elements/buttons';
+// @import 'ui-elements/experimental'; // production only
+// @import 'ui-elements/forms';
+
+// Include common elements
+// ==================================
+//@import 'common';
+
+
+// Include structure
+// ==================================
+//@import 'layouts/layouts-neue';
+
+
+// Include print styles last
+// ==================================
+@import "core/print";
+

@@ -1,0 +1,265 @@
+
+
+$ui-button-text: $white;
+$button-padding: 3px 8px 2px 8px;
+$button-padding-lrg: 5px 9px 3px 9px;
+$border-radius-size: 5px;
+
+@mixin button-ui(
+        $background-color: false,
+        $background-color-hover: false,
+        $color: false,
+        $padding: false,
+        $border-color: false,
+        $border-color-hover: false,
+        $font-size: false,
+        $line-height: false,
+        $icon: false,
+        $icon-hover: false,
+        $icon-position: 'left',
+        $icon-padding: $button-icon-padding,
+        $icon-offset-x: 0,
+        $icon-offset-y: 0,
+        $icon-only: false,
+        $text-transform: false,
+        $border-radius: false
+    ){
+    @if $background-color{
+        background-color: $background-color;
+    }
+
+    @if $color {
+        &, &:link, &:hover, &:visited{
+            color: $color;
+        }
+    }
+    @if $font-size {
+        font-size: $font-size;
+    }
+
+    @if $line-height {
+        line-height: $line-height;
+    }
+    @if $padding and $border-color == false {
+        padding: {
+            top: nth($padding, 1);
+            bottom: nth($padding, 3);
+        }
+        @if $icon and $icon-position == 'left' {
+            padding-right: nth($padding, 2);
+        } @else if $icon and $icon-position == 'right' {
+            padding-left: nth($padding, 4);
+        } @else {
+            padding-right: nth($padding, 2);
+            padding-left: nth($padding, 4);
+        }
+    }
+    @if $border-color {
+        @if $padding == false {
+            $padding: $button-padding;
+        }
+        border: 1px solid $border-color;
+        padding: {
+            top: #{nth($padding, 1) - 1};
+            bottom: #{nth($padding, 3) - 1};
+        }
+        @if $icon and $icon-position == 'left' {
+            padding-right: #{nth($padding, 2) - 1};
+        } @else if $icon and $icon-position == 'right' {
+            padding-left: #{nth($padding, 4) - 1};
+        } @else {
+            padding-right: #{nth($padding, 2) - 1};
+            padding-left: #{nth($padding, 4) - 1};
+        }
+    }
+    @if $background-color-hover {
+        &:hover{
+            background-color: $background-color-hover;
+        }
+    }
+    @if $border-color-hover {
+        &:hover{
+            border-color: $border-color-hover;
+        }
+    }
+
+    @if $icon {
+        @extend %button_has_icon;
+        @if $icon-position == 'left' {
+            @extend %button_icon_left;
+            @if $icon-only == false {
+                padding-left: sprite-width('button', $icon) + ( $button-icon-padding * 2 );
+            }
+            i{
+                left: #{ $button-icon-padding }px;
+            }
+
+        } @else if $icon-position == 'right' {
+            @extend %button_icon_right;
+            @if $icon-only == false {
+                padding-right: sprite-width('button', $icon) + ( $button-icon-padding * 2 );
+            }
+            i{
+                right: #{ $button-icon-padding }px;
+            }
+
+        } @else if $icon-position == 'center' {
+            @extend %button_icon_center;
+            i{
+                margin-left: - sprite-width('button', $icon) / 2 ;
+            }
+
+        }
+        @if $icon-only {
+            @extend %button_icon_only;
+            width: sprite-width('button', $icon) + ( $icon-padding * 2 );
+            height: sprite-height('button', $icon) + ( $icon-padding * 2 );
+        }
+        i{
+            @include background-sprite( 'button', $icon, $offset-x: $icon-offset-x, $offset-y: $icon-offset-y);
+            margin-top: - sprite-height('button', $icon) / 2;
+            width: sprite-width('button', $icon);
+            height: sprite-height('button', $icon);
+        }
+        @if $icon-hover {
+            &:hover i{
+                @include background-sprite( 'button', $icon-hover, $offset-x: $icon-offset-x, $offset-y: $icon-offset-y);
+            }
+        }
+    }
+
+    @if $text-transform {
+        text-transform: capitalize;
+    }
+
+    @if $border-radius {
+         @include border-radius($border-radius-size);
+    }
+
+    // @if $icon {
+    //  // If the button is an input
+    //  // Force the image on the element, left aligned
+    //  input#{$selector}{
+    //      @include background-sprite( 'button', $icon);
+    //  }
+    // }
+
+}
+
+
+
+// ------------------------------------------------------------------- *
+// BUTTON BASE
+// -----------
+
+
+%button_base {
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 1em;
+    // Firefox has disabled resetting line-height on buttons
+    // http://www.cssnewbie.com/input-button-line-height-bug/
+    line-height: 1.5em;
+
+    // Because of weird behavior with overflow: hidden; in FF,
+    // we have to float the buttons to keep them on the same baseline
+    // float: left;
+    // Killing native button styles in mobile Safari
+    // http://thinkvitamin.com/design/styling-submit-buttons-for-mobile-safari/
+    -webkit-appearance: none;
+
+    // Killing transitions on background
+    // @include transition(none);
+
+    i{
+        display: none;
+    }
+    //@includemeta -serif-stack;
+}
+input%button_base,
+button%button_base{
+    cursor: pointer;
+    font-family: inherit;
+    border-width: 0;
+    font-size: 1em;
+    height: 1.938em;
+    @include border-radius(0);
+    // Removing extra padding in Firefox
+    // OBS: this removes the highlight outline
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0
+    }
+}
+a%button_base{
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+
+// ------------------------------------------------------------------- *
+// DEFAULT BUTTON
+// --------------
+
+
+
+%ui_button_default{
+    @extend %button_base;
+    @include button-ui(
+        // $background-color: #background-color,
+        // $background-color-hover: #hover-background-color,
+        $color: $ui-button-text,
+        $padding: $button-padding,
+        // $border-color: #border-color,
+        $font-size: px-to-em(14)
+        // $line-height: px-to-em(16),
+        // $icon: 'icon-name',
+        // $icon-position: 'left/right',
+        // $icon-only: false/true
+    );
+}
+
+
+// ------------------------------------------------------------------- *
+// DEFAULTS TO EXTEND
+// ------------------
+
+%button_has_icon{
+    position: relative;
+    i{
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+    }
+}
+
+%button_icon_left{
+    i{
+        right: auto;
+    }
+}
+
+%button_icon_right{
+    i{
+        left: auto;
+    }
+}
+
+%button_icon_center{
+    i{
+        left: 50%;
+        right: auto;
+    }
+}
+
+%button_icon_only,
+a%button_icon_only{
+    cursor: pointer;
+    text-indent: -9999px;
+    overflow: hidden;
+    padding: 0;
+    display: block; // for ie7 to work
+}

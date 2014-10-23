@@ -1,0 +1,160 @@
+@import 'compass';
+@import 'core/variables';
+@import 'helper-functions/px-to-em';
+@import 'ui-library/mixin-theme-library';
+@import 'helper-functions/theme-colors';
+@import 'helper-functions/media-queries';
+
+#hero.spotlight {
+
+    list-style: none;
+    padding: 0;
+    background: #000; // masks rounding errors and provides a background to darken semi-transparent images.
+    
+    & .spotlight_text {  
+        padding: 2.5%;
+        
+        & h3 {
+        color: #FFF;
+        }
+    }
+
+
+}
+ 
+.spotlight_thumbnail {
+
+
+    list-style: none;
+    float: left;
+    width: 33.33%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+
+    &:nth-child(5n) {
+        margin-right: 0;
+    }
+
+    img {
+        width: 100%;
+        margin: 0;
+        @include transition(opacity 0.3s);
+    }
+
+
+    &:hover {
+
+
+
+        img {
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        }
+
+    }
+
+    @include mobile { // display one for mobile and expose the item info: ideally reduction this would happen server side
+
+        display: none; // hide em all
+
+        &:first-child { // bring back the first
+
+            display: block;
+            width: 100%;
+
+            .spotlight_info {
+                bottom: auto;
+                top: 0;
+                background: none;
+                padding-top: 1em;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                @include box-sizing(border-box);
+            }
+        }
+    }
+
+}
+
+
+.spotlight_intro {
+
+    color: $white;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    padding-left: $page_padding;
+    padding-right: $page_padding;
+    display: block;
+    clear: both;
+
+    @include mobile {
+        padding-left: $page_padding;
+        padding-right: $page_padding;
+    }
+
+
+    @include theme-color(
+        $use: key-dark,
+        $property: background-color
+    );
+    @include theme-color(
+        $use: key-light,
+        $property: color
+    );
+
+    a {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+}
+
+
+.spotlight_info {
+
+    position: absolute;
+    bottom: -0.5em;
+    left: 0;
+    width: 100%;
+    height: 0.5em;
+    padding-top: 2em;
+    background: transparent url(/assets/images/eyeball.png) 1em 0.5em no-repeat;
+
+    p {
+        @include font_display;
+        font-size: 1.3em;
+        line-height: 1.2;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h5 {
+        display: none;
+    }
+
+    h5, p {
+        opacity: 0;
+        padding: 0 0.75em;
+        color: #fff;
+    }
+
+    .spotlight_thumbnail:hover &,
+    .touch & {
+
+        height: 6em;
+        @include transition(height 0.2s);
+
+        h5, p {
+            opacity: 1;
+            @include transition(opacity 0.2s 0.15s);
+        }
+
+    }
+
+}

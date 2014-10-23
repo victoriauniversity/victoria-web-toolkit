@@ -1,0 +1,32 @@
+@mixin font_display { 
+    
+    font-family: $font_display;
+    font-weight: normal;
+
+    .ie8 & { 				
+        font-family: $font_display-regular;
+        font-weight: normal;
+    }
+}
+
+@mixin font_display_semibold { 				
+    
+    font-family: $font_display;
+    font-weight: 500;
+
+    .ie8 & { 				
+        font-family: $font_display-semibold;
+        font-weight: normal;
+    }
+}
+
+@mixin font_display_extrabold { 				
+    
+    font-family: $font_display;
+    font-weight: 600;
+
+    .ie8 & { 				
+        font-family: $font_display-extrabold;
+        font-weight: normal;
+    }
+}

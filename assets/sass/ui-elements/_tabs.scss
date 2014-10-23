@@ -1,0 +1,153 @@
+.tab_container {
+    //clear: both;
+    .tab_content {
+       
+//         padding-top: 1em;
+//         
+//         @include mobile {
+//             display: none;
+//         }
+//         
+//         .button {
+//             margin-top: 15px;
+//         }
+    }
+}
+
+// Typography - we could hang these off the .h2 .h3 classes etc. as per current tabs in the aside
+// but might be better to make it consistent and isolated purely to the tabs as they're tricky 
+// with longer names and smaller spaces.
+
+.tabs a { 				
+
+    .entry & { 				
+    	
+    }
+    
+    .secondary & {
+        @include font_display_extrabold; 				
+        font-size: 1.3em;
+        text-transform: uppercase;
+    }
+        
+}
+
+// the important is a bit hacky but it's also good to have a blanket list style for the content area
+
+.tabs {
+    
+    list-style: none !important; 
+    margin: 0;
+    padding: 0 !important;
+    
+    .entry & { 				
+    	margin: 2em 0 1em;
+    }
+    
+    border-bottom: 1px solid $color_border;
+
+    @include ui-clearfix;
+    
+    @include mobile { margin-bottom: 0; }
+
+    li {
+        float: left;
+        @include box-sizing(border-box);
+        padding: 0;
+        margin-bottom: -1px !important;
+
+        a {
+            color: $color_links;
+            padding: 0.4em 0.5em 0.3em;
+            display: block;
+            margin: 0;
+            border: 1px solid transparent;
+
+            &:hover {
+                color: $color_links_hover;
+            }
+        }
+
+        &.active {
+
+            background: $page_background;
+
+            a {
+                @include theme-color(
+                    $use: key,
+                    $property: color
+                );
+                border-color: $color_border;
+                border-bottom-color: $page_background;
+                cursor: default;
+            }
+        }
+
+    }
+}
+
+.tabs { 				
+	@include mobile { 
+	   display: none !important;
+    }
+}
+
+.tab_container { 				
+	@include mobile { 
+	    .js_hide { 				
+	    	display: block !important;
+	    }
+    }
+}
+
+
+
+// /* DEPRECATED? NO LONGER USING TABS WITHIN WIDGETS (TOO COMPLEX)
+//     .widget {
+//         ul.tabs {
+//             padding: 0;
+//             height: 30px;
+//             line-height: 30px;
+//             border-bottom: none;
+//             li {
+//                 padding: 0.25em 1em;
+//                 @include theme-color(
+//                     $use: key-border,
+//                     $property: background
+//                 );
+//                 &.active {
+//                     @include theme-color(
+//                         $use: key-light,
+//                         $property: background
+//                     );
+//                     a {
+//                         color: #323232;
+// 
+//                     }
+//                 }
+//             }
+//             a {
+//                 font-size: 16px;
+//                 color: $color_links;
+//             }
+//         }
+//         .tab_container {
+//             //background: #cccccc;
+//             .tab_content {
+//                 padding: 1.5em 1em;
+//             }
+//         }
+//     }
+// 
+// 
+// 
+//     .widget {
+//         @include skinny-only {
+//             &.widget_to_col {
+//                 fieldset {
+//                     width: 100%;
+//                 }
+//             }
+//         }
+//     }
+// */

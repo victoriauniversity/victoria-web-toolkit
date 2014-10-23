@@ -1,0 +1,123 @@
+// _variables.scss
+//
+// Sensible defaults for your website.
+// -------------------------------------------------------------
+
+// Typography Defaults
+//----------------------------------
+
+$base_font_size:                14; //px
+$base_font_size_sidebar:        13; //px
+$base_line_height:              20; //px
+$em:                            $base_font_size * 1;
+$base_font_size_px:             #{$base_font_size}px;
+$base_font_size_sidebar_px:     #{$base_font_size_sidebar}px;
+$base_font_weight:              400;
+
+$font_body:             'Segoe WP', 'Nimbus Sans L', Arial, 'Helvetica Neue', 'Helvetica', sans-serif; //  WP Segoe for Window Phone, Nimbus for Linux, defaults for everyone else: should be Helv Neue on iOS, Helv on Mac, Arial on Windows
+$font_alt:              'Nimbus Roman No 9 L', 'FreeSerif', 'Georgia', serif;
+$font_monospaced:       'Courier New', 'Courier', monospace;
+$font_display:          'National','Segoe WP Semibold', 'Nimbus Sans L', Arial, 'Helvetica Neue', 'Helvetica', sans-serif; // WP Segoe for Window Phone, Nimbus for Linux
+// Weight specific versions for lte IE8
+$font_display-regular:   'National-Regular','Segoe WP Semibold', 'Nimbus Sans L', Arial, 'Helvetica Neue', 'Helvetica', sans-serif; // WP Segoe for Window Phone, Nimbus for Linux
+$font_display-semibold:  'National-Semibold','Segoe WP Semibold', 'Nimbus Sans L', Arial, 'Helvetica Neue', 'Helvetica', sans-serif; // WP Segoe for Window Phone, Nimbus for Linux
+$font_display-extrabold: 'National-Extrabold','Segoe WP Semibold', 'Nimbus Sans L', Arial, 'Helvetica Neue', 'Helvetica', sans-serif; // WP Segoe for Window Phone, Nimbus for Linux
+
+@import 'helper-functions/ie-friendly-fonts';
+
+// LINE HEIGHT
+//----------------------------------
+$line_height_standard:          1.5;
+$line_height_heading:           1;
+$line_height_lists:             1.2;
+
+// LAYOUT
+//----------------------------------
+// Page margins define the breathing space for content at page edges
+$page_padding:                 3%;
+$sidebar_padding:              6%;
+$gutter:                       3%;
+
+// COLORS
+//----------------------------------
+$site_background:                       #dce0e0;
+
+// Text colors
+//----------------------------------
+
+$color_text:                    #444444;
+$color_text_light:              #666666;
+
+$color_heading:                 #333333;
+
+$color_links:                   #146999;
+$color_links_hover:             #0e4f75;
+$color_links_visited:           #6e94b0;
+
+$color_links_border:            #b8d2e0;
+$color_links_hover_border:      #5a96b7;
+
+$color_selection_text:          inherit;
+$color_selection_bg:            rgba(65, 168, 222, 0.5);
+$color_highlight_tertiary:      #eee;
+
+$color_text_print:              #000;
+
+// Misc colors
+//----------------------------------
+$color_border:                  #ddd;
+$alert_background:              #fef4af;
+$alert_background_solid:        #FFF6B8;
+$alert_color:                   #862E13;
+$page_background:               #fff;
+
+// Masthead variables
+// -----------------------
+
+$masthead_border_width:         6px;
+
+// Theme colors
+//----------------------------------
+@import 'helper-functions/theme-colors';
+
+// BUTTONS
+//----------------------------------
+
+// FORMS
+//----------------------------------
+
+$input_inner_height: 18px;
+$input_vertical_padding: 4px;
+$input_horizontal_padding: 7px;
+$input_border_width: 2px;
+$input_border_color: #ddd;
+$input_border_color_focus: #3468B0;
+$form_error_color: #CC328E;
+$form_error_border_color: #CC328E;
+
+// MESSAGES
+//----------------------------------
+$message_base_class:             '.message';
+
+// GENERAL COLORS
+//----------------------------------
+$grey:                          #222;
+$grey_dark:                     #2f2f2f;
+$grey_light:                    #3c3c3c;
+$grey_lighter:                  #fafafa;
+$white:                         #fff;
+$black:                         #1D2624;
+
+// ERRORS AND WARNINGS
+//----------------------------------
+$warning_color_text:            #FFA500;
+$warning_color_bg:              #FFA500;
+$error_color_text:              #e0001a;
+$error_color_bg:                #e0001a;
+$success_color_text:            #77b05c;
+$success_color_bg:              #77b05c;
+
+// NAVIVAGTION
+//----------------------------------
+$nav-anim-duration: 200ms;
+$nav-x: 210px;

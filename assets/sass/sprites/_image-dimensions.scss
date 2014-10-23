@@ -1,0 +1,11 @@
+// Sprite Helper Functions
+//----------------------------------
+
+@function sprite-width($sprite, $icon){
+	@return image-width(sprite-file($sprite, $icon));
+}
+
+@function sprite-height($sprite, $icon){
+	@return image-height(sprite-file($sprite, $icon));
+}
+

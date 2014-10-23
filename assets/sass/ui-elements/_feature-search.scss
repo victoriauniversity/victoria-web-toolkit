@@ -1,0 +1,123 @@
+.feature_search {
+
+  background-color: $color_highlight_tertiary;
+  width: 100%;
+  margin-top: 1em;
+  height: $search_strip_height;
+  display: block;
+
+  @include mobile {
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+    //z-index: 999;
+  }
+
+  input[type="submit"] {
+    @include box-sizing(border-box);
+    margin: 0;
+    height: $big_input_height; 
+    position: relative;
+    left: -0.5em;
+    @include border-radius(0);
+    vertical-align: top;
+    text-transform: uppercase;
+    
+    @include mobile {
+      position: absolute;
+      right: 1em;
+      left: auto;
+      top: px-to-em(12);
+    }
+  }
+}
+
+.feature_search_fields {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: (($search_strip_height - $big_input_height)/2) 0;
+  position: relative;
+  
+  @include mobile {
+    width: 100%;
+    margin: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    position: relative;
+  }
+  
+  @include skinny-only {
+    width: 100%;
+    margin: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    position: relative;
+  }
+}
+
+input[type="text"].feature_search_query { // extra specificity to override default input styling
+  @include box-sizing(border-box);
+
+  height: $big_input_height;
+  padding: 0 0.4em;
+  outline: none !important;
+
+  border-color: #ccc;
+  border-color: rgba(0,0,0,0.1);
+  background-color: rgba(255,255,255,0.97);
+  font-size: 18px;
+  font-family: $font_alt;
+  font-weight: normal;
+  color: #333;
+  
+  @include mobile {
+    width: 100%;
+    padding-right: 15%;
+  }
+
+  &:focus {
+    border-color: $button_primary_background; 
+    //border-color: #ccc !important; // override base focus styles we need to try and avoid the !important arms race by refactoring forms.scss at some point
+    //border-color: rgba(0,0,0,0.1) !important;  // override base focus styles we need to try and avoid the !important arms race by refactoring forms.scss at some point
+
+    ::-webkit-input-placeholder,
+    :-moz-placeholder {
+      color: #ccc;
+    }
+
+    .ie7 & {
+      width: 70%;
+    }
+  }
+
+  .no-js &{
+    float: right;
+    width: 68%;
+  }
+}
+
+
+.feature_search_filters {
+  @include box-sizing(border-box);
+  width: 15%;
+  height: $big_input_height !important;
+  background-position: 80% 50%;
+  vertical-align: top;
+  min-width: ($search_strip_height * 2);
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.feature_search_form {
+  @extend %unselectable;
+  
+}
+
+.homepage.has_feature_search #page {
+  @include mobile {
+    padding-top: $search_strip_height;
+  }
+}

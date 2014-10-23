@@ -1,0 +1,185 @@
+//@import 'compass';
+@import 'core/variables';
+@import 'helper-functions/px-to-em';
+@import 'ui-library/mixin-theme-library';
+@import 'helper-functions/theme-colors';
+@import 'helper-functions/media-queries';
+
+.library_search {
+    // @include theme-color(
+    //     $use: key-light,
+    //     $property: background
+    // );
+
+    // @include theme-color(
+    //     $use: key,
+    //     $property: background,
+    //     $lighten: 40%
+    // );
+
+    background-color: $color_highlight_tertiary;
+
+
+    padding-top: 1% !important;
+    
+    &, 
+    form {
+        margin: 0;
+    }
+
+}
+
+.search_options__button {
+    border:0
+
+}
+
+.search_options__content {
+    display: block;
+    padding: 1em;
+
+}
+
+.search_options__footer {
+    
+    padding: 1em 0 1em;
+    border-top: 1px solid $color_border;
+    margin-bottom: 0;
+    margin-top: 1em;
+
+    .button {
+        margin:0;
+    }
+
+    nav {
+
+        // padding: 0;
+        // @include box-sizing(border-box);
+        
+        // color: $grey_light;
+        
+        // float: left;
+
+        li {
+            // text-align: center;
+            display: inline-block;
+            float: left;
+            //margin-right: 1em;
+        }
+
+        li:first-child a {
+            padding-left: 0;
+        }
+
+        a {
+            // font-size: 14px;
+            padding: 0.5em;
+            font-size: px-to-em(13);
+
+            &:hover{
+                color: $grey_light;
+            }
+        }
+    }
+
+}
+
+.sub_footer {
+
+    // .connect-feeds {
+    //     @include debug-vertical-alignment;
+    // }
+
+    margin-bottom: -2em;
+
+    @include theme-color(
+        $use: key-light,
+        $property: background
+    );
+    
+    border-top: 1px solid $color_border;
+
+    #wrapper & .icon { // TODO need to refuctor _social_media.scss to have less qualified selectors
+        width: 45px;
+        height:45px;
+
+        &.facebook {
+            background-position: 0 -78px; 
+        }
+
+        &.ask {
+            background-image: url(/assets/images/icon-speech-bubble.png);
+            background-position: 0 0; 
+        }
+    }
+
+    h3 {
+        margin-top: 1.1em;
+        margin-bottom: 0.9em;
+    }
+
+}
+
+// Keith's additions from static CSS (library-v3.css)
+
+.library_search label[for="library_search_field"] {
+    padding-bottom: 0;
+    font-weight: normal;
+    font-size: 0.78571em;
+    text-transform: uppercase;
+}
+
+#library_search_field {
+width: 100%;
+}
+
+#library_search_form { 
+    position: relative;
+}
+
+.form_input_collection .form_radio {
+    margin-left: 1em;
+}
+
+.library_search .field_container, .library_search .search_options {
+    margin-bottom: 0.5em;
+}
+
+.search_options {
+    font-size: 0.78571em;
+    text-transform: uppercase;
+    padding-top: 4px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@media all and (max-width: 759px) {
+    .search_options {
+        position: static;
+    }
+}
+
+.search_options .button {
+  margin: 0;
+}
+
+.search_options nav li {
+  display: inline-block;
+  float: left;
+}
+
+.search_options nav li:first-child a {
+  padding-left: 0;
+}
+
+.search_options nav a {
+  padding-right: 1em;
+  font-weight: 400;
+}
+
+.search_options nav a:hover {
+  color: #3c3c3c;
+}
+
+

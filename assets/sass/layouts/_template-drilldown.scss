@@ -1,0 +1,78 @@
+// Specific styles for drilldown templates
+// These could be abstracted into a more generic partial potentially
+// Currently scoped to .no_sidebar
+
+
+.template-drilldown .entry {
+
+
+    @include skinny {
+
+        header {
+        	width: 63%;
+        	float: left;
+
+            & + .promo + p,
+            & + .widget + p {
+
+                clear: left;
+            }
+
+        }
+
+        .intro {
+            $width_minus_padding: 770 - (770 * 0.06);
+            max-width: px-to-em($width_minus_padding, 18);
+        }
+
+
+
+        .promo,
+        .widget { // assuming this type of page will only ever have one instance of .promo/.widget
+            width: 30.5%; // this is a magic number
+            float: right;
+            margin-left: 1.5em;
+            margin-top: 0;
+            @include box-sizing(border-box); // helps out when it's an a.promo -- needs vendor prefix for FFox
+        }
+
+
+        .blocks {
+        	clear: both; // might be a better way to do this
+        }
+
+    }
+}
+
+.study_hub .entry {
+    .promo {
+      width: 30.33%; //pfft magic number, yeah nah
+      padding: 0;
+
+      header {
+        width: 100%;
+        float: none;
+        margin-bottom: 0;
+        margin-left: 0;
+      }
+
+      .promo_body {
+        padding: 5% 3%;
+        
+        & h3 {
+            display: inline;
+        }
+
+        a button {
+            margin-top: 6%;
+        }
+      }
+    }
+
+    .intro_wrapper {
+        float: left;
+    }
+
+}
+
+

@@ -1,0 +1,14 @@
+// Sprite maps
+// -------------------------------------------------------------
+
+// Make sure to create these sprites before using the mixin :-)
+// Any new sprite will be compiled automatically the first time it is used.
+
+@import "sprite-maps/base";
+@import "sprite-maps/button";
+@import "_image-dimensions.scss";
+//@import "sprite-maps/button";
+
+// Page sprites
+// -----------------------------
+// Remember to comment out the sprite map when a page is deleted

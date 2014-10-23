@@ -1,0 +1,864 @@
+// Styling for the big 'live search' and search results pages
+// See _main-navigation.scss for nav bar search styles
+
+$search_strip_height: 60px;
+$big_input_height: 36px;
+
+// Generic search result styling that applies anywhere
+
+.search_results {
+
+
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .result {
+        width: auto;
+        overflow: hidden; // clears floated pics etc.
+    }
+
+    .result_title {display: inline;}
+ 
+    & > .result > a { // the whole result should be wrapped in a link: targets this only (hopefully)
+
+        display: block;
+        color: $color_text;
+
+        .result_title {
+            @include look_linky;
+            //display: inline;
+        }
+
+        //&:hover .result_url,
+        //&:focus .result_url {
+         //   @include behave_linky;
+        //}
+		
+		
+
+    }
+	
+	& .result_url {
+		font-size: px-to-em(12);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+
+    .result_image { // currently a figure in the markup
+
+        float: left;
+        width: 3em;
+        height: auto;
+        margin: 0 1em 1em 0.5em;
+
+
+        &:hover {   // grow it by 0.1em all round w/o distrubing layout of other bits
+
+        }
+
+    }
+
+    .result_person_position {
+        font-weight: bold;
+    }
+
+}
+
+
+// Specific stuff for the homepage and major hub page searches
+
+.has_big_search #wrapper {
+    border-top-width: $search_strip_height;
+    border-top-style: solid;
+
+//     @include theme-color(
+//         $use: key-light,
+//         $property: border-color
+//     );
+    border-top-color: #F1F1EB;
+
+	@include mobile {
+		
+		border-top-width: 0px;
+	    border-top-style: none;
+
+	}
+
+
+
+}
+
+.has_big_search #page {
+
+    margin-top: -$search_strip_height;
+    padding-top: $search_strip_height;
+
+    @include mobile {
+        margin-top: 0;
+        padding-top: 0;
+
+    }
+
+}
+
+.has_big_search #section_menu {
+
+    margin-top: -$search_strip_height !important; // Required to override more specific inheritance in .old_ie
+
+    @include mobile {
+       margin-top: 0 !important;
+    }
+
+}
+
+// this gets nuked with an !important rule in line 80, ../sass/page-specific/_homepage.scss
+// so seems pretty redundant
+// .has_big_search .nav_quicklinks {
+
+//     @include desktop {
+//        margin-top: -$search_strip_height;
+//     }
+// }
+
+// Generic search form styling
+
+.search_form {
+    input[type="submit"]{
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
+        border: 0;
+    }
+}
+
+
+.big_search {
+
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 77%;
+
+    @include skinny-only {
+
+        // Account for section menu toggle on side
+        width: 95%;
+        float: left;
+
+        .no_section_menu &, .homepage & {
+            width: 100%;
+        }
+    }
+
+
+    height: $search_strip_height;
+
+    @include mobile {
+		
+        display: block; //change this for search icon toggle
+        width: 100%;
+        position: inherit;
+		z-index: 0;
+		background-color: #F1F1EB;
+
+        .search_filters {
+        	display: none;
+        }
+
+    }
+
+    .big_search_fields {
+
+	    width: 48%;
+	    position: relative;
+	    float: left;
+	    margin-left: 2%;
+	    margin-top: ($search_strip_height - $big_input_height) / 2;
+
+		@include mobile {
+	       width: 94%;
+	    }
+	}
+
+}
+
+
+
+
+
+.live_results {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	width:100%;
+	
+	.big_search & {
+		width: 48%;
+		left: 2%;
+		top: ($search_strip_height - $big_input_height) / 2 + $big_input_height;
+	}
+	
+	.ie7 &{
+		background-color: #fff;
+		border-color: #ccc;
+	}
+
+	border-color: #ccc;
+	border-color: rgba(0,0,0,0.1);
+	border-width: 2px;
+	border-top-width: 1px;
+	border-style: solid;
+
+	border-top-color: $color_border;
+
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.95);
+
+	margin-top: -2px;
+
+	// Specific to results in 'live search' dropdown
+
+	.search_results {
+
+		opacity: 0;
+		visibility: hidden;
+		@include transition(opacity 500ms ease 0ms);
+
+		&.active{
+			opacity: 1;
+			visibility: visible;
+		}
+
+		 padding: 0;
+
+
+		.result {
+			border-top: 1px solid $color_border;
+			font-size: px-to-em(13,14);
+			padding:0;
+			margin:0;
+			
+			&:first-child{
+				border-top: none;
+			}
+
+			.big_search & > a {
+				padding: 1em;
+			}
+			
+		}
+		 
+		.widget & {
+				
+			.result a {
+				padding:1em;
+			}
+			
+		}
+
+		 .result_title {
+			margin: 0;
+			font-size: px-to-em(14,13);
+		 }
+
+		 // a:hover,
+		 .hovered {
+			background-color: #FDFDDA;
+		 }
+	}
+
+	.show_all {
+
+		padding: 1em;
+		border-top: 1px solid $color_border;
+		margin-bottom: 0;
+		
+		.button {
+			margin-top: 0!important;
+		}
+		
+		.widget & .button {
+			
+			position: relative;
+			top: auto;
+			right: auto;
+			width: auto!important;
+			padding: px-to-em(5) px-to-em(9)!important;
+		}
+
+		&.hovered, .widget &.hovered {
+		   background: transparent;
+
+		   .button {
+			   background: rgba(0,0,0,0.2);
+
+			   .ie8 & {
+				   background: #bbb;
+			   }
+		   }
+		}
+
+
+	}
+
+}
+
+.big_search_form {
+
+    //form {
+        margin-bottom: 0;
+        position: relative;
+    //}
+    
+    @extend %unselectable;
+
+    label{
+        .no-js &{
+            line-height: 36px;
+            height: 36px;
+            padding: 0;
+        }
+    }
+
+    .search_filters { 
+
+        // form {
+        //     padding-left: 0.7em;
+        //    @include clearfix;
+        // }
+
+        label {
+            line-height: $search_strip_height;
+            height: $search_strip_height;
+            padding: 0 0.6em;
+        }
+    }
+
+
+
+
+
+    input[type="text"],
+    input[type="search"] {
+
+        @include box-sizing(border-box);
+        width: 100%;
+        height: $big_input_height;
+        padding: 0 3em 0 0.4em;
+        outline: none !important;
+
+//         @include theme-color(
+//             $use: key-border,
+//             $property: border-color
+//         );
+        border-color: #ccc;
+        border-color: rgba(0,0,0,0.1);
+        background-color: rgba(255,255,255,0.97);
+        font-size: 18px;
+        font-family: $font_alt;
+        font-weight: normal;
+        color: #333;
+        //line-height: 2em; // This caused weird alignment issue on some browsers eg. iPhone
+
+            &:focus {
+				border-color: $input_border_color_focus;
+                //background: #fff;
+                //border-color: #ccc !important; // override base focus styles we need to try and avoid the !important arms race by refactoring forms.scss at some point
+                //border-color: rgba(0,0,0,0.1) !important;  // override base focus styles we need to try and avoid the !important arms race by refactoring forms.scss at some point
+
+                ::-webkit-input-placeholder {
+                   color: #ccc;
+                }
+
+                :-moz-placeholder {
+                   color:  #ccc;
+                }
+
+            .ie7 & {
+            	width: 70%;
+            }
+        }
+
+        .no-js &{
+            float: right;
+            width: 68%;
+        }
+
+    }
+
+    input[type="submit"]{
+        margin: 0;
+        padding: 0 0.8em;
+
+        height: $big_input_height - 4px;
+        width: auto;
+
+        text-transform: uppercase;
+        border-radius: 0;
+
+        &, &:active{
+            position: absolute;
+            right: 2px;
+            top: 2px;
+        }
+
+    }
+
+    
+
+}
+
+form.loading{
+	input[type="text"]{
+		background: {
+			image: image-url("loader-search.gif");
+			repeat: no-repeat;
+			position: 86.1% 50%;
+		}
+		@include retina{
+			background: {
+				image: image-url("loader-search-2x.gif");
+				size: auto 18px;
+			}
+		}
+	}
+}
+
+
+
+
+// ---------------------
+// Search Results Page
+// ---------------------
+
+    
+.has_big_search.search_page #wrapper {
+    border-top-width: $search_strip_height;
+    
+    @include mobile {
+        border-top: none;
+    }
+}
+
+.has_big_search.search_page #page {
+    //margin-top: -3.5em;
+
+    @include mobile {
+        margin-top: 0;
+    }
+}
+
+.search_page #page { 
+
+	.big_search {
+		width: 100%;
+	}
+
+	@include mobile {
+    	.entry {
+    		padding-top: 0;
+    	}
+
+	}
+
+	#query_form {
+		margin-bottom: 0;
+	}
+
+    .big_search_form {
+        width: 100%;
+        //padding-left: 2%;
+        padding-right: 0;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+        
+
+        @include mobile {
+        	position: relative;
+			top: 0;
+			width: 94%;
+			padding: 1em 3% 1em 3%;
+			margin: 0;
+			background-color: #F1F1EB; 
+             // width: auto;
+             // top: auto;
+             // left: auto;
+        //     padding: 1em 3% 1em 3%;
+        //     background-color: #F1F1EB;
+        }
+
+        & p {
+            margin-top: 0.5em;
+        }
+
+        .big_search_fields {
+        	width: 68%;
+        	margin-left: 2%;
+			margin-right: 2%;
+        	position: relative;
+        	float: left;
+        	
+
+        	@include skinny-only {
+
+            	width:64%;
+            	margin-right: 0;
+
+        	}
+
+        	@include mobile {
+    			float: none;
+				width: 100%;
+				top: 0;
+				margin: 0;
+				// background-color: #F1F1EB;
+        	}
+        }
+
+        .search_filters {
+        	float: right;
+        	width: 28%;
+
+        	label {
+        		padding-right: 0;
+        	}
+
+        	@include skinny-only {
+        		width: 33%;
+
+        		label {
+        			padding-left: 0;
+        		}
+        	}
+
+        	@include mobile {
+        		display: none;
+        	}
+        }
+
+    }
+}
+
+#content {
+
+// 	/*.search_page & .big_search_fields { 
+// 		background-color: transparent;
+// 		
+// 		@include skinny {
+// 			padding: 0 0 1.5em 0; // this needs to be tablet landscp up 
+// 		}
+// 		
+// 		p {
+// 			margin-bottom: -1.5em; 
+// 		}
+// 	}*/
+
+	// margin-top: 4em;
+	
+	@include mobile {
+		margin-top:0;
+	}
+	
+	.didyoumean {
+		margin:0 0 1.5em 0;
+		
+		@include mobile {
+			margin: 1em 0;
+		}
+	}
+
+	
+	.search_results { 	// Any ul.search_results within the .primary content area
+		
+		padding: 0;
+		margin: 0em 0 0 0;
+
+		@include mobile {
+			margin-top:0;
+		}
+
+		list-style-type: none;
+
+		.result {
+			
+			&.result_web, &.result_person, &.result_document { // being more specific to "not" target research finder autocomplete
+				padding-bottom: 1em;
+				padding-top: 1em;
+				border-bottom: 1px solid $color_border;
+				margin-bottom: 0;
+			}
+			
+			
+			
+			&:last-child {
+				border-bottom:0;
+			}
+			
+			&.suggested {
+				padding-top: 0.6em;
+				padding-bottom: 0.3em;
+				border:0;
+				
+				h3 {
+					margin-top: 0.3em;
+				}
+
+				h5 {
+					text-transform: uppercase;
+					margin: 0 0 0 0;
+				}
+
+			}
+			
+			h5 {
+					//margin-bottom:0.6em;
+					//text-transform: inherit;
+					//letter-spacing:0;
+					//font-size: px-to-em(13);
+					margin-top:0.2em;
+				}
+				
+			h6 {
+				color: $grey_light;
+			}
+			
+		}
+
+		.result_person {
+			
+			padding-bottom: 1.8em;
+
+			.block_secondary {
+				@include skinny {
+					width: 20%;
+				}
+			}
+			
+			dl {
+				dt, dd  {
+					display: inline;
+				}
+			}
+			
+		}
+
+		.result_url {
+			margin-top: 0.3em;
+		}
+
+		.result--news {
+
+			img {
+				margin-top: 0.3em;
+				margin-left: 0;
+				margin-right: 1.3em;
+				margin-bottom: 1em;
+				width: 30%;
+				float:left;
+			}
+
+			h6 {
+				margin-top: 0.6em;
+			}
+
+			@include mobile {
+			
+				.block_primary {
+					display: inline;
+					padding: 0;
+				}
+
+			}	
+
+		}
+
+		.result_person_contact {
+			display: none; // temp hack to hide
+		}
+
+		.result_excerpt {
+			margin-top: 0.75em;
+			
+			b { // DG - got rid of the query class, no need for it
+				font-weight: bold;
+			}
+			
+		}
+		
+	}
+	
+	#search_facets {
+		padding-top:1em;
+	}
+
+	
+
+	
+
+}
+
+.facet_links { // for new search results facets
+		
+		
+		@include inline-block-list;
+
+		li {
+			background: none;
+			border-top: 0;
+			white-space: normal;
+			a {
+				@extend %mobile_tags;
+				@include font_display;
+				
+				&.selected:before {
+					content: "\2713";
+					padding-right: 0.5em;
+				}
+
+			}
+			
+		}
+		
+	
+
+}
+
+.refine_search_link { // The little page anchor for mobile
+	@extend .bleed;
+	padding-bottom:1em;
+	background-color: #F1F1EB;
+
+		a { 
+
+			@include mobile {
+				margin-top: 0;
+				
+				&:before {
+					content: "\2193";
+					padding-right: 0.5em;
+				}
+			}
+		}
+	& + p {
+		margin-top:0;
+	}
+}
+
+.refine_search_link--research {
+	// TODO Have a look for a way to specify a particular theme, rather than this being output for every theme even if it's only needed for research
+	@include theme-color(
+        $use: key-light,
+        $property: background-color
+    );
+    margin-top:-1.5em;
+}
+
+
+
+ul.pagination, .static_pagination {
+
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	@include ui-clearfix(true);
+
+	li {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		float: left;
+		margin: 0 0.2em 0.2em 0;
+		font-weight: 400;
+		text-align: center;
+
+		a {
+			background: $color_links;
+			
+			display: block;
+			font-weight: 700;
+			&:hover,
+			&:focus {
+				background: $color_links_hover;
+			}
+
+			span {
+				color: $white;
+				background-color: transparent;
+			}
+
+		}
+
+		span {
+			//background-color:rgba(204, 204, 204, 0.6); // for unlinked items
+			background: $color_highlight_tertiary;
+			color: #7f7f7f;
+			display: block;
+			height: 2em;
+			padding: 0.2em 0.9em;
+			line-height: 2em;
+			min-width: 1em;
+
+		}
+		
+
+		&.current span {
+    		//background: $color_highlight_tertiary;
+		}
+		
+		&.next, &.prev {
+			min-width: 8em;
+			
+			@include mobile {
+				min-width: inherit;
+			}
+		}
+		
+		&.next a span:after {
+			content: "  \2192";
+		}
+		
+		&.prev a span:before {
+			content: "\2190  ";
+		}
+		
+	}
+
+	@include mobile {
+	
+		li {
+			text-align: center;
+			span {
+				padding: 0.3em 1.0em;
+				min-width: inherit;
+				
+				.a-z_paging & {
+					min-width: 1em;
+				}
+				
+			}
+			
+		}
+	
+	}
+	
+}
+
+ul.pagination { margin-top: 1em; }
+
+
+
+
+
+
+
+
+
+

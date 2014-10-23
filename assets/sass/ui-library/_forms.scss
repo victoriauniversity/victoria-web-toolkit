@@ -1,0 +1,172 @@
+/*--------------------------------------
+    FORM RESET AND BASIC STYLES
+    Input + Textarea + Select
+ --------------------------------------*/
+
+$input_inner_height: 24px;
+$input_vertical_padding: 4px;
+$input_horizontal_padding: 10px;
+$input_border_width: 2px;
+
+/*
+ * Exclude input[type='submit'] from below, was screwing with .btn style
+ */
+%ui_inline_block{
+    display: inline-block;
+    @include ie7-inline-block;
+}
+
+%ui_content_box{
+    @include box-sizing(content-box);
+}
+
+%ui_border_box{
+    @include box-sizing(border-box);
+}
+
+%ui_input_vertical_padding{
+    padding: {
+        top: $input_vertical_padding;
+        bottom: $input_vertical_padding;
+    }
+}
+
+%input_horizontal_padding{
+    padding: {
+        left: $input_horizontal_padding;
+        right: $input_horizontal_padding;
+    }
+}
+
+
+
+
+
+
+%ui_input_layout{
+    height: $input_inner_height;
+    @extend %ui_input_vertical_padding;
+    @extend %input_horizontal_padding;
+}
+
+%ui_input_layout_border_box{
+    height: $input_inner_height+$input_vertical_padding*2+$input_border_width*2;
+    @extend %ui_input_vertical_padding;
+    @extend %input_horizontal_padding;
+}
+
+%ui_input_border_width{
+    border-width: $input_border_width;
+}
+
+input[type='radio'],
+input[type='checkbox'],
+textarea,
+select {
+    // @include input-large;
+    // @include border-radius(4px);
+    // @include box-sizing(border-box);
+
+    @extend %ui_inline_block;
+
+
+
+    // padding: 8px; // Causes SELECTS to break on Firefox.
+    // font-family: $base_font_family;
+    // background-color: $input_color_bg;
+    // border: 1px solid $input_color_border;
+}
+
+input {
+    &[type='color'],
+    &[type='date'],
+    &[type='datetime'],
+    &[type='datetime-local'],
+    &[type='email'],
+    &[type='month'],
+    &[type='number'],
+    &[type='password'],
+    &[type='range'],
+    &[type='search'],
+    &[type='tel'],
+    &[type='text'],
+    &[type='time'],
+    &[type='url'],
+    &[type='week']{
+        @extend %ui_inline_block;
+        @extend %ui_input_layout;
+        @extend %ui_input_border_width;
+    }
+}
+
+// Fixes the above bug
+select {
+    @include border-radius(0);
+    @extend %ui_input_layout_border_box;
+    @extend %ui_input_border_width;
+    // @extend %ui_content_box;
+}
+
+
+textarea {
+    min-width: 75%;
+    height: 200px;
+    @extend %ui_input_border_width;
+    @extend %ui_input_vertical_padding;
+    @extend %input_horizontal_padding;
+}
+
+// Subtle internal shading
+input,
+textarea {
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+}
+
+label input,
+label textarea,
+label select {
+    display: block;
+}
+
+// Mini reset for unique input types
+input[type='image'],
+input[type='checkbox'],
+input[type='radio'] {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 3px 0;
+    *margin-top: 0; /* IE7 */
+    line-height: normal;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0 \9; /* IE9 and down */
+    @include border-radius(0);
+}
+
+// Reset the file input to browser defaults
+input[type='file'] {
+    width: auto;
+    padding: initial;
+    line-height: initial;
+    border: initial;
+    @include box-shadow(none);
+}
+
+
+// Set the height of select and file controls to match text inputs
+select,
+input[type='file'] {
+    // height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+    *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+    // line-height: 28px;
+}
+
+// Reset line-height for IE
+input[type='file'] {
+    line-height: 18px \9;
+}
+
+input[type='button'] {
+    @include box-shadow(none);
+}

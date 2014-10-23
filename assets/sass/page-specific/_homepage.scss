@@ -1,0 +1,564 @@
+.homepage {
+
+    #mobile_masthead {
+        @include mobile {
+
+            @include theme-color(
+                $use: key,
+                $property: border-bottom-color
+            );
+
+            border-bottom-width: 5px;
+            border-bottom-style: solid;
+        }
+
+      .icon {
+        color: transparent;
+      }
+
+    }
+	
+}
+
+// --------------------------------
+// HERO
+// --------------------------------
+
+
+// Experimental hack for a bigger splash
+// .homepage { 				
+	
+// 	#hero { 				
+    	
+//     	.info {
+//         	font-size: 100% !important;
+//         	background: rgba(255,255,255,0.96) !important;
+//         	width: 30% !important;
+//         	height: 50% !important;
+//         	left: 50% !important;
+//         	padding: 1em;
+        	
+//         	h3 { 				
+//         		@include look_linky;
+//         		display: inline;
+//         		@extend %heading_link;
+//         	}
+//     	}
+// 	}
+	
+// 	@media screen and (min-width: 1380px) { 				
+            
+//         .homepage_feature { 				
+// 	        width: 100% !important;
+//         	overflow: visible;
+//         }
+        	
+//     	#hero { 				
+// 	        width: 110% !important;
+//         	margin-left: -5%;
+    	
+//             .info { 				
+//             	height: 33.5% !important;
+//             	bottom: 33.33% !important;
+//             	font-size: 110% !important;
+//             }
+    	
+//     	}
+    
+//         .imagery { 				
+//         	margin-top: -10%;
+//         	background-position: 0 25%;
+//         }
+        
+	    
+// 	}
+	
+// }
+
+
+
+
+// --------------------------------
+// QUICKLINKS
+// --------------------------------
+
+.homepage .nav_quicklinks {
+
+    // Base styles
+    a {
+       display: block;
+       @include font_display_semibold;
+      // @include font_display;
+    }
+
+    ul { list-style: none }
+
+    @include mobile {
+        padding: 1em 3%;
+        width: 100%;
+
+        ul {
+            @include ui-clearfix(true);
+        }
+        li {
+            width: auto;
+            float: left;
+        }
+        a {
+            padding: 0.2em 0.4em;
+            margin: 0 0.25em 0.25em 0;
+            background: lighten($color_links,60%); // DG - increased the effect to 60% as we'd lost some contrast with the change in link colour.
+            font-size: px-to-em(14);
+        }
+    }
+
+
+    @include skinny-only {
+        padding: 1em 2.4%;
+        width: 100%;
+
+        ul {
+            @include ui-clearfix(true);
+        }
+        li {
+            width: auto;
+            float: left;
+        }
+        a {
+            padding: 0.25em 0.6em;
+            margin: 0 0.3em 0.3em 0;
+            background: lighten($color_links,60%);
+            font-size: px-to-em(18);
+        }
+    }
+
+    @include desktop {
+
+        padding: 0.6em 0 0 0;
+        @include theme-color(
+            $use: key-minus,
+            $property: background-color
+        );
+        position: absolute;
+        top: 0;
+        left: 0;
+        // margin-top: 0 !important; // override standard .big_search behaviour better removed elsewhere // wut?
+        width: 23%; 
+        
+        h2 {
+            padding-left: 5%;
+            margin-bottom: 0.3em;
+			line-height: 1;
+            font-size: px-to-em(22);
+            @include theme-color(
+                $use: key-light,
+                $property: color
+            );
+        }
+        ul {
+
+            @include box-sizing(border-box);
+        }
+        li {
+            border-top-width: 1px;
+            border-top-style: solid;
+
+            @include theme-color(
+                    $use: key-minus,
+                    $property: border-color,
+                    $darken: 3%
+                );
+            width: 100%;
+        }
+        a {
+            padding-top: 0.3em;
+            padding-left: 5%;
+            padding-bottom: 0.35em;
+            padding-right: 5%;
+            line-height: 1.3;
+            font-size: px-to-em(19, 13); 
+            //font-size: 19px; 
+            color: #fff;
+            -webkit-font-smoothing: antialiased; // possible fix for fuzzy font issue.
+        }
+    }
+
+    @include wide {
+
+    }
+
+    @include full {
+
+    }
+
+
+}
+
+
+// --------------------------------
+// WELCOMING STATEMENT
+// --------------------------------
+
+.welcome { 				
+    @include font_display;
+    font-size: px-to-em(21);
+    line-height: 1.4;
+    max-width: 45em;
+    margin: 0 auto 2em;
+    text-align: center;
+    
+    @include mobile { 				
+    	font-size: px-to-em(18);
+    }
+}
+
+
+
+// --------------------------------
+// NEWS & WIDGET
+// --------------------------------
+
+.homepage .entry {
+
+    clear: both;
+    
+    @include ui-clearfix(true);
+    
+
+    @include skinny-only {               
+
+            
+        .widget_wrapper {
+
+            float: right;
+            width: 33.3%;
+        
+        }
+
+
+        .news_container {
+            width: 100%;
+
+            .info_block {
+                width: 100%;
+                padding-left: 1%;
+                padding-right: 1%;
+                margin-bottom:0;
+
+                .info_block_secondary {
+                    float: left; 
+                    margin: 0 1em 2em 0;
+
+                    img {
+                        max-height: 100%;
+                    }
+                }
+
+                p {
+                    display: block;
+                }
+            }
+
+        }
+
+        .news_wrapper {
+                width: 100%;
+                padding: 0 3%;
+
+                .info_block {
+                    width: 25%;
+                    
+                }
+        }
+
+    }
+
+    @include mobile {
+
+        .news_wrapper {
+            
+            width: 100%;
+            padding: 0 3%;
+
+            .info_block {
+                width: 100%;
+                padding: 0 0.5%;
+
+                .info_block_primary {
+
+                    p {
+                        display: block;
+                    }
+                }
+
+                .info_block_secondary{
+
+                    img {
+                        max-height: 80px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include phone_mobile {
+        .info_block {
+
+            .info_block_secondary {
+                display: none;
+            }
+        } 
+    }
+}
+
+.homepage {
+
+    .homepage_feature {
+        width: 77%;
+        margin-bottom: 1em;
+        @include ui-clearfix(true);
+        float: right;
+    }
+
+    .widget_wrapper {
+
+        float: right;
+        width: 24%;
+    
+    }
+
+
+    #content {
+        width: 100%;
+        padding-left: 0;
+
+        .entry {
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 1em;
+            min-height: 350px;
+            margin-bottom: 1em;
+        }
+    }
+    
+	.site_footer {
+		margin-top: 0;
+        height: auto;
+	}
+
+    .connect_wrapper {
+        //position: relative;
+        //margin-top: -246px; //negative value of footer height
+        //height: 246px;
+        clear:both;
+    }
+
+    #page{
+        //padding-bottom: 246px;
+        background-color: #ffffff; 
+    }
+
+    .news_wrapper {
+            float: right;
+            right: 0;
+            position: relative;
+            width: 77%;
+        
+        .info_block {
+            width: 25%;
+            padding-right: 0;
+            padding-left: 2%;
+
+        }
+    }
+
+    .new_quicklinks {
+        left: auto;
+        top: auto;
+        width: 23%;
+        clear: right;
+        padding: 0;
+        position: absolute;
+
+        @include theme-color (
+                $use: key-light,
+                $property: background-color
+            );
+
+
+        ul {
+            padding: 0;
+            list-style:none;
+            margin: 0;
+        }
+
+        h2 {
+            padding-left: 5%;
+            margin-bottom: 2%m;
+            line-height: 1;
+            font-size: 1.57143em;
+            @include theme-color(
+                $use: key,
+                $property: color
+            );
+        }
+
+         li {
+            border-top-width: 1px;
+            border-top-style: solid;          
+            width: auto;
+
+
+            @include theme-color (
+                $use: key-border,
+                $property: border-color
+            );
+            @include theme-color (
+                $use: key,
+                $property: color
+            );
+            @include theme-color (
+                $use: key-light,
+                $property: background-color
+            );
+        }
+
+
+        a{
+            padding-top: 0.3em;
+            padding-left: 5%;
+            padding-bottom: 0.35em;
+            padding-right: 5%;
+            line-height: 1.3;
+            font-size: 1.46154em;
+            -webkit-font-smoothing: antialiased;
+            display: block;
+            font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+            font-weight: 500;
+
+             @include theme-color (
+                $use: key,
+                $property: color
+            );
+        }
+
+        #menu_toggle {
+            display: block;
+            background-color: transparent;
+            box-shadow: none;
+            font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+            padding-left: 5%;
+            margin-bottom: 0;
+
+             @include theme-color (
+                $use: key,
+                $property: color
+            );
+        }
+    }
+
+		
+    
+
+     @include skinny-only {
+
+        .connect_wrapper {
+             height: auto;
+        }
+            
+        .new_quicklinks {
+            width:100%;
+            background-color: none;
+            margin-bottom: 2%;
+            padding: 0 1% 1% 1%;
+            position: relative; 
+
+
+            ul {
+                margin: 0;
+            }
+
+            ul:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            li {
+                width: auto;
+                float:left;
+                border-top: 0;
+                margin-bottom: 0;
+                white-space: nowrap;
+            }
+
+            h2{
+                margin-bottom: 0;
+                padding-bottom: 1%;
+                padding-left: 3%;
+
+                &:after {
+                    content: 003e;
+                }
+            }
+
+            a {
+                background-color: #eee;
+                padding: 0.25em 0.6em;
+                margin: 0 0.3em 0.3em 0;
+            }
+
+            #menu_toggle {
+                 padding-left: 1%; 
+            }
+
+        }
+
+        #menu_toggle {
+                 position: inherit; 
+                 left: auto; 
+                 font-size:  1.6em; 
+                 font-weight: bold; 
+                box-shadow: none; 
+                width: auto; 
+                 height: auto; 
+                 padding: 0 0 0 3%;
+                 text-align: left; 
+                 -webkit-box-sizing: border-box; 
+                 -moz-box-sizing: border-box;
+                box-sizing: border-box; 
+        }
+
+        #menu_toggle:after {
+            content: none;
+        }
+    } 
+
+
+    @include mobile {
+
+        .connect_wrapper {
+             height: auto;
+        }
+        
+        .new_quicklinks {
+
+            width: 100%;
+            position: relative;
+            margin-bottom: 2%;
+
+             a {
+                background-color: #d1e0da;
+                border-top: 1px solid #ccc;
+            }
+
+            li {
+                width: auto;
+                float:none;
+                border-top: 0;
+            }
+        }
+
+    }   
+}
+

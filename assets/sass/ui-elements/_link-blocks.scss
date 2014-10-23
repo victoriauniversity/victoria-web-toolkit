@@ -1,0 +1,202 @@
+// These are the content blocks that are used on section and hub pages
+// On hub pages they are divs with varied content inside
+// On drilldown section pages they are single anchors with the headings made to look like links
+
+
+
+
+
+// Common type styling
+// ----------------------------------------------------------------------------
+// Need to cater for situations where the element is wrapped in an anchor (sections)
+// or is itself an anchor (hubs)  
+
+a.link_block h2,
+a.link_block h3,
+.link_block h3 a
+ { 				
+	@extend %heading_link; // adjust in core/_utilities
+}
+
+a.link_block { 				
+	@include print-only { 				
+		text-decoration: none;
+	}
+}
+
+.link_block h2,
+.link_block h3  { 				
+    display: inline; // means the border faux underline follows text but will eff with margins
+    clear: right;
+    line-height: 1.3; // specific tweak for these guys as the border treatment need extra leading post bug#65 change
+    
+    + p { 				
+    	margin-top: 0.75em;
+    }
+    
+}
+
+a.link_block p,
+.link_block a p  { 				
+    color: $color_text;
+}
+
+
+
+// The base building block
+// ----------------------------------------------------------------------------
+// When within a .blocks grid it is displayed INLINE BLOCK and MUST HAVE NO 
+// WHITESPACE IN THE OUTPUTTED HTML
+
+
+
+
+.link_block { 				
+		
+	padding-top: 1em;
+	padding-bottom: 1em;	
+	position: relative;
+	@extend %ui_clearfix;
+	.blocks-2col &,
+	.blocks-3col & { 				
+    	display: inline-block;
+    	*display: inline; // IE7
+    	*zoom: 1; // IE7
+    	
+    	vertical-align: top;
+	
+		
+    	
+    	width: 94%;
+    	padding-right: $page_padding;
+    	padding-left: $page_padding;
+	}
+	
+	
+	// If it's in a column on a hub page give it a top border
+	
+	.col & { 				
+		@extend .rule; 
+	}
+
+}
+
+// Columned block layout
+// ----------------------------------------------------------------------------
+// add .blocks-2col and .blocks-3col modifiers to the containing .blocks element  
+// to shift between two and three column layout
+
+// .blocks { 				
+// 	
+// 	@extend .bleed_box;
+//     
+// }
+
+
+.blocks-2col { 				
+	
+    .link_block { 				
+        @include skinny {
+        	width: 50%-($page_padding * 2); // 
+        }
+    }
+    	
+}
+
+.blocks-3col { 				
+	
+    .link_block { 				
+        @include skinny {
+        	width: 33.2%-($page_padding * 2);  // slightly less than a third to avoid rounding issues particularly in IE7
+        }
+    }
+        
+}
+
+.blocks { 				
+	
+    
+    .link_block-has_thumb { 				
+        
+        @include skinny-only {
+        	width: auto;
+        	float: none;
+        }
+    }
+
+}
+
+
+
+
+// /**
+//  * Images in blocks
+//  * ----------------------------------------------------------------------------
+//  * add an image to the block before .link_block_body with a class of .link_block_image 
+//  * 
+//  * these can either be full width with a modifier on the block of .link_block-has_image
+//  *
+//  * or floated next to the body with .link_block-has_thumb
+//  *
+//  */
+
+
+.link_block_image {
+
+    width: 100%;
+
+    .link_block-has_thumb & { 				
+    	
+    	width: 20%-$page_padding;
+    	height: auto;
+    	float: left;
+        @include skinny {
+        	width: 30%-$page_padding;
+        }
+	}
+
+    .link_block-secondary & { 				
+    	
+    	@include mobile {
+        	
+        	width: 30%-$page_padding;
+        	height: auto;
+        	float: left;
+    	
+    	}
+    	
+    }
+    
+    
+    .link_block-has_image & { 				
+        margin-bottom: 1em;
+	}
+	
+    .link_block-has_image & + p { 				
+        margin-top: 0; // nuke the top margin on paragraphs where they follow the images w/o a heading
+	}
+	
+}
+
+.link_block_body { 				
+	
+	.link_block-has_thumb & { 
+	    float: right;				
+		width: 80%-$page_padding;
+        @include skinny {
+        	width: 70%-$page_padding;
+        }
+	}
+	
+    .link_block-secondary & { 				
+    	
+    	@include mobile {
+        	
+        	width: 70%-$page_padding;
+        	float: right;
+    	
+    	}
+    	
+    }
+	
+}

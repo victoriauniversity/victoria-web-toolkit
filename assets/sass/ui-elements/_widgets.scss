@@ -1,0 +1,143 @@
+
+.widget {
+    padding: {
+        top: 1.5em;
+        right: 1.5em;
+        left: 1.5em;
+        bottom: 1em;
+    }
+    &.bleed {
+        padding: {
+            top: 1.5em;
+            right: 1.5em;
+            left: 1.5em;
+            bottom: 1em;
+        }
+    }
+    color: $color_text;
+    clear: both;
+    margin-bottom: 1em;
+    p {
+        @include mobile {
+            text-align: left;
+        }
+        clear: both;
+        text-align: center;
+        color: inherit;
+        margin: 0.5em 0 0;
+        a {
+            color: inherit;
+            border-bottom: 1px solid;
+            border-color: inherit;
+        }
+    }
+    fieldset {
+        margin-bottom: 10px;
+        @include skinny-only {
+            width: 31%;
+            float: left;
+            margin-right: 1em;
+        }
+    }
+
+    label {
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    select {
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
+        cursor:pointer;
+        background: $white url(/assets/images/ui-select.png) no-repeat 96% 50%;
+        border: 2px solid;
+        color: $color_links;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 12px;
+        margin: 0;
+        line-height: 32px;
+        padding: {
+            left: 0.75em;
+            right: 0.75em;
+        }
+        width: 100%;
+        @include border-radius(5px);
+        @include theme-color(
+            $use: key-border,
+            $property: border-color
+        );
+    }
+
+    
+
+
+}
+
+
+
+select {
+    @include skinny-only {
+        width: 33.33%;
+    }
+}
+
+
+.large_widget {
+    fieldset {
+        width: 35%;
+        float: left;
+        margin-bottom: 1em;
+        margin-right: 1em;
+        position: relative;
+        @include mobile {
+            width: 100%;
+            margin-right: 0;
+        }
+        &:nth-child(2){
+            width: 62%;
+            margin-right: 0;
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+    input.form_text {
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
+        cursor:pointer;
+        border: 2px solid;
+        color: $color_links;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 12px;
+        margin: 0;
+        line-height: 31px;
+        padding: {
+            left: 0.75em;
+            right: 0.75em;
+        }
+        width: 90%;
+        @include border-radius(5px);
+        @include theme-color(
+            $use: key-border,
+            $property: border-color
+        );
+    }
+    input[type="submit"]{
+        text-transform: uppercase;
+        height: 36px;
+        padding: 0 10px;
+        border: 0;
+        background: #3468B0;
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+

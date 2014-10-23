@@ -1,0 +1,372 @@
+
+// Footer
+//----------------------------------
+
+.site_footer {
+
+    margin-top: 2em;
+    clear: both;
+    background: #ddd;
+    border-top: 1px solid #ccc;
+    font-size: px-to-em(13);
+    @include box-sizing(border-box);
+
+    a {
+        @include mobile {
+            display: block;
+        }
+        color: $grey_light;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+    }
+
+    h2 { // overriding core _typography heading link treatment 
+        a {
+            border:0;
+            &:hover {
+                color: inherit;
+            }
+        }
+    }
+
+
+
+    .contact_info {
+
+        width: 100%;
+        float: none;
+        clear: both;
+        @include pie-clearfix();
+        padding: 1em 0;
+
+        @include mobile {
+        	display: none; // if this can be handled server side that would be cool
+        }
+
+    }
+
+    .fineprint nav a {
+        padding: 0.5em;
+    }
+
+
+}
+
+
+
+.site_footer {
+
+    @include mobile {
+
+        height: auto;
+        margin: 0;
+        background-color: #d9d9d9;
+
+        .link_list,
+        .details {
+            display: none;
+        }
+
+        .wrap {
+         
+         }
+        
+        .site_links { 				
+            padding-top: 1em;
+            padding-bottom: 1em;
+            padding-left: $page_padding;
+            padding-right: $page_padding;
+          }
+
+        div.cols {
+            display: inline;
+        }
+
+        h2 {
+            float: left;
+            font-size: 18px;
+            margin: 0;
+            font-family: $font_alt;
+            text-transform: inherit;
+            font-weight: normal;
+
+            a {
+                padding: 0.45em 0.6em;
+                display: block;
+                background: #f0f0f0;
+                margin: 0.2em;
+                white-space: nowrap;
+            }
+        }
+
+        .fineprint {
+
+            background: #c3c3c3;
+            padding: 0.75em 0;
+            text-align: center;
+
+            nav {
+
+                padding: 0;
+                @include box-sizing(border-box);
+
+
+                li {
+                    text-align: center;
+                    display: inline-block;
+                }
+
+                a {
+                    font-size: 14px;
+                    color: $grey;
+
+                    &:hover{
+                        color: $grey_light;
+                    }
+                }
+
+                &.wrap {
+                    border: none;
+                }
+            }
+        }
+
+        .copyright {
+        	padding: 0.5em $page_padding;
+        	line-height: 1.4;
+        }
+    }
+}
+
+
+.site_footer {
+
+    @include skinny {
+
+        height: auto;
+
+
+        .link_list {
+            //margin-bottom: 2.2em;
+            //line-height: 1.2;
+            margin-top: 0.2em;
+            margin-bottom: 1.2em;
+            line-height: 1.6;
+
+            li {
+            	padding-right: 5%;
+            }
+
+            a {
+            	display: block;
+            	// padding: 0.25em 0;
+                padding: 0;
+            }
+
+        }
+
+        .fineprint nav {
+
+            padding: 0;
+            color: $grey_light;
+            float: left;
+
+            li {
+            	float: left;
+            }
+
+            li:first-child a {
+                padding-left: 0;
+            }
+
+        }
+
+        .copyright {
+
+            margin: 0;
+            //float: left;
+            float: right;
+            
+            // @include wide {
+            //     float: right;
+            // }
+        }
+
+
+        .cols {
+
+            @include box-sizing(border-box);
+            float: left;
+            width: 19%;
+            //margin-right:1.1em;
+            margin-right:1.2%;
+
+
+            &:last-of-type {
+                margin-right:0;
+            }
+
+            // not in use 
+            &.one {
+                width: 22%;
+            }
+
+            &.two {
+
+                width: 34%;
+
+                @include skinny {
+
+                    .campuses li {
+
+                        width: 45%; // they have 5% right padding
+                        float: left;
+                    }
+                }
+
+                @include desktop {
+
+                    .faculties li {
+
+                        width: 45%; // they have 5% right padding
+                        float: left;
+                    }
+                }
+
+            }
+
+            &.five {
+            width: 100%;
+            float: none;
+            clear: both;
+            }
+            // end not in use
+
+            h2 {
+            	//@include font_display_extrabold;
+                font-size: 18px;
+                margin-bottom: 0;
+                margin-top: 0.5em;
+                line-height: 1.1;
+                //text-transform: uppercase;
+                
+
+                & + h2 {
+                    margin-top: 1.2em;
+                }
+            }
+        }
+
+        .fineprint {
+
+            .wrap {
+                border-top-width: 1px;
+                padding: 1em 0;
+            }
+        }
+
+        .row {
+            margin-bottom: 1em;
+            @include pie-clearfix();
+        }
+
+    }
+
+    .old_ie & .cols {
+        width: 17%!important;
+    }
+
+    .contact_info {
+
+        border-bottom: 1px solid #ccc;
+        overflow: hidden;
+        margin: 0em 0 1.4em;
+        padding: 2em 0;
+
+
+        h2 {
+            display: inline;
+            float: left;
+            font-family: $font_alt;
+            font-weight: normal;
+            font-size: 1.7em;
+            line-height:1;
+            margin-right: 0.8em;
+            margin-bottom: 0.1em;
+            margin-top: 0.15em;
+            text-transform: none;
+        }
+
+
+        a.button {
+            float: right;
+            margin-top:0;
+        }
+
+    }
+
+    // moved .details as it's needed in sub footer too
+
+    .fineprint {
+
+        padding: 1em 0;
+        border-top: 1px solid #ccc;
+
+    }
+}
+
+.site_footer, 
+.sub_footer {
+    
+    .details {
+
+        font-size: 1.2em;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        float: left;
+        line-height: 30px;        // hard value to match the h2
+
+        @include pie-clearfix();
+
+        li {
+
+            float: left;
+            padding-right: 1.15em;
+
+            a {
+                font-weight: bold;
+                color: $color_links;
+            }
+
+            &:last-child {
+                padding-right:0;
+            }
+
+        }
+    }
+
+}
+
+
+footer[role='contentinfo'] {
+    ul {
+        @include pie-clearfix();
+        list-style: none;
+    }
+}
+
+
+.site_footer {
+    @include skinny {
+        padding: {
+            left: 1.5%; //exact calculation required
+            right: 1.5%; //exact calculation required
+        }
+    }
+}
+
+

@@ -1,0 +1,47 @@
+// Specific styles/overrides for events listing, event item pages and add event form
+
+#content .event-details {
+	
+	
+	.intro { // tweak for event detail page, teaser used below other elements, needed margin.
+		margin-top: 1.25em
+	}
+	
+	.contacts_list {
+		margin: 1em 0 2em 0;
+	}
+	
+	.register {
+		margin:1em px-to-em(4) 1em 0;
+	}
+	
+}
+
+
+// Events listing stuff moved in from squiz.css
+// Hacky stuff because of the way Squiz is rendering events listings and widgets. 
+// See https://victoria.sifterapp.com/issues/124 for more info. Hopefully once this is resolved we can remove these rules.
+
+li.hideLink p.result_url {
+  display: none;
+}
+.no-desc .result_excerpt,
+.no-duration .event-end-date,
+.no-start-time .event-start-time,
+.no-end-time .event-end-time {
+  display: none;
+}
+
+// Events widget 
+.showLink .hideEventLink,
+.hideLink .showEventLink {
+  display: none;
+}
+.hideLink .info_block {
+  cursor: default;
+}
+
+// hides the move up/down buttons on speaker field in create events form
+#id166694 #option-list-metadata_field_multiple_text_166743 a {
+  display: none;
+}

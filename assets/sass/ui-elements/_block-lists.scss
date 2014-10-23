@@ -1,0 +1,111 @@
+
+//  Block lists
+//----------------------------------
+
+// wrapper that adds
+// dividers between elements
+.block_wrapper {
+    margin: 0;
+    padding: {
+        top: px-to-em(5);
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    @include skinny {
+        padding-top: px-to-em(25);
+    }
+    > .block {
+        border-top: 1px solid $color_border;
+    }
+}
+
+// block content
+.block {
+    margin: 0 0 0 0;
+    width: 100%;
+    // padding: {
+    //     top: px-to-em(3);
+    //     right: 0;
+    //     bottom: px-to-em(3);
+    //     left: 0;
+    // }
+    padding: {
+        top: px-to-em(15);
+        right: 0;
+        bottom: px-to-em(15);
+        left: 0;
+    }
+        
+    clear: both;
+    border-top: 1px solid $color_border;
+    // padding: 25px 0;
+    @include pie-clearfix();
+    
+    @include skinny {
+        padding: {
+            top: px-to-em(15);
+            right: 0;
+            bottom: px-to-em(15);
+            left: 0;
+        }
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: px-to-em(18);
+        margin: {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 10px;
+        }
+    }
+}
+
+// Copy - content to the right
+.block_primary {
+    overflow: auto;
+    padding-right: px-to-em(10);
+    // display: inherit;
+    clear: both;
+    @include skinny {
+        display: block;
+        clear: right;
+    }
+    p {
+        margin: 0 0 0.5em 0;
+    }
+}
+
+// Image/date - supporting info
+.block_secondary {
+    float: left;
+    margin: {
+        top: px-to-em(4);
+        right: px-to-em(10);
+        bottom: px-to-em(10);
+        left: 0;
+    }
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        @include mobile {
+            max-width: 50px;
+        }
+    }
+    @include skinny {
+        width: 30%;
+        margin: {
+            top: px-to-em(6);
+            right: px-to-em(25);
+            bottom: 0;
+            left: px-to-em(5);
+        }
+    }
+    @include desktop {
+        margin-right: px-to-em(30);
+    }
+}

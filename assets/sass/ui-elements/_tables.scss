@@ -1,0 +1,181 @@
+// this needs work - seperate out content into partials
+
+
+
+.entry {
+    
+    // ul {
+    //     padding-left: 0;
+    //     list-style: none;
+    //     margin: 0.75em 0 1.5em;
+    //     li {
+    //         padding-left: 1.25em;
+    //         margin-bottom: 0.45em;
+    //         &:before {
+    //             line-height: 0.5em;
+    //             font-size: 1.25em;
+    //             content: "\2022  ";
+    //             @include theme-color(
+    //                 $use: key,
+    //                 $property: color
+    //             );
+    //             margin-left: -1em;
+    //             width: 1em;
+    //             display: inline-block;
+    //         }
+    //         ul {
+    //             li {
+    //                 &:before {
+    //                     font-size: 1em;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    
+    
+    ol {
+        padding: 0 0 0 1.5em;
+        margin: 0.75em 0 1.5em;
+        li {
+            margin-bottom: 0.45em;
+        }
+    }
+    
+    
+    
+    
+    @media screen and (max-width: 759px) {
+        
+        form fieldset label {
+            display: block;
+            float: none;
+            width: auto;
+            margin: 0 0 5px 0;
+        }
+        form fieldset.form-actions,
+        form fieldset.check,
+        form fieldset.radio ul,
+        form fieldset p.form-help {
+            margin-left: 0;
+            padding-left: 0;
+        }
+        form fieldset input.form-text,
+        form fieldset textarea {
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    }
+    
+    table {
+        
+        width: 100%;
+        margin: 1.5em 0;
+        padding: 0;
+        
+        + &,
+        &:first-child { 				
+        	margin-top: 0; // where they follow eachother we don't need as much space
+        }
+        
+        th, td {
+            border-style: solid; // declare it once on the parent
+            border-color: $color_border; // declare it once on the parent
+            border-width: 0; // unset this was defaulting to 2px
+        }
+        
+        p:last-child { 				
+        	margin-bottom: 0;
+        }
+        
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        th {
+            
+            padding: 0.5em 0 0.2em;
+            text-align: left;
+            border-bottom-width: 1px;
+            vertical-align: bottom;
+                        
+            @include theme-color(
+                $use: key-light,
+                $property: background-color
+            );
+            
+            @include theme-color(
+                $use: key-border,
+                $property: border-color
+            );
+        }
+                
+        td {
+            padding: 0.5em 0;
+            text-align: left;
+            border-bottom-width: 1px;
+        }
+        
+        td[rowspan] { 				
+        	background: $page_background;
+        	padding-left: 0.3em;
+        }
+        
+        td[rowspan] + td { 				
+        	padding-left: 0.3em;
+        }
+        
+        th:first-child,
+        td:first-child { 				
+            padding-left: 0.3em;
+        }
+                       
+        tr:nth-child(even) {
+
+        }
+    }
+}
+// end section defaults
+
+
+
+// _tables.scss
+// -------------------------------------------------------------
+
+
+table.universal {
+
+    border-collapse: collapse;
+    margin: 20px 0;
+    width: 100%;
+    font-size: px-to-em(13);
+
+    th {
+        border-bottom: 1px solid #d9d9d9;
+        padding: 12px 20px 3px 5px;
+        text-align: left;
+    }
+
+    td {
+        border-top: 1px solid #f7f7f7;
+        border-bottom: 1px solid #e1e1e1;
+        padding: 12px 20px 11px 5px;
+    }
+
+    tr.system td {
+        color: #8f9395;
+    }
+
+    tr:nth-child(odd) td {
+        background: #F9F9F9;
+    }
+
+    tr:hover td {
+        background: #efefef;
+    }
+
+}

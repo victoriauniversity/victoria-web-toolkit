@@ -1,0 +1,18 @@
+
+%ui_clearfix{
+	@include pie-clearfix();
+	.ie6 &, .ie6 &{
+		clear: both;
+	}
+}
+
+@mixin ui-clearfix($output-styles:false){
+	@if $output-styles == true {
+		@include pie-clearfix();
+		.ie6 &, .ie6 &{
+			clear: both;
+		}
+	} @else {
+		@extend %ui_clearfix;
+	}
+}

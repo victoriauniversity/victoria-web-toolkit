@@ -1,0 +1,207 @@
+// _theme-color.scss 
+// -------------------------------------------------------------
+
+// Function used in @mixin theme-color
+@function apply-color-effect ( $color, $lighten, $darken, $saturate, $desaturate, $adjust-hue, $greyscale, $rgba, $opacify, $fade-in, $transparentize, $fade-out ) {
+	@if $lighten {
+		$color: lighten($color,$lighten);
+	} 
+	@if $darken {
+		$color: darken($color,$darken);
+	} 
+	@if $saturate {
+		$color: saturate($color,$saturate);
+	} 
+	@if $desaturate {
+		$color: desaturate($color,$desaturate);
+	} 
+	@if $adjust-hue {
+		$color: adjust-hue($color,$adjust-hue);
+	} 
+	@if $greyscale {
+		$color: greyscale($color);
+	} 
+	@if $rgba {
+		$color: rgba($color,$rgba);
+	} 
+	@if $opacify {
+		$color: opacify($color,$opacify);
+	} 
+	@if $fade-in {
+		$color: lighten($color,$fade-in);
+	} 
+	@if $transparentize {
+		$color: transparentize($color,$transparentize);
+	} 
+	@if $fade-out {
+		$color: fade-out($color,$fade-out);
+	}
+	@return $color;
+}
+
+// /* Theme Color Mixin
+//  * Use to apply the theme color with or without a color effect to any propery
+//  * Dependencies: 
+//  * - @mixin apply-color-effect
+//  * - $color-properties
+//  * - $default-color-property
+//  * - $default-theme-color
+//  * - $themes
+//  * Example usage:
+
+
+// **************************************
+// # Setting text color (basic use)
+// --------------------------------------
+// # The default color $default-theme-color: base; That color will automatically be chosen unless you change the variable
+// # The default property $default-color-property: color; That property will automatically be used unless you put in another
+
+// SASS
+// p {
+// 	@include theme-color;
+// 	same as 
+// 	@include theme-color(base);
+// 	or
+// 	@include theme-color(base, color);
+// 	or
+// 	@include theme-color($use: base, $property: color);
+// 	}
+// CSS
+// p {
+// 	color: green;
+// 	}
+// .beef p {
+// 	color: red;
+// 	}
+// .bacon p {
+// 	color: blue;
+// 	}
+	
+// --------------------------------------
+// # If you choose to use the color "color" from the theme, you can write it like this
+// # Because the $color-properties variable has the basic CSS properties for color settings, 
+// # it can listen and see if the $use has a name equal to one of those, and then use it as the color property
+
+// SASS
+// p {
+// 	@include theme-color(color);
+// 	same as 
+// 	@include theme-color(color, color);
+// 	or
+// 	@include theme-color($use: color, $property: color);
+// 	}
+// CSS
+// p {
+// 	color: #007b06;
+// 	}
+// .beef p {
+// 	color: #a20000;
+// 	}
+// .bacon p {
+// 	color: #040cb8;
+// 	}
+	
+// --------------------------------------
+// # Or you can use another color from the theme
+
+// SASS
+// p {
+// 	@include theme-color(whatever);
+// 	same as 
+// 	@include theme-color(whatever, color);
+// 	or
+// 	@include theme-color($use: whatever, $property: color);
+// 	}
+// CSS
+// p {
+// 	color: pink;
+// 	}
+// .beef p {
+// 	color: yellow;
+// 	}
+// .bacon p {
+// 	color: black;
+// 	}
+	
+
+// **************************************
+// # Using color effects (basic use)
+// --------------------------------------
+// # You can use any of the color functions defined in the mixin. 
+// # You can use multiple functions at a time too.
+
+// SASS
+// div {
+// 	@include theme-color(background-color, $greyscale:true, $lighten:10%);
+// 	same as 
+// 	@include theme-color(background-color, background-color, $greyscale:true, $lighten:10%);
+// 	or
+// 	@include theme-color($use: background-color, $property: background-color, $greyscale:true, $lighten:10%);
+// 	}
+// CSS
+// div {
+// 	background-color: #949494;
+// 	}
+// .beef div {
+// 	background-color: #d9d9d9;
+// 	}
+// .bacon div {
+// 	background-color: #ebebeb;
+// 	}
+	
+// -------------------------------------- */
+
+@mixin theme-color
+(
+	$use: $default-theme-color,	// Which feature from the theme you want to use. If nothing is selected, the base color will be used
+	$property: false,		// The css property to apply the color to: 'color' or 'background-color' or 'border-color' etc.
+	
+	// Effects				// Example	// SASS function used				// Effect of the function
+	$lighten: false, 		// 10%		// lighten($color, $amount) 		// Makes a color lighter.
+	$darken: false, 		// 10%		// darken($color, $amount) 			// Makes a color darker.
+	$saturate: false, 		// 10%		// saturate($color, $amount) 		// Makes a color more saturated.
+	$desaturate: false, 	// 10%		// desaturate($color, $amount) 		// Makes a color less saturated.
+	$adjust-hue: false, 	// 60deg	// adjust-hue($color, $degrees) 	// Changes the hue of a color.
+	$greyscale: false, 		// true		// greyscale($color) 				// Converts a color to greyscale.
+	$rgba: false, 			// 0.5		// rgba($color, $alpha) 			// Add or change an alpha layer for any color value.
+	$opacify: false, 		// 10%		// opacify($color, $amount) 		// Makes a color more opaque.
+	$fade-in: false, 		// 10%		// fade-in($color, $amount) 		// Makes a color more opaque.
+	$transparentize: false, // 10%		// transparentize($color, $amount) 	// Makes a color more transparent.
+	$fade-out: false 		// 10%		// fade-out($color, $amount) 		// Makes a color more transparent.
+)
+{
+	// Making it possible to only write the $use if it has the name of a normal CSS property
+	@if $property == false {
+		@for $i from 1 through length($color-properties) {
+			$color-property: nth($color-properties, $i);
+			@if $use == $color-property {
+		    	$property: $color-property;
+			}
+		}
+	}
+	@if $property == false {
+	    $property: $default-color-property;
+	}
+	
+	// Finding selector / theme name
+	@for $i from 1 through length($themes) {
+		$theme: nth($themes, $i);
+		$theme-name: nth($theme, 1);
+		$theme-features: nth($theme, 2);
+		$selector: '.'+$theme-name+' &';
+		@if $theme-name == default {
+		    $selector: '&';
+		}
+		// Fining the color from the theme
+		@for $i from 1 through length($theme-features) {
+			$feature: nth($theme-features, $i);
+			$feature-name: nth($feature, 1);
+			$color: nth($feature, 2);
+			@if $feature-name == $use {
+				#{$selector} {
+					#{$property} : apply-color-effect( $color, $lighten, $darken, $saturate, $desaturate, $adjust-hue, $greyscale, $rgba, $opacify, $fade-in, $transparentize, $fade-out );
+				}
+			}
+		}
+	}
+}

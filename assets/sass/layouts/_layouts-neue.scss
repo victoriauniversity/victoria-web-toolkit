@@ -1,0 +1,615 @@
+/// CURRENT PAGE STRUCTURE
+
+// #masthead + #wrapper [ #page [ #section_menu + div.page [ section.primary + aside.secondary ] ] + footer.site_footer ]
+
+
+html {
+    @include mobile {
+        background-color: #2f2f2f;
+        background-image: url(/assets/images/crest.png);
+        background-repeat: no-repeat;
+        background-position: 50% 140px;
+        background-attachment: fixed;
+        background-size: 50% auto;
+    }
+}
+
+body {
+    background: $page_background;
+    margin: 0 auto;
+    min-height: 100%;
+    // @include mobile {
+    //     background: transparent;
+    // }
+    @include desktop {
+        @include box-sizing(border-box);
+    }
+
+     @include mobile {
+        height: auto;
+     }
+}
+
+
+// /*
+// #wrapper {
+//     margin-top: -4px;
+// }
+// */
+// 
+// /*
+// .menu_open {
+// 
+//     #wrapper {
+//         @include skinny-only {
+//            overflow: hidden;
+//            width: 100%;
+//         }
+//     }
+// }
+// */
+
+//----------------------------------
+// Skinny
+//----------------------------------
+
+
+
+.entry {
+
+    padding-top: 1em;
+    position: relative;
+
+    @include skinny {
+        padding-top: 2em;
+    }
+}
+
+#hero + .primary + .secondary { // bump the secondary column down on pages with a big hero
+    @include skinny {
+        padding-top: 3em;
+    }
+}
+
+
+
+// Standard layout: section nav + main content + complementary aside
+
+//--------------------------
+
+
+#content {
+
+        @include desktop {
+            float: left; // floats up next to the section menu column
+            width: 77%;
+
+            .no_section_menu & { 	// If there's no section menu column make it full width
+            	float: none;
+            	width: 100%;
+            }
+
+        }
+
+        @include skinny-only {
+
+            .no_section_menu & {
+            	padding-left: 0; //remove the padding for the non-existent menu toggle
+            }
+
+        }
+
+    	&> .primary {
+
+    	   padding-bottom: 2em;
+
+            @include skinny {
+
+                float: left;
+                width: 68%;
+
+
+            }
+
+            .no_sidebar & {
+
+            	width: 100% !important;
+            	float: none;
+
+            	@include full {
+                	& .entry {
+                		padding-right: 3%;
+                	}
+            	}
+            }
+
+            @include desktop {
+                width: 72%;
+            }
+
+        } // end .main
+
+    	&> .secondary {
+
+            font-size: $base_font_size_sidebar_px;
+            padding: 0 $page_padding;
+
+            @include mobile {
+                clear: both; // added to clear floated content in main paragraph
+            }
+
+            @include skinny {
+                width: 32%;
+                float: right;
+                padding: 1em 2%;
+            }
+
+            @include desktop {
+                width: 28%;
+            }
+
+            @include full {
+                padding-right: 0; // screen is wider than site so lose the padding in from the edge
+            }
+
+            .ie7 & {
+
+            }
+
+            .old_ie & {
+                padding-right: 0;
+            }
+        } // end .aside
+
+} // end #content
+
+
+.side_padding {
+
+	padding-left: $page_padding;
+	padding-right: $page_padding;
+
+    .secondary & {
+
+    	padding-left: $sidebar_padding;
+    	padding-right: $sidebar_padding;
+
+        @include mobile {
+        	padding-left: $page_padding;
+        	padding-right: $page_padding;
+        }
+
+    }
+
+}
+
+
+
+#content {
+
+    @include skinny-only {
+    	padding-left: 5%; // leave room for section menu toggle
+
+    	.no_navigation & {
+    		padding-left: 0; // there's no toggle in these situations
+    	}
+
+    }
+
+
+    .entry {
+    	@extend .side_padding;
+    }
+}
+
+.study_hub {
+  #content {
+    .entry {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+
+
+// Full width content column
+//--------------------------
+
+.no_sidebar {
+
+    @include desktop {
+        #content {
+            max-width: px-to-em(770); // This appears to be restricting the content column unnecessarily especially on section page (GP 30.01.14)
+        }
+
+        &.template-drilldown #content { // using this as the only opt-out for the above rule does weird things to .entry header: rescope those weird things or reassess this setup?  (GP 30.01.14)
+            max-width: none;
+        }
+    }
+
+    #content > .secondary {
+    	display: none !important; // Force this to disappear - production only, don't include the markup in these templates
+    }
+
+}
+
+
+
+.no_section_menu {
+
+    #content {
+    	width: 100% !important;  //grrrrrr
+    	padding-left: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+
+// /*
+// // Updated style to demonstrate a 2 column approach sitewide
+// 
+// .no_complementary {
+// 
+//     section[role='main'] {
+// 
+//         border-right: none;
+// 
+//         @include skinny {
+//             width: 100%;
+// 
+//             .entry {
+//                 padding-left: 3%; // Should be calculated exactly
+//                 padding-right: 3%; // Should be calculated exactly
+//             }
+//         }
+// 
+//         @include desktop {
+//             float: left;
+//             width: 77%;
+// 
+//             .entry {
+//                 padding-left: 5%;
+//                 padding-right: 0;
+//                 padding-top: 3%;
+//                 width: 90%;
+//             }
+// 
+//         #hero_large + & .entry { 	// not following a hero or something else
+//         	padding-top: 1em;
+//          }
+// 
+//        }
+//     }
+// 
+//     aside[role="complementary"] {
+//     	display: none; // Force this to disappear - production only, don't include the markup in these templates
+//     }
+// 
+// }
+// */
+
+
+
+
+
+// /*
+// // No sidebar nav
+// //--------------------------
+// .no_navigation {
+// 
+//     @include skinny-only {
+//         .primary {
+//             padding-top: 0; // Remove compensation for nav toggle
+//         }
+// 
+//     }
+// 
+//     @include skinny {
+// 
+// 
+//         // The next two rules give the top of the page a bit of space: it's quite nice and worth considering for all non-hub pages, easy enough if we set it sitewide and always use a 2col hero on the hubs
+// 
+//         section[role='main'],
+//         aside[role="complementary"] {
+//             margin-top: 2em;
+//         }
+// 
+//         .entry {
+//         	padding-top: 0;
+//         }
+// 
+//     }
+// 
+// 
+// 
+//     @include desktop {
+// 
+//         #page {
+//         	width: 100%;
+//         }
+// 
+//         #page {
+//         	padding-left: 7.5%;
+//         	padding-right: 7.5%;
+//         }
+// 
+//         section[role='main'] {
+//             width: 71%; // Override std. width for desktop 3cols & give the aside 1% breathing room
+//         }
+// 
+//         aside[role="complementary"] {
+//             width: 28%; // Override std. width for desktop 3cols
+//         }
+// 
+//     }
+// 
+// }
+// 
+// */
+// 
+// 
+// // No sidebar or complementary
+// //--------------------------
+// 
+// /*
+// .no_navigation {
+// 
+//     &.no_complementary {
+// 
+//         section[role='main'] {
+// 
+//             width: 100%;
+// 
+//             .entry {
+//                 padding-left: 2%; // Should be calculated exactly
+//                 padding-right: 2%; // Should be calculated exactly
+//             }
+//         }
+//     }
+// }
+// */
+
+
+
+
+
+
+// Sidebar build
+//--------------------------
+#section_menu {
+
+    @include skinny {
+
+        font-size: $base_font_size_sidebar_px;
+        width: 33%;
+
+    }
+
+    @include desktop {
+        // margin-top: -($masthead_border_width); // Pull it up above the masthead a touch: masthead border + 2px
+        position: static;
+        float: left;
+        width: 23%;
+        ul {
+            display: block;
+        }
+    }
+}
+
+
+
+//----------------------------------
+// MOBILE
+//----------------------------------
+
+
+// Mobile layout bits
+
+section[role='main'] {
+
+    @include mobile {
+        width: 100% !important; // this is inherited in old IE!?
+
+        .entry {
+        	padding-left: $page_padding;
+        	padding-right: $page_padding;
+        }
+
+    }
+
+	.ie7 & {
+		width: 70%!important;
+	}
+}
+
+aside[role='complementary'] {
+
+    @include mobile {
+        width: 100% !important; // this is inherited in old IE!?
+        padding: 0 $page_padding !important;
+    }
+
+	.ie7 & {
+		width: 25%!important;
+	}
+}
+
+
+// No javascript fallbacks (check this no-js deprecated in new builds???????????)
+
+.no-js {
+
+    @include mobile {
+        div[role='navigation'] {
+            position: relative;
+            width: 100%;
+            left: 0;
+        }
+    }
+}
+
+// No javascript fallbacks (check this no-js deprecated in new builds???????????)
+
+.has_big_search {
+    #wrapper {
+        margin-top: inherit;
+        padding-top: inherit;
+    }
+}
+
+#wrapper {
+
+    @include mobile {
+        max-width: 100%;
+        // overflow: hidden;
+        z-index: 11;
+        position: relative;
+        display: block;
+        @include box-shadow(rgba(0,0,0, 0.4) 3px 0 4px);
+
+        .mask { // inserted with javascript and shown whilst nav is open to stop interactions on partially offscreen part of site
+        	display: none;
+        	position: absolute;
+        	width: 100%;
+        	height: 100%;
+        	top: 0;
+        	left: 0;
+        	background-color: rgba(255,255,255,0);
+        }
+
+
+        &.animated{
+            -moz-transition: -moz-transform $nav-anim-duration ease-in-out;
+            -webkit-transition: -webkit-transform $nav-anim-duration ease-in-out;
+            -ms-transition: -ms-transform $nav-anim-duration ease-in-out;
+            -o-transition: -o-transform $nav-anim-duration ease-in-out;
+            transition: transform $nav-anim-duration ease-in-out;
+
+        }
+
+
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            -webkit-backface-visibility: hidden;
+            -webkit-backface-visibility: hidden; // This rule breaks the join form on android
+            -webkit-perspective: 1000; // This rule breaks the join form on android
+        }
+
+        // site off screen
+        &.active {
+            margin-left: -210px; // set in variables file
+            overflow: hidden;
+            position: fixed;
+            background-color: white;
+            margin-top: 0;
+            padding-top: 0;
+
+
+            @media screen and (-webkit-min-device-pixel-ratio: 2) {
+                margin-left: 0;
+                @include transform( translate3d(-210px, 0, 0) );
+            }
+
+            .mask {
+            	display: block;
+            	background-color: rgba(255,255,255,0.7);
+            }
+        }
+
+    }
+}
+
+//the new hubs since 2014 KYM campaign -test hub current students _NI 
+//refactor required
+
+.wide_hub {
+
+    .entry {
+
+        .entry-header {
+
+            width: 63%;
+            float: left;
+
+            @include mobile {
+                width: inherit;
+                float: none;
+            }
+        }
+
+    }
+
+    .col { //padding override to set equal coloumn width for 3 colum full width page serious refactoring needed for .col _NI
+
+        padding-left: 3%;
+        padding-right: 0;
+
+        &.col1 {
+            padding-left: 0;
+        }
+
+        @include mobile {
+
+            padding-left: 0;
+        }
+    }
+
+    @include desktop {
+        #content {
+            max-width: 77%; //set the contetn area to full width
+        }
+    }
+
+    @include skinny {
+        .promo {
+            width: 30.5%;
+            float: right;
+            margin-left: 1.5em;
+            margin-top: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            
+        }
+    } 
+
+
+    .feature_search { //overrides for featured search on .wide_hub
+        
+        .feature_search_fields {
+
+
+            @include desktop {
+                 width: 70%;
+            }
+
+           
+
+            @include mobile {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+             @include skinny {
+                input[type='text'] {
+                    width: 64%;
+                }
+            }
+
+        }
+
+        .feature_search_filters {
+            width: 25%;
+        }
+    }
+
+    &.has_feature_search #page {
+      @include mobile {
+        padding-top: $search_strip_height;
+      }
+    }
+
+}

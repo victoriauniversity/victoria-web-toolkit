@@ -1,0 +1,64 @@
+.thumbnail_link { // generic thumbnail link
+
+    margin-bottom: 1.5em;
+    display: block;
+    font-family: $font_alt;
+    @include pie-clearfix;
+    img {
+        width: 100%;
+        // @include mobile {
+        //     float: left;
+        //     margin-right: 5%;
+        //     width: 100%;
+        // }
+        height: auto;
+        &:hover,
+        &:focus {
+        	opacity: 0.9;
+        }
+    }
+}
+
+.thumbnail_gallery { // used for the gallery view eg. 'Research Expertise'
+
+    margin: 0 -2%;
+    line-height: 1.4;
+
+    .thumbnail_link {
+
+        float: left;
+        width: 33.33%;
+
+        @include box-sizing(border-box);
+
+        padding: 0 2%;
+
+        margin-bottom: 1em;
+
+        @include mobile {
+            width: 50%;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        height: 4em;
+
+        @include mobile {
+            min-height: 6em;
+        }
+
+    }
+}
+
+// Override the height on the varying element (eg. the paragraph) on a case-by-case basis depending on content
+
+.page_class .thumbnail_link p {
+
+        height: 5em;
+
+        @include mobile {
+            height: 6.5em;
+        }
+
+}

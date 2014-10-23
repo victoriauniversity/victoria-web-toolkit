@@ -1,0 +1,330 @@
+// Mixin for bullet link
+//----------------------------------
+
+@mixin bullet-link {
+
+    padding-left: 1.5em;
+    display: inline-block;
+
+    &:before {
+        content:'\2014  ';
+        width: 1.5em;
+        margin-left: -1.5em;
+        display: inline-block;
+        @include theme-color(
+            $use: key-plus,
+            $property: color
+        );
+    }
+}
+
+@-webkit-keyframes target { // currently only used for divider list links, will move if needed elsewhere
+    from { background:#ffffff; }
+    10% { background:$alert_background_solid; }
+    to { background:#ffffff; }
+}
+
+// Used in sidebar, maybe more?
+.divider_list {
+
+    list-style: none !important;
+    border-bottom: 1px solid $color_border;
+    padding-left: 0 !important;
+
+    &> li {
+
+        border-top: 1px solid $color_border;
+        margin-bottom: 0 !important;
+
+        a {
+
+           display: block;
+           padding-top: 0.5em;
+           padding-bottom: 0.5em;
+		   
+		   
+		   &:target {
+				-webkit-animation:target 6s normal;
+		   }
+
+        }
+    }
+    
+    // Remove the border if nothing follows the ul within a givn container
+    
+    &:last-child { 				
+    	border-bottom: none;
+    }
+    
+    // Remove the top border if it follows another 'solid' object
+    
+    header + & { 				
+    	
+    	li:first-child { 				
+    		border-top: none;
+    	}
+    }
+}
+
+
+// Single link with bullet infront
+//----------------------------------
+
+.bullet_link {
+    @include bullet-link;
+}
+
+.bullet_list {
+
+    list-style: none !important; // Override anything set on .entry for general type styling
+    padding-left: 0 !important; // Override anything set on .entry for general type styling
+
+    a {
+        @include bullet-link;
+        display: block; // remove the faux float
+        padding-right: 0; // remove the rhs space
+    }
+
+    .no_link {
+        @include bullet-link;
+        display: block; // remove the faux float
+        padding-right: 0; // remove the rhs space
+        display: block;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+}
+
+
+
+// List of links
+//----------------------------------
+.list_block {
+    padding: 0;
+    list-style: none;
+    li {
+        padding: 5px 0;
+        a {
+            font-weight: bold;
+        }
+    }
+}
+
+
+
+
+
+//	partial refactor to create .news_block -KB 2014-02-04
+//  -----------------------------------------------------
+//	- create %aside_block for common styles between .date_block and .news_block
+//	- still need to clean up the explicit overrides for .date_block and create further use-specific extensions
+//	- at the moment .date_block is used on lots of things that aren't dates e.g. related stories widget
+//	- see also ui-elements/_info-block, ui-elements/_link-blocks, ui-elements/_block-lists - scope to combine/unify into a single inheritance tree?
+
+// Refactoriing done 15/09/14 could maybe be combined with _link-block.scss - NI
+// ------------------------------------------------------------------------------
+
+
+
+// (\/) (°,,,°) (\/) FIXME
+%aside_block {
+	padding: 0.75em 0;
+	border-bottom: 1px solid $color_border;
+  overflow: auto;
+  
+  &>a {
+    display: block;
+    margin-top: px-to-em(13);
+  }
+
+  & h3[itemprop="name"] {
+    display: inline;
+  }
+
+  & a h3[itemprop="name"] {
+    @extend %heading_link;
+    margin-top: 0;
+  }
+
+	& h4 {
+    //font-size: 16px;
+    margin:0 0 0.5em 0;
+    line-height: 1.3125em;
+    text-transform: inherit;
+	}
+
+  & a h4[itemprop="name"] {
+    color: #146999; 
+    border-bottom: 1px solid #b8d2e0;
+  }
+
+  & h6 {
+    color: $color_text_light;
+    margin-bottom: 0;
+  }
+
+  & header + p[itemprop="description"] {
+    margin-top: 0.25em;
+  }
+
+  a p {
+    color: #444;
+  }
+
+  p:last-child {
+      margin-bottom: 0;
+  }
+
+  &:last-child {
+    border-bottom: 0px none;
+  }
+
+  & a p {
+    color: $color_text;
+  }
+
+  &:hover a p {
+    color: $color_links_hover;
+  }
+
+}
+
+
+
+//---------
+.date_block {
+	
+  @extend %aside_block;
+
+  & h3 {
+    margin-top: 0;
+  }
+
+	a {
+      font-weight: inherit;
+	}
+
+  .info_block:first-child & {
+      padding-top: 0;
+  }
+ 
+
+	@include mobile {
+		clear: both; 
+	}
+}
+
+//------
+.news_block {
+
+    overflow: auto;
+   
+    @extend %aside_block;
+
+    & h6 {
+      margin-top: 0;
+    }
+}
+
+.news_img {
+        display: block;
+        float: right;
+        width: 30%;
+        margin-top: -2em;
+        padding-left: 1em;
+
+        @include phone_mobile {
+            float: none;
+            max-width: 240px;
+            width: auto;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            padding-left: 0;
+        }
+}
+
+
+%narrow-h3 {
+    font-size: px-to-em(18);
+    //line-height: $line_height_heading;
+    &:first-child {
+            margin-top: 0;
+    }
+}
+
+aside[role='complementary'] {
+
+    h3 {
+      @extend %narrow-h3;
+      text-transform: inherit;
+      margin-bottom: 0.5em;
+
+    }
+
+    .toggle_block {
+        > h4 {
+            margin-top: 0;
+        }
+    }
+}
+
+@include mobile {
+    aside[role="complementary"]>div:last-child {
+        margin-bottom: 1.5em;
+    }
+
+}
+
+
+// Used for lists of documents in content column
+// Example: /staff/our-structure/consultation
+//------------------------------
+.document_list {
+
+	// (\/) (°,,,°) (\/) FIXME: over-specific selector, to beat core/_typography.scss .entry ul li
+	.entry & li {
+		position: relative;
+		padding-left: 3.8em;
+	}
+
+	.result_flag {
+		position: absolute;
+		top: 0.75em;
+		left: 0;
+	}
+	
+}
+
+
+// Used in footer
+//------------------------------
+.link_list {
+    padding: 0;
+    list-style: none;
+}
+
+
+
+// Used in footer
+//------------------------------
+.link_list_alt {
+    list-style: none;
+    font-size: 12px;
+    li {
+        float: left;
+        padding: 0 10px;
+        &.active {
+            a {
+                font-weight: bold;
+                color: #333;
+            }
+        }
+        a {
+            float: left;
+        }
+    }
+}
+
+
+
+

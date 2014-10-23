@@ -1,0 +1,278 @@
+// Buttons
+// -------------------------------------------------------------
+
+$btn-pad-top: floor($button-padding * 1);
+$btn-pad-bottom: floor($button-padding * 1.17);
+$btn-padding-modifier: 2;
+$btn-transition-timing: 100ms;
+
+$background-color: #eee;
+$background-color-lighter: #f9f9f9;
+$background-color-hover: darken(#eee, 5%);
+$background-color-lighter-hover: #eee;
+$color: $color_text;
+
+
+@mixin button-base{
+
+    #{$button_base_class} {
+        background-color: $background-color; // to give older browsers something to work with
+        @include background-image(linear-gradient(bottom, $background-color, $background-color-lighter) );
+        @include border-radius($button_border_radius);
+
+        position: relative;
+        display: inline-block;
+        //white-space: nowrap; //trialling removing this declaration
+
+        padding: #{$btn-pad-top}px px-to-em($button-padding * $btn-padding-modifier) #{$btn-pad-bottom}px;
+
+        color: $color_text;
+        border-width: 0;
+        border: solid 1px $button_color_border;
+        box-shadow: 0; //0px 0px 0.4em rgba(0,0,0,0.2),
+        width: auto; // to fix submit buttons getting affected by input sizes
+
+        font-family: inherit;
+        font-size: #{$button_font_size}px;
+        line-height: #{$button_line_height}em;
+        text-decoration: none;
+
+        cursor: pointer;
+
+        -webkit-appearance: none;
+
+        @include transition(background-color $btn-transition-timing ease-in-out);
+
+        // Removing extra padding in Firefox
+        // OBS: this removes the highlight outline
+        &::-moz-focus-inner {
+            padding: 0;
+            border: 0
+        }
+
+
+        &:hover,
+        &.hover {
+            background-color: $background-color-hover;
+            @include background-image(linear-gradient(bottom, $background-color-hover, $background-color-lighter-hover) );
+            color: $color_text;
+        }
+
+        &.big {
+            padding: {
+                top: px-to-em( $button_padding_large );
+                bottom: px-to-em( $button_padding_large );
+            }
+        }
+
+        &.block {
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    }
+
+    input, button {
+        &#{$button_base_class}.block {
+            width: 100%;
+        }
+    }
+}
+
+
+
+// these are classes that extend the $button-base class.
+
+@mixin button-ui (
+        $class:false,
+        $background-color:false,
+        $background-color-lighter:false,
+        $background-color-hover:false,
+        $background-color-lighter-hover:false,
+        $color:false,
+        $color-hover: false,
+        $icon:false,
+        $icon-position: 'left',
+        $icon-only:false,
+        $border-radius: $button_border_radius,
+        $border: 0,
+        $box-shadow: 0,
+        $btn-font-size: 13,
+        $btn-padding-horizontal: false,
+        $font-weight: false,
+        $block: false,
+        $padding-bottom: false,
+        $padding-top: false
+        ){
+    $selector: '&';
+    $prefix:'.';
+    @if $class {
+        //@if $class == $button_base_class {
+        //  $selector: $button_base_class;
+        //} @else {
+            $selector: #{$button_base_class}#{$prefix}#{$class};
+        //}
+    }
+    // By slightly modifying the selector, this allows the text color of an <a> to be overruled
+    //#{$selector} {
+    #{$class} {
+
+        @include button-base;
+
+        @if $background-color {
+            background-color: $background-color;
+            background-image: none;
+        }
+        // If there's a lighter key colour too, apply a gradient.
+        @if $background-color-lighter  {
+            @include background-image(linear-gradient(bottom, $background-color, $background-color-lighter) );
+        }
+        @if $background-color-lighter-hover {
+            @if $background-color-hover {
+                &:hover,
+                &.hover {
+                    background-color: $background-color-lighter-hover;
+                    @include background-image(linear-gradient(bottom, $background-color-hover, $background-color-lighter-hover) );
+                }
+            }
+        } @else if $background-color-hover {
+            &:hover,
+            &.hover {
+                background-color: $background-color-hover;
+                background-image: none;
+            }
+        }
+        @if $color {
+            color: $color;
+
+            &:hover,
+            &.hover {
+                color: $color;
+            }
+        }
+        @if $color-hover {
+            &:hover,
+            &.hover {
+                color: $color-hover;
+            }
+        }
+        @if $border-radius != 0 {
+            @include border-radius( $border-radius );
+        }
+        @if $border != 0 {
+            border: $border;
+        }
+        @if $box-shadow != 0 {
+            @include box-shadow( $box-shadow );
+        }
+        @if $btn-font-size {
+            font-size: #{ floor($btn-font-size) }px;
+        }
+        @if $font-weight {
+            font-weight: $font-weight;
+        }
+        @if $block {
+            @include box-sizing(border-box);
+
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        @if $btn-padding-horizontal {
+            //$p-floor: floor($button-padding * $btn-padding-modifier);
+            //padding-left: px-to-em( $btn-padding-horizontal, $btn-font-size);
+            padding-left: #{$btn-padding-horizontal}px;
+            padding-right: #{$btn-padding-horizontal}px;
+        }
+        @if $padding-bottom {
+            padding-bottom: $padding-bottom;
+        }
+        @if $padding-top {
+            padding-top: $padding-top;
+        }
+    }
+
+    @if $icon {
+
+        //#{$selector} {
+        #{$class} {
+            @if $icon-position == 'left' {
+                padding-left: #{image-width( sprite-file($button-sprite, $icon) ) + $button_icon_padding + $btn-padding-horizontal};
+
+                span {
+                    left: #{$btn-padding-horizontal}px;
+                }
+
+            } @else {
+                padding-right: #{image-width( sprite-file($button-sprite, $icon) ) + $button_icon_padding + $btn-padding-horizontal};
+
+                span {
+                    right: #{$btn-padding-horizontal}px;
+                }
+            }
+
+            span.icon {
+                @include button-sprite( $icon );
+                position: absolute;
+                display: inline-block;
+                top: 50%;
+                margin-top: - image-height( sprite-file($button-sprite, $icon)) / 2;
+                width: image-width( sprite-file($button-sprite, $icon));
+                height: image-height( sprite-file($button-sprite, $icon));
+            }
+
+            @if $icon-only {
+                text-indent: -9999px;
+                overflow: hidden;
+                padding: 0;
+                display: block; // for ie7 to work
+                width: image-width( sprite-file($button-sprite, $icon)) + ( $button_icon_padding * 1.85 );
+                height: image-height( sprite-file($button-sprite, $icon)) + ( $button_icon_padding * 1.5 );;
+
+                span.icon {
+                    left: 50%;
+                    margin-left: - image-width( sprite-file($button-sprite, $icon)) / 2;;
+                }
+            }
+
+        }
+
+        // If the button is an input
+        // Force the image on the element, left aligned
+        //input#{$selector}{
+        input#{$class} {
+            @include button-sprite( $icon );
+        }
+
+    }
+}
+
+.btn-group {
+
+    @include ui-clearfix;
+
+    & > .btn {
+        @include border-radius(0);
+        float: left;
+        margin-left: -1px;
+    }
+
+    & > .btn:first-child {
+        @include border-corner-radius(top, left, $button_border_radius);
+        @include border-corner-radius(bottom, left, $button_border_radius);
+
+        margin-left: 0;
+    }
+
+    & > .btn:last-child {
+        @include border-corner-radius(top, right, $button_border_radius);
+        @include border-corner-radius(bottom, right, $button_border_radius);
+    }
+}
+
+
+
+
+
+

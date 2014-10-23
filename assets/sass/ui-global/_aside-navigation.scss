@@ -1,0 +1,587 @@
+//  Aside navigation
+//----------------------------------
+
+#section_menu {
+    @include transition (margin-left 0.1s linear); // get it ready to move
+
+    .no_section_menu & {
+        display: none; // don't show if it's not required
+    }
+}
+
+.menu_open {
+
+    @include skinny-only {
+
+       #section_menu {
+            margin-left: 0;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+
+            & > .toggle_block {
+                position: relative;
+            }
+       }
+
+       #menu_toggle {
+            box-shadow: 3px 0 0 rgba(0,0,0,0.2) inset;
+            left: auto;
+            right: 100%;
+       }
+
+        .homepage {
+
+            .section_mask {
+                   background: transparent;
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                   width: 0;
+                   height: 0;
+                   z-index: 0;
+            }
+
+            #menu_toggle {
+                box-shadow: none;
+                left: auto;
+                right: 0;
+               
+            }
+        }
+
+       .section_mask {
+           background: rgba(255,255,255,0.8);
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           z-index: 9999;
+       }
+
+    }
+
+    @include mobile {
+
+        #menu_toggle {
+
+            span {
+               display: none;
+               }
+        }
+
+        .additional_complementary  {
+            box-shadow: 0 -3px 3px rgba(0,0,0,0.1) inset; // pops a bottom shadow on what should be the last element in the aside
+        }
+    }
+}
+
+
+
+#menu_toggle {
+
+    @include desktop { // Hide that sucker for bigger screens with no menu toggling
+        display:none;
+    }
+
+    @include theme-color(
+        $use: key,
+        $property: background
+    );
+
+    @include transition (width 0.1s linear); // match the animation of the parent <aside>
+
+    width: 100%;
+    height: 2.6em;
+    line-height: 2.6em;
+    font-family: $font_body;
+    display: block;
+    border: none !important;
+
+    // @include theme-color(
+    //     $use: key-dark,
+    //     $property: color
+    // );
+    //color: #1d2624;
+
+    @include theme-color(
+        $use: key-light,
+        $property: color
+    );
+
+
+    //text-shadow: 0 1px 0 rgba(255,255,255,0.1);
+    font-weight: bold;
+
+    @include box-sizing(border-box);
+
+    padding: 0 3%;
+
+    &:after { // Pop an icon on it
+
+        display: inline-block;
+        @include font_display_semibold;
+        display: inline-block;
+        float: right;
+        margin-right: 0.5em;
+
+
+        @include skinny-only {
+            content: "|\00a0|\00a0|"; // side arrow
+            letter-spacing: -0.15em;
+            font-size: 1.3em;
+            font-weight: bold;
+            line-height: 1;
+            margin-right: 34%;
+            margin-top: -1.6em;
+
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+
+            -webkit-transform-origin: 50% 50%;
+            -moz-transform-origin: 50% 50%;
+            -ms-transform-origin:  50% 50%;
+            -o-transform-origin:  50% 50%;
+            transform-origin:  50% 50%;
+        }
+
+        @include mobile {
+
+
+            content: "\003e"; // Greater than glyph
+            @include transform( rotate(90deg) ); // tips downwards
+            font-size: 2em;
+            margin-right: 0.3em;
+
+            .menu_open & {
+                content: "\00d7"; // closed cross
+                @include transform( rotate(0deg) );
+                font-size: 2em;
+                line-height: 1.2;
+            }
+
+        }
+
+    }
+
+
+    @include mobile {
+
+        box-shadow: 0 -3px 3px rgba(0,0,0,0.1) inset;
+
+        .menu_open & {
+             box-shadow: none;
+            @include theme-color( // super-hacky hide when open
+                $use: key,
+                $property: color
+            );
+            text-shadow: none;
+        }
+
+        .menu_open &:after {
+            @include theme-color(
+                $use: key-dark,
+                $property: color
+            );
+            text-shadow: 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+    }
+
+    @include skinny-only {
+
+        position: absolute;
+        left: 100%;
+
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: none;
+        width : 15.1%;
+        height: 15em;
+
+
+        padding: 0;
+
+        text-align: left;
+
+        @include box-sizing (border-box);
+
+        span {
+
+            @include box-sizing (border-box);
+
+            display: block;
+
+            line-height: 2.4;
+
+            width: 14.3em;
+            margin-left: -14.3em; // Keep this matching the width
+
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+
+            -webkit-transform-origin: 100% 0;
+            -moz-transform-origin: 100% 0;
+            -ms-transform-origin: 100% 0;
+            -o-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+
+        }
+    }
+
+}
+
+
+
+#section_menu {
+
+    @include skinny {
+        font-size: px-to-em(13);
+    }
+
+    h2.menu_title {
+
+        font-size: px-to-em(22);
+        margin: 0;
+        
+        @include font_display_extrabold;
+        
+        border-top: none;
+        line-height: 1.2;
+
+        a {
+            display: block;
+            @include theme-color(
+                $use: key-light,
+                $property: color
+            );
+
+            &:hover {
+                @include theme-color(
+                    $use: key-alt,
+                    $property: color
+                );
+            }
+			
+			border:0;
+
+            
+        }
+    }
+
+    @include skinny-only {
+
+        float: left;
+        margin-left: -33%;
+        position: absolute;
+        z-index: 9999999;
+    }
+
+}
+
+
+// #page { // make room for full width nav toggle
+//     @include skinny-only {
+//         padding-left: 5%;
+//     }
+// }
+
+
+#section_menu {
+
+    // ------------------------------
+    // WRAPPING NAV - INCLUDES HEADER
+    // ------------------------------
+
+    nav {
+
+        @include theme-color(
+            $use: key-minus,
+            $property: background-color
+        );
+
+        color: $white;
+        -webkit-font-smoothing: antialiased; // helps with white text on a colour over-bolding
+        min-height: px-to-em(40);
+
+
+         a {
+            color: $white;
+            display: block;
+            padding: {
+                top: 0.35em;
+                bottom: 0.4em;
+                left: $page_padding;
+                right: $page_padding;
+            }
+
+            @include skinny {
+                padding: {
+                    left: 5%;
+                    right: 5%;
+                    }
+            }
+
+             &:hover {
+                @include theme-color(
+                    $use: key-alt,
+                    $property: color
+                );
+            }
+
+            &.current {
+                @include theme-color(
+                    $use: key-alt,
+                    $property: color
+                );
+
+                cursor: default;
+                font-weight: bold;
+            }
+        }
+
+    }
+
+
+    // ------------------------------
+    // THE MAIN LIST OF LINKS
+    // ------------------------------
+
+
+    .section_tree {
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        line-height: 1.3;
+
+        &.active {
+            display: block;
+        }
+
+        border-top-width: 1px;
+        border-top-style: solid;
+
+        @include theme-color(
+                $use: key-minus,
+                $property: border-color,
+                $darken: 5%
+            );
+
+        &>li>a:first-child { // this needs to be abstracted and applied to the homepage nav OR an OOCSS class added to the item
+            @include font_display_semibold;
+            font-size: 19px;
+        }
+
+        li {
+
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+
+            @include theme-color(
+                    $use: key-minus,
+                    $property: border-color,
+                    $darken: 5%
+                );
+
+            &.parent,
+            &.current.parent {
+
+                background-color: rgba(0,0,0,0.1);
+
+                ul {
+                    display: block; // reveals subnav for current & parent pages
+                }
+
+            }
+
+            &.current > a:first-child { // Style the first link of the .current list item (active page) and ignore child a's
+
+                position: relative;
+
+                &:after {   // Triangle for tablets up
+
+                    //content: ("\2666");
+                    font-size: 16px;
+                    position: absolute;
+                    right: -0.5em;
+                    top: 50%;
+                    margin-top: -0.6em;
+                    color: #fff !important;
+
+                    @include mobile {   // Ticks for mobile
+
+                        content: ("\2713");
+                        right: 1em;
+                        font-size: 1em;
+                        opacity: 0.6;
+                        margin-top: -0.5em;
+                    }
+
+                    @include skinny-only {  // Hide until nav toggle sorted and then adjusted acordingly
+
+                        display: none;
+                    }
+
+                }
+            }
+
+            li li.current > a:first-child { // additional space for  3rd teir down
+  
+ //               padding-top: 1em;
+  //              margin-top: 0.75em;
+// Removed this as mucking with layout of current items on lower teirs
+
+                // padding-bottom: 0.75em;
+            }
+
+            &.current > li:last-child a {
+                padding-bottom: 0.75em;
+            }
+
+            ul { //second teir nav
+
+
+                margin: {
+
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0em;
+                }
+
+                padding: {
+
+                    left: 0;
+                    right: 0;
+                    bottom: 0em;
+                }
+
+                border: none;
+                font-weight: bold;
+                display: none; // hides subnav for all
+
+                &>li.parent>a:first-child {
+
+                    padding-top: 1em; // pull it down a bit
+                }
+
+                li {
+
+                    border: none;
+                }
+
+                ul { // third teir nav
+
+                    font-weight: normal; // change weight no inset
+
+
+                    a {
+
+                        text-indent: -0.6em;
+                        padding-left: 2.3em;
+
+                        &:before {
+                            content: ("\2014");
+                            width: 0.6em;
+                            opacity: 0.6;
+                            display: inline-block;
+                        }
+                    }
+
+
+                    ul { // fourth teir nav
+
+                        a {
+                            text-indent: -0.4em;
+
+                            &:before { // add a bullet
+                                width: 0.4em;
+                                content: ("\2219");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+
+
+// Fix for old IE as they don't work with
+// rgba - image overlay at 10% to act like
+// modern browsers
+.ie7,
+.ie8 {
+    ul.section_tree {
+        li.parent {
+            background: url(/assets/images/ie-overlay.png) repeat;
+        }
+    }
+}
+
+
+
+// Third column
+//----------------------------------
+div.additional_complementary {
+    // padding-top: 2em;
+    padding-top: 1.4em; // tweaked as a repercussion of sifter bug #65 
+    padding-right: $page_padding;
+    padding-bottom: 2em;
+    padding-left: $page_padding;
+    @include skinny {
+        padding-left: 5%;
+        padding-right: 10%;
+    }
+    @include theme-color(
+        $use: key-light,
+        $property: background-color
+    );
+    @include skinny {
+        background-color: $white!important;
+    }
+}
+
+
+// /**
+//  * Modifying the section nav for drilldown pages
+//  * ----------------------------------------------------------------------------
+//  * Changes to the section menu to not show the child items when 
+//  * these are all linked to in the body of the page
+//  * 
+//  * It may be a bit weird to have a piecemeal approach to this 
+//  * - either we teach our users to use the page or not!
+//  *
+//  * Padding mods could be omitted if we simplify how it's put togther 
+//  * - can the CMS not write .parent for these pages???
+//  *
+//  */
+ 
+ 
+.template-drilldown #section_menu .section_tree {
+
+    a.current + ul { 				
+    	display: none; /* hides child pages in section-nav on drill down templates (assumes all children are linked to from page content) */
+    }
+    
+    // li ul > li.parent > a:first-child { 				
+	   //  padding-top: 0.35em; /* removes the padding that is added when displaying child lists */
+    // }
+    
+    // li.parent,
+    // li.current.parent { 				
+    // 	background-color: transparent; /* removes background */
+    // }
+
+}
+

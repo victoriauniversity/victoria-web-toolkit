@@ -1,0 +1,1200 @@
+
+// Basic setup
+//----------------------------------
+
+#template_index {           // Production only
+    display: block;
+    width: 100%;
+    text-align: center;
+    clear: both;
+    padding: 0.5em 0;
+}
+
+.mobile-only { 	 // production only
+
+	@include skinny {
+	   display: none !important;
+	}
+}
+
+
+.index_listing {
+    padding:   2%;
+}
+
+.wrap {
+     max-width: 88em;
+     width: 100%;
+     margin: 0 auto;
+     position: relative;
+     @include ui-clearfix();
+
+     .ie7 &,
+     .ie8 &, {
+       min-width: 955px;
+     }
+}
+
+.connect_wrapper {
+    margin-top: 1em;
+}
+
+ #page {
+    width: 100%;
+    margin: 0 auto;
+
+    @include theme-color(base);
+    @include box-sizing(border-box);
+    @include ui-clearfix();
+    @include mobile {
+        margin-top: 0;
+        padding-bottom: 1em;
+    }
+
+    .no_section_menu & {
+        max-width: 70em;
+    }
+
+    &.wrap {
+      min-height: 100%;  //for keeping the footer at bottom of page
+    }
+
+    @include mobile {
+        &.wrap {
+        min-height: inherit;  //for keeping the footer at bottom of page
+    }
+    }
+
+ }
+
+
+
+
+
+// quicklinks - links
+//----------------------------------
+.quicklinks {
+
+}
+
+.jump_link {
+    display: block;
+    font-weight: bold;
+    padding: 0.15em 0;
+}
+
+
+// Highlight areas of interest
+//----------------------------------
+
+.highlight_primary {
+    background: $black;
+    color: $white;
+    & > * {
+        color: $white;
+    }
+}
+.highlight_secondary {
+    @include theme-color(
+        $use: key-light,
+        $property: background
+    );
+}
+.highlight_tertiary {
+    background-color: $color_highlight_tertiary;
+}
+
+// .highlight_primary,
+// .highlight_secondary,
+// .highlight_tertiary {
+//      padding: 1.3em 1em 1.5em;
+
+
+//     &:first-child {
+//         margin-top: 0; // nuke it for the first-child pattern
+//     }
+
+
+// }
+
+
+// New highlight code (still experimental and incomplete)
+// Extends support wider in the site and allows more complex layouts with headers and footer
+
+
+.highlight,
+.highlight_primary,
+.highlight_secondary,
+.highlight_tertiary,
+.highlight_boom {
+
+    display: block;
+
+    @include box_padding;
+
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+
+    header,
+    footer {
+
+        @include box_padding;
+        @include right_bleed;
+        @include left_bleed;
+        //stupid bleed goes here - removed KYM 24/7/17 - irwinna
+
+
+    }
+
+    header {
+    	@include top_bleed;
+    	margin-bottom: 0.5em; // bit of a magic number
+
+    }
+
+    footer {
+    	@include bottom_bleed;
+    }
+
+    &:first-child {
+        margin-top: 0; // nuke it for the first-child pattern
+    }
+
+    & p:last-child {
+                margin-bottom: 0;
+    }
+
+    & + & {
+        @include skinny {
+    	    margin-top: 1em;
+        }
+    }
+
+    // Removed this for the moment, it's not being used yet and needed to use this pattern for quote w/ image for KYM campaign
+    // figure {
+    //     @extend .bleed_me;
+
+    //     & + h2 {
+    //         margin-top: 6%;
+    //         @include mobile {
+    //             margin-top: 3%;
+    //         }
+    //     }
+    // }
+
+    .old_ie & {
+
+
+        //border: 1px solid red;
+        //@include has-layout();
+        //margin-top:0!important; // Internets exploder you crazy bastard.
+
+        //padding-top:0!important;
+
+        header {
+            //margin-top:-3%!important;
+        }
+
+        //margin-top:-3%!important;
+
+
+    }
+
+}
+
+.highlight_secondary {
+    &.set_height {
+        footer {
+            min-height: 190px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        @include mobile {
+            footer {
+                min-height: inherit;
+            }
+        }
+    }
+}
+
+
+.highlight_primary {
+    background: $black;
+}
+
+.highlight_boom {
+    @include theme-color(
+        $use: key,
+        $property: background
+    );
+}
+
+
+// Text colors for dark highlights
+
+.highlight_primary,
+.highlight_boom {
+
+    color: $white;
+
+    & > p,
+    & > #{headings()},
+    & > a,
+    & > li {
+        color: $white;
+    }
+
+
+}
+
+.highlight_secondary {
+
+    header,
+    footer {
+
+        @include theme-color(
+            $use: key,
+            $property: background
+        );
+        color: $white;
+
+        margin-left: 0;
+        margin-right: 0;
+
+
+        & > p,
+        & > #{headings()},
+        & > a,
+        & > li {
+            color: $white;
+        }
+
+    }
+}
+
+.highlight_secondary {
+  footer {
+    @include theme-color(
+        $use: key-light,
+        $property: background
+    );
+
+
+    & > #{headings()} {
+        @include theme-color(
+            $use: key-minus,
+            $property: color
+        );
+      }
+
+      & > p {
+        color: $color-text;
+      }
+  }
+
+}
+
+
+.highlight_tertiary {
+    background-color: $color_highlight_tertiary;
+
+    header,
+    footer {
+        background-color: $color_border;
+    }
+
+}
+
+// Specific decoration for Maori at Vic
+
+ .theme-maori .highlight_boom,
+ .theme-maori .highlight_secondary header,
+ .theme-maori .highlight_secondary footer {
+ 	background-image: url('/assets/images/maori-highlight-pattern.png');
+ 	background-repeat: repeat;
+ }
+
+ .theme-maori.landing-page #wrapper {
+ 	background-image: url('/assets/images/maori-bg-pattern.png');
+ 	background-repeat: repeat-x;
+    margin-top: 0;
+    padding-top: 0;
+
+ }
+
+
+ .theme-maori .highlight_secondary footer h2 {
+    color: #ffffff;
+ }
+
+
+
+// Specific for Staff pages at Vic
+
+ .theme-staff h4[itemprop="datePublished"] {
+    color: #115737;
+}
+
+
+
+
+
+// Experimenting with highlight for content area link block
+
+.highlight--link {
+	@include look_linky;
+	background: #e4f3fb;
+	border-bottom-width: 2px;
+
+    b {
+        font-weight: bold;
+    }
+
+	.entry p &:visited {
+		color: $color_links;
+	}
+
+	&.promo:hover {
+		opacity: inherit;
+		background: #cde6f4;
+	}
+}
+
+
+// mobile page wrapper slide
+//----------------------------------
+.toggle_block {
+    @include mobile {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
+
+
+
+// external link icons
+//----------------------------------
+// TODO - not sure we need this anymore?
+nav.nav_tertiary .section_nav li.external > a:first-child:after,
+section[role="main"] .content a.external:after {
+  content: '\f08e';
+  font-family: 'testicons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  margin-left: 0.4em;
+}
+
+section[role="main"] .content a.external:after {
+	font-size: 94%;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+
+// flag for file types
+//----------------------------------
+
+.result_flag {
+	background: $color_highlight_tertiary;
+	padding: 0.3em 0.5em 0.3em;
+	font-style: normal;
+	font-weight: normal;
+	font-family: $font_body;
+	float: left;
+	font-size: px-to-em(13);
+	margin-right: px-to-em(10);
+    position: relative;
+    top: 0.75em;
+
+    .entry & {
+        margin-top: -0.5em;
+        margin-bottom: 0.5em;
+    }
+
+	.secondary & {
+		padding: 0em 0.4em 0em 0.4em;
+		top: 0;
+		min-width: 2em;
+		text-align: center;
+	}
+
+    .result_title & {
+        font-size: px-to-em(8);
+    }
+
+
+
+	&.flag_recommended {
+	  background: $alert_background;
+	}
+	&.flag_pdf {
+	  background: #ECCDCD;
+	  color: #AF1B1B;
+	}
+	&.flag_doc {
+	  background: #D9EAF5;
+	  color: #167188;
+	}
+	&.flag_xls {
+	  background: #E2F7E2;
+	  color: #0B5F0E;
+	}
+	&.flag_ppt {
+	  background: #FCECDA;
+	  color: #794E0F;
+	}
+      &.flag_mp3 {
+      background: #fdc98c;
+      color: #FF4500;
+    }
+}
+
+.restriction_flag {
+        color: darkred;
+        display: inline-block;
+//        background-color: #E8CCCC;
+        font-family: "National","Segoe WP Semibold","Nimbus Sans L",Arial,"Helvetica Neue","Helvetica",sans-serif;
+        font-weight: normal;
+        font-size: 0.85em;
+        text-transform: none;
+        font-weight: normal;
+        border: 1px solid darkred;
+        padding: 1px 4px;
+        margin-left: 0.3333em;
+        margin-top: 4px;
+        vertical-align: middle;
+    }
+
+// Other areas of interest
+//----------------------------------
+.lowlight_primary {
+    color: $white;
+}
+
+.lowlight_secondary {
+
+}
+.lowlight_tertiary {
+
+}
+
+// Events filter toggle
+// This should be reusable for anything that needs to toggle on all viewport sizes
+//----------------------------------
+
+@mixin visible_ui_toggle {
+	span.ui_toggle_arrow {
+        display: block;
+        width: 50px;
+        height: 40px;
+        position: absolute;
+        margin-right: -50px;
+        background: url(/assets/images/menu-toggle-low.png) no-repeat 50% 50%;
+        right: 50px;
+        top: 1px;
+    }
+}
+
+.event_filters,
+.filters {
+	padding-bottom: 0.5em;
+}
+
+.toggle_all_sizes {
+
+	@include ui-clearfix;
+
+
+
+	h2:first-child {
+		float: left;
+	}
+
+	&.toggle {
+        // position: relative; // is this needed?
+
+		@include mobile {
+			padding-left: 3%;
+			padding-right: 3%;
+		}
+
+		span.ui_toggle_arrow {
+			width: 35px;
+			height: 25px;
+			float: left;
+			background: url(/assets/images/menu-toggle-low.png) no-repeat 50% 50%;
+		}
+
+		@include skinny {
+			&.active span.ui_toggle_arrow {
+				@include rotate(180deg);
+			}
+		}
+
+    }
+
+	.toggle_block {
+		display: none;
+		clear: both;
+		&.active {
+			display: block;
+		}
+	}
+
+	//@include visible_ui_toggle;
+
+
+
+}
+
+
+
+@include mobile {
+    .breakout_border {
+        border-top: none;
+    }
+    .toggle {
+        position: relative;
+    }
+    .bleed{
+        .ui_toggle_arrow {
+            right: 65px;
+        }
+        &.high_light {
+            .ui_toggle_arrow {
+                background: url(/assets/images/menu-toggle-low-white.png) no-repeat 50% 50%;
+            }
+            .toggle.active {
+                .ui_toggle_arrow {
+                    background: url(/assets/images/menu-toggle-active-low-white.png)  no-repeat 50% 50%;
+                }
+            }
+        }
+    }
+    .toggle.active {
+        span.ui_toggle_arrow {
+            background: url(/assets/images/menu-toggle-active-low.png) no-repeat 50% 50%;
+        }
+    }
+    span.ui_click_arrow {
+        background: url(/assets/images/ui-click-through-arrow.png) no-repeat 50% 50%;
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        margin-right: -40px;
+        right: 50px;
+        top: 0;
+    }
+    span.ui_toggle_arrow {
+        display: block;
+        width: 50px;
+        height: 40px;
+        position: absolute;
+        margin-right: -50px;
+        background: url(/assets/images/menu-toggle-low.png) no-repeat 50% 50%;
+        right: 50px;
+        top: 1px;
+    }
+    .toggle,
+    .block.toggle { // class double up for specificity clash with .block padding rules.
+        position: relative;
+        border-top: 1px solid #D6D6D6;
+        padding: .30em 50px .30em 0;
+    }
+
+    .widget_narrow {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+
+
+.widget_narrow h3 {
+	@extend %narrow-h3;
+}
+
+.widget_narrow header h2 {
+    font-size: 1.3em;
+}
+
+
+
+
+// links and widget
+//----------------------------------
+.breakout_border {
+    clear: both;
+    .bleed {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        h2 {
+            border-top: none;
+        }
+    }
+    .linklist,
+    .bleed {
+        h2 {
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+        p {
+            margin: 0.5em 0;
+        }
+    }
+}
+
+
+// mobile
+//----------------------------------
+@include mobile {
+    .block_toggle {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    // wrapper that adds
+    // dividers between elements
+    .breakout_border {
+        margin: 0;
+        padding: {
+            top: px-to-em(5);
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+    .one_of_four {
+        position: relative;
+        border-top: 1px solid $color_border;
+        padding: .75em 0;
+        p {
+            margin: 0;
+        }
+        img {
+            float: left;
+            max-width: 50px;
+            margin-right: 0.667em;
+            height: auto;
+            width: 100%;
+        }
+    }
+}
+
+
+
+// Hub columns
+// Should be refactored and use the margin variables
+// DG - this is now the basis of a grid layout option, not just used on hubs anymore
+//----------------------------------
+
+
+.columns { // generic column wrapper
+
+	// if columns is using an ol / ul kill default list styling
+	list-style-type: none !important;
+	padding-left: 0 !important; // has to be nuked due to specificity on .entry ul/ol
+
+    @include ui-clearfix();
+    margin-top: 1em;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+
+
+}
+
+
+.col {  // generic styling for each column
+
+    float: left;
+    display: block;
+
+    @include box-sizing(border-box);
+
+    padding-right: 3%;
+    padding-left: 3%;
+
+    &:first-child,
+    &.col1{
+        padding-left: 0;
+        clear: left;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    @include mobile {
+        float: none;
+        width: 100% !important;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 1em; // added during maori at vic to add space when stacking on mobile
+
+    }
+
+    &.col--full_width {
+        width: 100% !important;
+    }
+
+}
+
+.study_hub {
+  .col {
+    &.col2{
+      padding-left: 1.5%;
+      padding-right: 1.5%;
+    }
+  }
+}
+
+
+.columns2 { // two column layouts (skinny up)
+
+    @include ui-clearfix();
+
+    .col {
+
+        width: 50%; // everything is border-box, so instead of 47%
+
+        .no_border_box & {
+            width: 46.90%; // This is to make IE6/7 behave
+        }
+    }
+
+}
+
+.columns3 { // three column layouts. DG - added 23/07/13
+
+    @include ui-clearfix();
+
+    .col {
+
+        width: 33.33%; // everything is border-box, so instead of 47%
+
+
+        .no_border_box & {
+            width: 29.90%; // This is to make IE6/7 behave
+        }
+
+        //#{headings()}:first-child { // this results in a redipperously long selector, possibly needed for course cat pages though?
+          //  margin-top: 1em;
+        //}
+
+
+    }
+
+}
+
+.columns4 {
+
+    @include ui-clearfix();
+
+    .col {
+
+        width: 25%; // everything is border-box, so instead of 47%
+
+        .no_border_box & {
+            width: 22.90%; // This is to make IE6/7 behave
+        }
+    }
+
+}
+
+// Change padding when used in hero elements that have no padding
+// as at 1.11.13 this is the .gallery hero for Maori at Vic
+// Should be refactored when possible
+
+#hero .columns4 .col:first-child {
+	padding-left: 3%;
+	padding-right: 0;
+}
+
+
+// if we add .highlight to .columns keep the padding around all sides
+
+.highlight.columns {
+	padding-left: $page_padding !important; // ugly !important refactor
+
+	.col1 {
+	    padding-right: 0;
+	}
+}
+
+
+
+.columns--first45 {
+
+    .col {
+        width: 27.5%;
+
+        &:first-child {
+            width: 45%;
+        }
+
+        .no_border_box & {
+            width: 20%; // This is to make IE6/7 behave
+        }
+
+
+    }
+
+}
+
+.columns2--first65 {
+
+    .col {
+        width: 35%;
+
+        &:first-child {
+            width: 65%;
+        }
+
+        .no_border_box & {
+            width: 59%; // This is to make IE6/7 behave
+        }
+
+
+    }
+
+}
+
+.row {
+	@include ui-clearfix();
+
+	.entry .columns--divider & {
+	    // basic column grid rows divided by 1px border with padding
+        // Initially used on course detail pages for timetabling
+		border-top: 1px solid $color_border;
+		padding: 0.6em 0.4em;
+		margin-bottom: 0;
+
+		&:hover {
+			@include theme-color(
+				$use: key-light,
+				$property: background-color
+			);
+		}
+
+		@include mobile {
+			padding-left:0;
+		}
+
+	}
+
+}
+
+// Setting widths for elements
+// Probably a better way to do this but will revist later
+
+.w20 {
+    width: 20%;
+}
+.w30 {
+    width: 30%;
+}
+
+.w40 {
+    width: 40%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w60 {
+    width: 60%;
+}
+
+.w70 {
+    width: 70%;
+}
+
+.w80 {
+    width: 80%;
+}
+
+.w90 {
+    width: 90%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+
+// Global search stuff
+// Could be moved back into the logical partial???
+//----------------------------------
+.search_global { // TODO: do we even use this bro?
+    float: right;
+    margin-top: -2px;
+    input {
+        &[type="text"]{
+            border: none;
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            line-height: 20px;
+            height: 20px;
+            color: $white;
+            font-size: 13px;
+            width: 10em;
+        }
+        &[type="image"]{
+            //padding: 5px;
+            position: relative;
+            top: 4px;
+        }
+        &:focus {
+            background: rgba(255,255,255, 0.4);
+        }
+    }
+    ::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    :-moz-placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+
+
+.mobile_only {
+
+    display: none;
+
+    @include mobile {
+       display: block;
+    }
+
+}
+
+// Geolocation dependencies
+//----------------------------------
+.show_location {
+    display: none;
+}
+
+.geolocation .show_location {
+    display: inline-block;
+    margin-top: 1em;
+}
+
+// Maps page specific (not worth having in a partial)
+//----------------------------------
+#pois li a {
+    cursor: pointer;
+}
+
+// Services
+// Be good to refactor this based on new section code
+//----------------------------------
+.entry_block {
+    clear: both;
+    @include skinny {
+        border-top: 1px solid $color_border;
+        padding: {
+            top: 1.5em;
+            bottom: 1.5em;
+        }
+    }
+}
+
+// .list { // moved to _typography
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+//     // display: block;
+//     clear: both;
+// }
+
+.multi_column {
+    //list-style: none;
+    margin-top: 1em;
+    padding: 0 !important;
+
+    // todo: make multi column 3 cols for no_sidebar pages only. Pages with a sidebar should get 2 cols.
+    @include skinny {
+        @include column-count(2);
+        @include column-gap(6em);
+    }
+    @include desktop {
+        @include column-count(3);
+        @include column-gap(6em);
+    }
+    li {
+        // margin-bottom: 0.5em;
+        // padding-left: 0;
+        // margin-left: 0;
+        a {
+            // padding: 0.25em 0;
+            // display: block;
+            .ie7 &, .ie8 &, .ie9 & {
+                padding: 0.15em 0;
+            }        }
+
+        display: inline-block;
+        width: 100%;
+
+        padding-left: 1.2em!important; // nuking because of .entry ul li specifishitty
+        text-indent: -1.15em;
+        &:before {
+            content: '\2022';
+            margin-right: 0.75em;
+            color: $color_text_light;
+        }
+    }
+}
+
+// Person contact detail lists and blocks
+
+#wrapper { // scoped to #wrapper due to specificity of .entry ol stuff at line 383, ../sass/core/_typography.scss
+
+    .contacts_list {
+        @include ui-clearfix();
+
+        @include mobile {
+            margin-top:0.8em;
+            // clear:both; // TODO: remove? This causes weird layout when used next to large image eg /about/governance/structure/senior-management
+        }
+
+        @include inline-block-list; // this kills margin remember
+        // also adds overflow:hidden
+        overflow: visible;
+        font-style: normal;
+        font-size: px-to-em(12,14);
+        margin-top:1.2em;
+
+        li {
+            //background: $color_highlight_tertiary;
+            margin: 0 0 0.25em 0;
+            padding: 0.3em 0.7em;
+            // overriding due to inlineblocklist include
+            white-space: normal;
+            float: left;
+
+            a {
+                background: #e7f0d4;
+                color: #115737;
+                padding: 0.3em 0.7em 0.3em;
+                margin: -0.3em -0.7em -0.3em 0;
+                display: block;
+            }
+
+            &:first-child {
+                    padding-left:0;
+                }
+
+            &.no_link {
+                padding-left:0;
+                clear:both;
+            }
+        }
+    }
+
+}
+
+.study_contact {
+    margin-top: 0;
+    padding: 2em 5%;
+
+    .contacts_block a[href^="tel:"],
+    .contacts_block a[href^="mailto:"] {
+        background: #ddd;
+        color: #333;
+
+    }
+}
+
+
+.contacts_block {
+
+            li {
+                list-style-type: none;
+                margin-right: 1em;
+                margin-bottom: 0.5em;
+            }
+
+            h4 {
+                margin-top: 1.4em;
+                margin-bottom: 0.4em;
+                margin-right: 1em;
+            }
+
+            & a[href^="tel:"], & a[href^="mailto:"] {
+                background: #e7f0d4;
+                color: #115737;
+                padding: 0.3em 0.7em 0.3em;
+                display: inline-block;
+                white-space: nowrap;
+            }
+}
+
+
+.contact_link {
+    background: #e7f0d4;
+    color: #115737;
+    padding: 0.3em 0.7em 0.3em;
+    margin: -0.3em -0.7em -0.3em 0;
+
+}
+
+p + div.block {
+    margin-top: 2em;
+}
+
+
+
+
+
+// Translation faux-tables.
+
+// Should be a. put into a stub file and b. built with sitewide grid classes instead.
+
+// To achieve the latter use .columns2 on the dl and .col .co1 on the dt and .col .col2 on the dd
+// A rule to make .columns2 > .col1 clear: left would be required
+
+// Additionally the std. .columns2 goes to a single stacked column for mobile.
+// I think 2 columns still holds up on a small screen so we'd need to opt out of that behaviour
+
+
+.translation dd,
+.translation dt {
+    border-top: 1px solid $color_border;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    @extend .col;
+    margin-bottom: 0;
+}
+
+.translation dt {
+    @extend .col1;
+    @include mobile {
+        padding-bottom: 0;
+    }
+}
+
+.translation dd {
+    @include mobile {
+        border-top: 0;
+        padding-top: 0;
+    }
+}
+
+
+dl.translation {
+    @extend .columns2;
+    border-bottom: 1px solid $color_border;
+    @include ui-clearfix();
+}

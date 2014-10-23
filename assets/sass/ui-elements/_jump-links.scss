@@ -1,0 +1,38 @@
+// Styling for lists of links to in page anchors
+// div.jump_links > ul > li > a
+// include the heading as an h6, use highlight classing
+
+.jump_links { 
+
+        h6 { 				
+        	margin-bottom: 0.5em;
+            @include theme-color(
+                $use: key,
+                $property: color
+            );
+        }				
+	
+      ul { 				
+      	
+      	margin: 0;
+      	padding: 0;
+      	list-style-type: none;
+      	
+      	li { 				
+      		margin: 0 1em 0.5em 0;
+      		padding: 0;
+      		display: inline-block;
+      		
+      		@include mobile {  }
+      		
+      	}
+      	
+      	
+      }  
+      
+      @include left_bleed(mobile);
+      @include right_bleed(mobile);   	
+	
+	
+}
+

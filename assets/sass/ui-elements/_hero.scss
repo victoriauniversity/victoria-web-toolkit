@@ -1,0 +1,914 @@
+
+
+// Prototype for Vic banner
+// ---------------------------------------------
+
+.hero-container {
+    background-color: transparent;
+    position: relative;
+    overflow: visible;
+    clear: both;
+    overflow: hidden;
+}
+
+%hero-image--primary {
+    width: 67.77%;
+}
+
+%hero-image--thirds {
+    width: (100% / 3);
+    float: left;
+}
+
+.hero-container--gallery-1 {
+    .hero-image--primary {
+        width: 100%;
+    }
+}
+
+.hero-container--gallery-1 + .spotlight_intro {
+    margin-top: -6px;
+}
+
+.hero-container--gallery-3 {
+
+    .hero-image--primary {
+        width: 66.66%;
+        float: left;
+
+        @include mobile {
+            width: 100%;
+            display: block!important;
+        }
+
+    }
+
+    .hero-image {
+        @extend %hero-image--thirds;
+
+        @include mobile {
+            width: 100%;
+            // display: none;
+        }
+
+    }
+
+}
+
+.hero-container--gallery-6 {
+
+    .hero-image--primary {
+        @include mobile {
+            width: 100%;
+            display: block!important;
+        }
+    }
+
+    .hero-image {
+        @extend %hero-image--thirds;
+
+        @include mobile {
+            width: 100%;
+        }
+
+    }
+
+}
+
+.hero-image {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+
+    img {
+        max-width: 101%;
+    }
+
+    &:hover {
+        img {
+            opacity: 0.9;
+        }
+    }
+
+}
+
+.hero-image:after {
+    padding-top: 56.25%; /*16:9 ratio*/
+    display: block;
+    content: '';
+    @include mobile {
+      display: none;
+      padding-top: 0;
+    }
+}
+
+.hero-image__container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0; /*fill parent*/
+
+    @include phone_mobile {
+      position: static;
+    }
+}
+
+.hero-image--text-only {
+        background: #1D2624;
+
+    h3 {
+        color: white;
+    }
+
+}
+
+.hero-image__text {
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    padding: 1em 1em 0.75em 1em;
+    @include theme-color(
+      $use: key-plus,
+      $property: background-color,
+      $rgba: 0.7
+    );
+    color: #fff;    
+    min-width: 8.5em;
+    width: 30%;
+    max-height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    @include mobile {
+      position: static;
+      @include theme-color(
+        $use: key-plus,
+        $property: background-color,
+        $rgba: false
+      );
+      
+      .old_ie & {
+        border-bottom: 1px solid white;
+      }
+
+      .minor:nth-child(odd) & {
+        @include theme-color(
+          $use: key,
+          $property: background-color
+        );
+      }
+      
+      .minor:nth-child(even) & {
+        @include theme-color(
+          $use: key-minus,
+          $property: background-color
+        );
+      }
+
+    }
+   
+    
+    .old_ie & {
+      @include theme-color(
+        $use: key-plus,
+        $property: background-color
+      );
+    }
+
+    h5, p {
+        position: relative;
+        z-index: 10;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+}
+
+// used to hide images on mobile - primary hero is only one visible by default
+[data-mobile-hidden] {
+    @include skinny {
+        display: block!important;
+    }
+    @include mobile {
+        display: none;
+    }
+}
+
+// used to control message at the bottom of the heros
+.spotlight_intro {
+    margin-top: -1px;
+    z-index: 2;
+    position: relative;
+}
+
+.spotlight_intro * {
+    margin-top: 0;
+}
+
+.hero-image-nav__link {
+    text-align: center;
+    cursor: pointer;
+    width: 49%;
+}
+
+[data-toggle-menu] {
+    display: none;
+    @include mobile {
+        display: inline-block;
+    }
+}
+
+.spotlight_intro_message-out {
+    @include mobile {
+        width: 49%;
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+.spotlight_intro_message {
+    display: inline-block;
+    @include mobile {
+        display: none;
+    }
+}
+
+
+
+
+#hero {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: $page_background;
+
+}
+
+// The .gallery hero type is currently used only on Maori at Vic (1.11.13) 
+
+#hero.gallery {
+
+    background-color: transparent;
+
+    margin-top: 1.5em;
+    
+    @include mobile { 				
+        margin-top: 0;
+    }
+
+    .gallery-item { 				
+
+        margin-bottom: 1.5em;
+    } 
+    
+    .highlight { 				
+    	padding: 1em;
+    }
+    
+    .gallery-item-photo { 				
+        @include mobile { 				
+            display: none;
+        }
+    }  
+   
+
+}
+
+.gallery-item img { 				
+	width: 100%;
+}
+
+.gallery-item figure { 				
+    @include theme-color(
+        $use: key,
+        $property: background
+    );
+}
+
+.gallery-item a:hover img { 				
+	opacity: 0.8;
+}
+
+.gallery-item-photo p { 				
+	margin-top: 0.5em;
+}
+
+
+// .grid hero elements are used throughout the site
+
+#hero.grid {
+
+    span { 				
+       @extend %unselectable;
+    } 				
+
+
+    .imagery {
+        width: 100%;
+        padding-bottom: 40%; // 10:4 aspect ratio
+        height: auto;
+        position: relative;
+		background-repeat: no-repeat;
+		background-position: top right;
+		background-size: 100%;
+        overflow: hidden;
+    }
+
+    &>a {
+        display: block;
+        color: $white;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        //height: 100%; testing to see if works without this, breaks IE7 when included
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    // Common
+
+    .vr, .hr, .sq {
+        display: block;
+        position: absolute;
+        background: #fff;
+        right: 0;
+        bottom: 0;
+    }
+
+    // Grid Lines
+
+    .vr {
+        width: 1px;
+        height: 100%;
+        opacity: 0.3;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        filter: alpha(opacity=30);
+    }
+    .vr1 { right: 10% }
+    .vr2 { right: 20% }
+    .vr3 { right: 30% }
+    .vr4 { right: 40% }
+    .vr5 { right: 50% }
+    .vr6 { right: 60% }
+    .vr7 { right: 70% }
+    .vr8 { right: 80% }
+    .vr9 { right: 90% }
+
+
+    .hr {
+        width: 100%;
+        height: 1px;
+        opacity: 0.3;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        filter: alpha(opacity=30);
+    }
+
+    .hr1 { bottom: 25% }
+    .hr2 { bottom: 50% }
+    .hr3 { bottom: 75% }
+
+    // Square Blocks
+
+    .sq {
+        width: 10.1%;
+        height: 25.05%;
+        //border-left: 1px solid rgba($white, 0.5);
+        //border-top: 1px solid rgba($white, 0.5);
+        display: none; // we'll fix this in a bit
+    }
+
+    .a1    { left: 0;  top: 75% }
+    .a2    { right: 80%;   bottom: 75% }
+    .a3    { right: 70%;   bottom: 75% }
+    .a4    { right: 60%;   bottom: 75% }
+    .a5    { right: 50%;   bottom: 75% }
+    .a6    { right: 40%;   bottom: 75% }
+    .a7    { right: 30%;   bottom: 75% }
+    .a8    { right: 20%;   bottom: 75% }
+    .a9    { right: 10%;   bottom: 75% }
+    .a10   { right: 0;   bottom: 75% }
+
+    .b1    { left: 0;  bottom: 50% }
+    .b2    { right: 80%;   bottom: 50% }
+    .b3    { right: 70%;   bottom: 50% }
+    .b4    { right: 60%;   bottom: 50% }
+    .b5    { right: 50%;   bottom: 50% }
+    .b6    { right: 40%;   bottom: 50% }
+    .b7    { right: 30%;   bottom: 50% }
+    .b8    { right: 20%;   bottom: 50% }
+    .b9    { right: 10%;   bottom: 50% }
+    .b10   { right: 0;   bottom: 50% }
+
+    .c1    { left: 0;  bottom: 25% }
+    .c2    { right: 80%;   bottom: 25% }
+    .c3    { right: 70%;   bottom: 25% }
+    .c4    { right: 60%;   bottom: 25% }
+    .c5    { right: 50%;   bottom: 25% }
+    .c6    { right: 40%;   bottom: 25% }
+    .c7    { right: 30%;   bottom: 25% }
+    .c8    { right: 20%;   bottom: 25% }
+    .c9    { right: 10%;   bottom: 25% }
+    .c10   { right: 0;   bottom: 25% }
+
+    .d1    { left: 0;  bottom: 0 }
+    .d2    { right: 80%;   bottom: 0 }
+    .d3    { right: 70%;   bottom: 0 }
+    .d4    { right: 60%;   bottom: 0 }
+    .d5    { right: 50%;   bottom: 0 }
+    .d6    { right: 40%;   bottom: 0 }
+    .d7    { right: 30%;   bottom: 0 }
+    .d8    { right: 20%;   bottom: 0 }
+    .d9    { right: 10%;   bottom: 0 }
+    .d10   { right: 0;      bottom: 0 }
+
+
+    // Info blocks
+
+    .info {
+
+        padding: 0.5em 3%;
+        background-color: $color_links; // Override themeing one
+
+
+        @include skinny {
+            padding-left: 0.7em;
+            padding-right: 0.7em;
+        }
+
+         
+		@include font_display;
+		font-size: px-to-em(16);
+        -webkit-font-smoothing: antialiased;
+        width: 100%; // initial position below for mobile
+
+//         @include theme-color(
+//             $use: key-dark,
+//             $property: background-color
+//         );
+
+		
+		h3 {
+			color: inherit;
+            margin-bottom:0;
+            line-height: 1;
+		}
+
+        h4 {
+            color: #fff;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 2em;
+        }
+		
+        .action {
+            border-bottom: 1px solid #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+			white-space: nowrap;
+            &:hover, &:focus {
+                border-bottom-color: #fff;
+            }
+        }
+
+        &.double {
+            height: 50%;
+            padding: 0.5em 0 0.5em 0.5em;
+        }
+
+        .bigger_heading {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: smaller;
+            margin-top: -5px;
+
+        }
+    }
+
+
+    &.style1 {
+
+        // transparent blocks
+        .a4, a10,
+        .b2, .b9, .b10,
+        .c1,
+        .d2, .d7, .d8  {
+            display: block;
+            opacity: 0.3;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        }
+
+        // solid blocks
+
+        .d1, .d9, .d10 {
+            display: block
+            }
+
+        // info block
+
+
+    }
+
+    &.style2 {
+
+        // transparent blocks
+        .a4, a10,
+        .b2, .b9, .b10,
+        .c1,
+        .d2, .d7, .d8  {
+            display: block;
+            opacity: 0.3;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        }
+
+        // solid blocks
+
+        .d1, .d9, .d10 {
+            display: block
+            }
+
+        // info block
+
+
+    }
+	
+	&.style3 {
+
+        // transparent blocks
+        .a3,
+        .b1, .b2, .b7, .b9,
+        .c1,
+        .d2, .d5, .d6, .d7  {
+            display: block;
+            opacity: 0.3;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        }
+
+        // solid blocks
+
+        .d1, .a10,
+        
+        .d8, .d9, .d10 {
+            display: block
+            }
+
+
+    }
+
+    &.style4 {
+
+        // transparent blocks
+        .b1, .c1, .d2, .d8 {
+            display: block;
+            opacity: 0.3;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        }
+
+
+        // solid blocks
+
+        .d1,
+        .d8, .d9, .d10 {
+            display: block
+        }
+
+
+    }
+
+    &.style5 {
+
+        // semi-transparent blocks
+        .a3,
+        .b1, .b2, .b7, .b9,
+        .c1,
+        .d5, .d6, .d7  {
+            display: block;
+            opacity: 0.3;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        }
+
+        // solid blocks
+
+        a10,
+        
+        .d8, .d9, .d10 {
+            display: block
+            }
+
+
+    }
+
+}
+
+
+
+
+#hero.grid {
+
+    @include skinny {
+
+        .info {
+            position: absolute;
+            bottom: 25%; // default modifiers available
+            left: 60%; // default modifiers available
+            width: 40%; // default modifiers available
+            height: 25%; // default modifiers available
+			color: $white;
+
+            &.double {
+                height: 50%;
+                padding: 0.5em 0 0.5em 0.5em;
+            }
+			
+			h3 {
+				color: inherit;
+				//margin-bottom:0;
+			}
+
+            p {
+                line-height: 1.1;
+            }
+			
+            &.tall {
+                height: 50%;
+            }
+            
+            &.w30 {
+				width: 30%;
+			}
+			
+			&.w40 {
+				width: 40%;
+			}
+			
+			&.w50 {
+				width: 50%;
+			}
+
+            &.w60 {
+                width: 60%;
+            }
+			
+			&.w70 {
+				width: 70%;
+			}
+
+            &.right0 {
+                right: 0;
+                left: auto;
+            }
+			
+			&.left0 {
+				left:0;
+			}
+			
+			&.left10 {
+				left: 10%;
+			}
+            
+            &.left20 {
+                left: 20%;
+            }
+
+            &.left30 {
+                left: 30%;
+            }
+
+            &.left40 {
+                left: 40%;
+            }
+
+            &.left50 {
+                left: 50%;
+            }
+
+            &.left60 {
+                left: 60%;
+            }
+			
+			&.left70 {
+				left: 70%;
+			}
+			
+			&.bottom0 { 				
+				bottom: 0;
+			}
+			
+			&.bottom50 { 				
+				bottom: 50%;
+			}
+			
+			&.bottom75 { 				
+				bottom: 75%;
+			}
+			
+			&.blk {
+				background-color: $black;
+				background-color: rgba(0,0,0,0.8);
+				color: $white;
+			}
+			
+			&.wht {
+				background-color: $white;
+				background-color: rgba(255,255,255,0.8);
+				color: $black;
+				
+				.action {
+					border-bottom: 1px solid $black;
+					border-bottom: 1px solid rgba(0,0,0,0.3);
+
+					&:hover, &:focus {
+						border-bottom-color: #000;
+					}
+				}
+			}
+
+            &.trans {
+                background-color: transparent;
+            }
+
+            &.big {
+                font-size: 139%;
+            }
+			
+			&.bigger {
+				font-size: 145%;
+			}
+
+            &.even_bigger {
+                font-size: 150%;
+            }
+        }
+    }
+	
+}
+
+.old_ie #hero.grid .info {
+	min-height: 23%;
+}
+
+
+
+// #hero_large .grid,
+// .homepage #hero {
+
+//     @include skinny {
+//         .info {
+            // font-size: px-to-em(18);
+    //     }
+    // }
+    // }
+
+// .theme-study #hero .imagery {
+	
+	
+// 	/* 760px catch all? */
+// 	background-image: url($study_lowres);
+	
+// 	@include skinny {
+// 		/* min-width: 760px */
+		
+// 		background-image: url($study_highres); 
+		
+// 	}
+	
+// 	@include desktop {
+// 		/* high res, min-width : 990px */
+// 	}
+	
+// 	.old_ie & {
+// 		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$study_highres}',sizingMethod='scale')";
+// 	}
+	
+// }
+
+
+// Alt version of the hero treatment 
+
+// #hero.grid {
+
+
+//     &.style2 {
+    
+//         .vr, .hr {
+//             width: 36%;
+//             height: 150%;
+//             opacity: 0.3;
+//             -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+//             filter: alpha(opacity=30);
+//             -webkit-transform: rotate(30deg);
+//         }
+        
+//         .vr { 				
+//         	height: 240%;
+//         	bottom: -50%;
+//         }
+//         .vr1 { left: 70% }
+//         .vr2 { left: 75% }
+//         .vr3 { left: 80% }
+//         .vr4 { left: 85% }
+//         .vr5 { left: 90% }
+//         .vr6 { left: 95% }
+//         .vr7 { left: 100% }
+//         .vr8 { left: 105% }
+//         .vr9 { left: 110% }
+    
+    
+    
+//         .hr1, .hr2, .hr3 { 
+//             opacity: 1;
+//             -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+//             filter: alpha(opacity=100);
+//         }
+        
+//         .hr1 { left: 50.1%; top: 106%; }
+//         .hr2 { left: 57.7%; top: 95%; }
+//         .hr3 { left: 64%; top: 90%; }
+        
+//         .vr8,
+//         .vr7,
+//         .vr6 { 				
+//             opacity: 0.8;
+//             -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+//             filter: alpha(opacity=80);
+//         }
+    
+//         // Square Blocks
+    
+//         .sq {
+//             width: 10.1%;
+//             height: 25.05%;
+//             //border-left: 1px solid rgba($white, 0.5);
+//             //border-top: 1px solid rgba($white, 0.5);
+//             display: none; // we'll fix this in a bit
+//         }
+    
+//         .a1    { left: 0;  top: 75% }
+//         .a2    { right: 80%;   bottom: 75% }
+//         .a3    { right: 70%;   bottom: 75% }
+//         .a4    { right: 60%;   bottom: 75% }
+//         .a5    { right: 50%;   bottom: 75% }
+//         .a6    { right: 40%;   bottom: 75% }
+//         .a7    { right: 30%;   bottom: 75% }
+//         .a8    { right: 20%;   bottom: 75% }
+//         .a9    { right: 10%;   bottom: 75% }
+//         .a10   { right: 0;   bottom: 75% }
+    
+//         .b1    { left: 0;  bottom: 50% }
+//         .b2    { right: 80%;   bottom: 50% }
+//         .b3    { right: 70%;   bottom: 50% }
+//         .b4    { right: 60%;   bottom: 50% }
+//         .b5    { right: 50%;   bottom: 50% }
+//         .b6    { right: 40%;   bottom: 50% }
+//         .b7    { right: 30%;   bottom: 50% }
+//         .b8    { right: 20%;   bottom: 50% }
+//         .b9    { right: 10%;   bottom: 50% }
+//         .b10   { right: 0;   bottom: 50% }
+    
+//         .c1    { left: 0;  bottom: 25% }
+//         .c2    { right: 80%;   bottom: 25% }
+//         .c3    { right: 70%;   bottom: 25% }
+//         .c4    { right: 60%;   bottom: 25% }
+//         .c5    { right: 50%;   bottom: 25% }
+//         .c6    { right: 40%;   bottom: 25% }
+//         .c7    { right: 30%;   bottom: 25% }
+//         .c8    { right: 20%;   bottom: 25% }
+//         .c9    { right: 10%;   bottom: 25% }
+//         .c10   { right: 0;   bottom: 25% }
+    
+//         .d1    { left: 0;  bottom: 0 }
+//         .d2    { right: 80%;   bottom: 0 }
+//         .d3    { right: 70%;   bottom: 0 }
+//         .d4    { right: 60%;   bottom: 0 }
+//         .d5    { right: 50%;   bottom: 0 }
+//         .d6    { right: 40%;   bottom: 0 }
+//         .d7    { right: 30%;   bottom: 0 }
+//         .d8    { right: 20%;   bottom: 0 }
+//         .d9    { right: 10%;   bottom: 0 }
+//         .d10   { right: 0;      bottom: 0 }
+
+//         // transparent blocks
+//         .a4, a10,
+//         .b2, .b9, .b10,
+//         .c1,
+//         .d2, .d7, .d8  {
+//             display: none;
+//             opacity: 0.3;
+//             -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+//         }
+
+//         // solid blocks
+
+//         .d1, .d9, .d10 {
+//             display: none
+//             }
+//     }
+	        
+// }

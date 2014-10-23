@@ -1,0 +1,211 @@
+
+// /*-------------/
+//  * _theme-colors.scss
+//  *------------*/
+// 
+// /* IMPORTANT:
+//  * Requires the @mixin theme-color;
+//  * Located in mixins/_theme-color.scss
+//  * ----------------------------- */
+
+// Base color properties
+// Please add any css properties that can be used to define a color
+$color-properties: (color, background-color, border-color, border-top-color, border-right-color, border-bottom-color, border-left-color);
+$default-color-property: color;
+$default-theme-color: base;
+
+// Department colors
+//----------------------------------
+
+// We use these in the mobile navigation, which is 'outside' a theme, so must be set explicity. Appropriate classes must be added to the nav items
+
+$key_color_default: #115737;
+$key_color_about: #115737;
+$key_color_research: #4f96a2;
+$key_color_students: #dc5241;
+$key_color_services: #7d2351;
+$key_color_study: #64a659;
+$key_color_staff: #115737;
+$key_color_teaching: #7F0E0E;
+
+
+
+// Color themes
+$themes:
+(
+	(
+		default,
+		(
+			key $key_color_default,
+			key-plus #1e991c,
+			key-minus #0d4b2f,
+			// key-alt #e7f0d4,
+			key-alt #d0b189,
+			key-light #D1E0DA,
+			key-dark #093521, 
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-about,
+		(
+			key $key_color_about,
+			key-plus #1e991c,
+			key-minus #0d4b2f,
+			key-alt #d0b189,
+			key-light #D1E0DA,
+			key-dark #093521, 
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-research,
+		(
+			key $key_color_research,
+			key-plus #00a7b3,
+			key-minus #428792,
+			key-alt #F0F0B6,
+			key-light #E1EFF1,
+			key-dark #052C33,
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-students,
+		(
+			key $key_color_students,
+			key-plus #a6330d,
+			key-minus #ca4737,
+			key-alt #531A08,
+			key-light #f4f4e9,
+			key-dark #3C1509,
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-services,
+		(
+			key $key_color_services,
+			key-plus #71003D,
+			key-minus #6F1B46,
+			key-alt #84E1F3,
+			key-light #f4f4e9,
+			key-dark #2B0518,
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-study,
+		(
+			key $key_color_study,
+			key-plus #449F37,
+			key-minus #549349,
+			key-alt #FFE5C8,
+			key-light #f4f4e9,
+			key-dark #293627,
+			key-border #E9E9D7
+		)
+	),
+	// (
+	// 	theme-staff,
+	// 	(
+	// 		key $key_color_staff,
+	// 		key-plus #0da3e7,
+	// 		key-minus #208eb1,
+	// 		key-alt #EEA92D,
+	// 		key-light #DCE9EE,
+	// 		key-dark #0a4153,
+	// 		key-border #b9d2d6
+	// 	)
+	// ),
+	
+  // -- Victoria Green staff theme, agreed 2014-01-27 KB
+	(
+	  theme-staff,
+	  (
+	    key $key_color_staff,
+	    key-plus #1e991c,
+			key-minus #0d4b2f,
+			key-alt #d0b189,
+			key-light #D1E0DA,
+			key-dark #093521, 
+			key-border #b9d2d6
+		)
+	),
+	
+	// -- Fuschia staff theme, deprecated 2014-01-27 KB
+	//(
+	//	theme-staff, 
+	//	(
+	//		key $key_color_services,
+	//		key-plus #71003D,
+	//		key-minus #6F1B46,
+	//		key-alt #cce3a5,
+	//		key-light #f4f4e9,
+	//		key-dark #2B0518,
+	//		key-border #b9d2d6
+	//	)
+	// ),
+	// ------------------------------
+	
+	// (
+	// 	theme-staff, 
+	// 	(
+	// 		key #487e6f,
+	// 		key-plus #71003D,
+	// 		key-minus #2b6253,
+	// 		key-alt #efcbb7,
+	// 		key-light #f4f4e9,
+	// 		key-dark #2B0518,
+	// 		key-border #b9d2d6
+	// 	)
+	// ),
+	(
+		theme-teaching,
+		(
+			key $key_color_teaching,
+			key-plus #4F0101,
+			key-minus #660603,
+			key-alt #A37C7C,
+			key-light #CCCCCC,
+			key-dark #2B0101,
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-maori,
+		(
+			key #b32128,
+			key-plus #c7232a,
+			key-minus #941724,
+			key-alt #e4cdb0,
+			key-light #f4f4e9,
+			key-dark #531A08,
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-library,
+		(
+			key #0ba695,
+			key-plus #00b2c5,
+			key-minus #009383,
+			key-alt #ffd8b6,
+			key-light #f4f4e9,
+			key-dark #035f69,
+			key-border #b9d2d6
+		)
+	),
+	(
+		theme-example,
+		(
+			key #37aacf,
+			key-plus #0da3e7,
+			key-minus #208eb1,
+			key-alt #babf15,
+			key-light #f4f4e9,
+			key-dark #531A08,
+			key-border #b9d2d6
+		)
+	))
+

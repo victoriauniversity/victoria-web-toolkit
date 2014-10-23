@@ -1,0 +1,84 @@
+
+// Generic media controls
+//-----------------------------
+
+// spacing for items
+
+.media {
+    margin: 1.5em 0 1.25em 0;
+
+
+
+    // float on the page
+    &.left {
+        float: left;
+        margin-right: 6%;
+        @include mobile {
+            width: 47%;
+        }
+        @include skinny {
+            width: 35%;
+        }
+    }
+
+    &.right {
+        float: right;
+        margin-left: 6%;
+        @include mobile {
+            width: 47%;
+        }
+        @include skinny {
+            width: 35%;
+        }
+    }
+
+}
+
+
+
+// Image controls
+//-----------------------------
+
+img {
+	// width: 100%; this was breaking images sizes all over the place, please do not use 
+    max-width: 100%;
+    height: auto;
+}
+
+// legacy for now - ideally just use .media on the div
+.image_with_caption {
+    @extend .media;
+}
+
+.caption,
+.media_caption {
+    padding: {
+        top: 0.5em;
+        bottom: 0.5em;
+    }
+    
+    img + & { /* Remove margin for first caption element after the image */				
+    	margin-top: 0;
+    }
+}
+
+
+// Responsive iFrames etc.
+//-----------------------------
+
+.stretchy_embed {
+    position: relative;
+    width: 100%;
+}
+
+.stretchy_embed > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+img.video_thumb {
+    max-width: auto;
+}

@@ -1,0 +1,635 @@
+$color_masthead: #1d2624;
+
+
+//  Main Navigation
+//----------------------------------
+
+a.vic_logo {
+    float: left;
+    text-indent: -9999em;
+}
+
+
+#masthead {
+
+    font-family: $font_alt;
+
+    list-style: none;
+
+
+    @include theme-color(
+        $use: key,
+        $property: border-bottom-color
+    );
+
+    border-bottom-width: $masthead_border_width;
+    border-bottom-style: solid;
+
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    .nav_main {
+        list-style: none;
+        font-size: 17px;
+        a {
+        color: $white;
+            &:hover {
+                color: #999;
+            }
+        }
+    }
+
+    .nav_support {
+        list-style: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 11px;
+
+        a {
+            color: #bbb;
+            &:hover {
+                color: #999;
+            }
+        }
+    }
+
+    nav .home {
+        display: none; // hides it for everyone
+    }
+
+}
+
+// -------------------------
+// Skinny and up styling
+// -------------------------
+
+
+// Hide the contact info that's displayed for mobile (ideally this is done server side???)
+
+nav#mobile_masthead,
+.mobile_contact {
+    @include skinny {
+        display: none;
+    }
+}
+
+#masthead {
+
+    @include skinny {
+
+        background: $color_masthead;
+
+        .contact {
+            display: none; //remove when swtiched server-side
+        }
+
+        nav {
+            z-index: 99;
+            padding: 0;
+            @include box-sizing(border-box);
+            @include ui-clearfix(true);
+            position: relative;
+        }
+
+        a.vic_logo {
+
+            display: block;
+            width: 22%;
+            height: 130px;
+            padding: 0;
+            margin: 0;
+            background-color: transparent;
+            background-repeat: no-repeat;
+        }
+
+        ul {
+
+            @include box-sizing(border-box);
+            float: left;
+            width: 78%;
+
+            li {
+                float: left;
+
+                a {
+
+                    white-space:nowrap;
+                    padding-right: 0.3em;
+
+                }
+            }
+        }
+
+        // Main nav
+
+        .nav_main {
+
+            line-height: 34px;
+            float: left;
+            margin: 0.3em 0 1em;
+            position: relative;
+
+            li {
+                a {
+                    &:before {
+                        padding-right: 0.3em;
+                        content: "|";
+                        color: #555;
+                        font-size: 18px;
+                        font-weight: normal;
+                    }
+                }
+
+                &:first-child a {
+
+                    &:before {
+                       content: none;
+                    }
+                }
+
+                @include skinny-only {
+
+
+
+                &:nth-child(4) {
+
+                    clear: left;
+
+                    & a:before {
+                       content: none;
+                    }
+
+                }
+
+                }
+
+                &:last-child a:after {
+                    content: none;
+                }
+            }
+        }
+
+        // Support Nav
+        .nav_support {
+            height: 34px;
+            line-height: 34px;
+            padding-right: 2%;
+            padding-top: 0.8em;
+
+            a {
+                padding: 0 0.8em;
+            }
+        }
+        &#page {
+            padding: 0;
+        }
+    }
+}
+
+
+// Desktop
+#masthead {
+
+    @include desktop {
+
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;
+
+        a.vic_logo {
+            height: 88px;
+            width: 22.5%;
+            margin:  0 0 0 .5%;
+            background-image:  url('/assets/images/logo_desktop.png');
+            background-size: 192px 48px;
+            background-position: 0 47%;
+        }
+
+        ul li:first-child a {
+            padding-left: 0;
+        }
+
+        .nav_main {
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            width: 77%;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .nav_support {
+            height: 36px;
+            line-height: 36px;
+            width: auto;
+            padding: 0;
+            padding-top: 10px;
+        }
+    }
+}
+
+
+
+#masthead {
+    @include wide {
+        .nav_main {
+            //font-size: 19px;
+            font-size: px-to-em(19);
+        }
+
+    }
+    @include full {
+        .nav_main {
+            //font-size: 20px;
+            font-size: px-to-em(20);
+        }
+
+    }
+    @include skinny-only {
+        .nav_main {
+            //font-size: 20px;
+            font-size: px-to-em(20);
+        }
+
+        a.vic_logo {
+            background-image:  url('/assets/images/logo-stacked-2x.png')!important;
+            background-size: 150px 130px !important;
+        }
+    }
+}
+
+
+// Retina image
+#masthead {
+    a.vic_logo {
+        @include retina {
+            background-image: url('/assets/images/logo_desktop-2x.png');
+        }
+    }
+}
+
+// Mobile - has a max-width so no inheritance at larger sizes
+// hides the vic logo from the side menu,
+// there is the home link on the nav banner
+ nav#mobile_masthead {
+    @include ui-clearfix();
+ }
+
+@include mobile {
+
+    .nav_closed #masthead,
+    #masthead .vic_logo,
+    .search_global {
+        display: none;
+    }
+
+
+
+    // Bar up top
+    nav#mobile_masthead {
+        height: 50px;
+        line-height: 3;
+        background: $color_masthead;
+        box-shadow: 0 -4px 3px rgba(0,0,0,0.1) inset;
+        border-bottom-width: $masthead_border_width;
+        border-bottom-style: solid;
+
+        .vic_logo {
+            background: url(/assets/images/vic-logo-mobile.png) no-repeat 10px 50%;
+            // Experimental Base64 encoded version
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAAiCAYAAACwYQfvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowQ0E4MjcyRjEzMjA2ODExOEE2REMyNkE3RTI4QUJBRiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDQzU4QzVGRUYwMUMxMUUxOEVERkYzMkYwNzM0RkUwQSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDQzU4QzVGREYwMUMxMUUxOEVERkYzMkYwNzM0RkUwQSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OUMzRTg5OEYwRDIwNjgxMThDMTRBMzQ0RDc0MDZGOEQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MENBODI3MkYxMzIwNjgxMThBNkRDMjZBN0UyOEFCQUYiLz4gPC9yZGY6RGVzY3Jp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);
+            background-size: 128px 17px;
+            text-indent: -9999px;
+            width: 150px;
+            height: 50px;
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+                float: right;
+
+                &:first-child {
+                    float: left;
+                }
+
+                a {
+                    display: block;
+                    padding: 0;
+                    height: 50px;
+                    width: 50px;
+                    line-height: 50px;
+                    color: #aaa;
+                    font-size: 18px;
+                    @include font_display_semibold;
+
+                    &.toggle_menu {
+
+                        width: auto;
+
+                        @include teeny {
+
+                            width: 25px;
+                            text-indent: -99999em;
+                            position: relative;
+
+                            span {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+
+                        }
+
+                        .icon.menu {
+                            width: 34px;
+                            background-position: 30% 50%;
+                            background-size: 16px auto; // Better to revist asset then remove this
+                        }
+                    }
+
+                    &.vic_logo {
+                        width: 140px;
+                    }
+                }
+            }
+        }
+    }
+
+    // main flyout nav
+    #masthead {
+
+        background-color: #2f2f2f;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-bottom: 0;
+        padding-bottom: 2em;
+        z-index: 10;
+        width: $nav-x; // Set in variables
+
+        & > nav {
+            @include display-flex();
+            @include flex-direction(column);
+        }
+
+
+        .nav_main,
+        .nav_support {
+            @include display-flex();
+            @include flex-direction(column);
+        }
+
+        .nav_main li,
+        .nav_support li {
+
+            border-bottom: 1px solid rgba(0,0,0, .2);
+            @include order(2);
+
+            a {
+                padding: 0 10px; // pixel value as it needs to be consistent across a few text sizes
+                width: 100%;
+                @include box-sizing(border-box);
+
+                border-left: 9px solid #3c3c3c;
+
+            }
+        }
+
+        // Add some colors to the sections
+
+        .nav_main li {
+
+            &.study a {
+                border-left-color: $key_color_study;
+            }
+            &.research a {
+                border-left-color: $key_color_research;
+            }
+            &.current_students a {
+                border-left-color: $key_color_students;
+            }
+            &.about_us a {
+                border-left-color: $key_color_default;
+            }
+            &.teaching a {
+                border-left-color: $key_color_teaching;
+            }
+
+            &.home a {
+                border-left-color: rgb(141, 128, 62);
+            }
+
+        }
+
+        // Show a home link for mobile and make it first
+
+        .nav_main .home {
+            display: block;
+            @include  order(2);
+        }
+
+        // Move the main nav first
+
+        .nav_main {
+            @include  order(1);
+            li {
+                height: 49px;
+                line-height: 49px;
+            }
+        }
+
+        // And the utility nav second
+
+        .nav_support {
+            font-size: 13px;
+            @include  order(2);
+            li {
+                height: 36px;
+                line-height: 36px;
+            }
+        }
+
+        // Style the mobile-only contact block
+
+        .contact {
+            @include  order(3);
+            color: $white;
+            padding: 1em 10px 0 19px; // the links above
+            color: #999;
+
+            a {
+                color: $white;
+                border: 0;
+                h2 & {
+                    color: #eee;
+                }
+            }
+
+            .contact_information {
+                list-style: none;
+                font-size: 14px;
+                li {
+                    margin-top: 0.5em;
+                }
+                a {
+                    font-size: 16px
+                }
+            }
+        }
+
+    } // end #masthead
+} // end mobile
+
+
+// Search UI in the main nav area
+// markup is ul.nav_main > li#masthead_search > form.search_form > label + input[type=text].field_placeholder + input[type=submit]
+
+
+.masthead_search {
+    position: absolute;
+    right: 0;
+    margin: 6px 1.5% 0 0;
+
+    @include full {
+        margin-right: 0;
+    }
+
+    @include wide {
+        margin-top: 4px;
+    }
+
+    @include full {
+        margin-top: 3px;
+    }
+
+
+    @include skinny-only {
+        float: right;
+        margin-top: 0;
+        margin-left: 0.8em;
+        position: relative;
+    }
+
+    @include mobile {
+        @include  order(1);
+        position: relative;
+        margin: 7px 0 0 0;
+        height: 42px;
+    }
+
+   form {
+
+       height: 1.6em;
+       font-size: 1em;
+
+       @include mobile {
+
+           position: relative;
+           margin: 0 auto;
+           width: 94%;
+           height: 34px;
+
+       }
+
+    }
+
+    .js & label {
+        @extend .visuallyhidden;
+    }
+
+    .no-js & label {
+        display: none;
+    }
+
+    input[type="text"]{
+
+        @include transition (width 0.1s linear 0.05s); // setup the width transition
+
+        width: 7em; // std. width
+
+        @include skinny-only {
+            width: 8em; // bit bigger for tablets
+        }
+
+        @include wide {
+            width: 8em;
+
+            &:focus {
+                width: 9em;
+            }
+        }
+
+        @include full {
+            width: 9em;
+            &:focus {
+                width: 10.5em;
+            }
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+
+        @include box-sizing(border-box);
+
+        display: block;
+        outline: 0;
+        height: 100%;
+        padding: 0 2em 0 0.3em;
+        background: transparent;
+        font-family: $font_alt;
+        font-weight: normal;
+        color: #ccc;
+        border-color: #444;
+
+        &:hover {
+            border-color: #ccc;
+        }
+
+        &:focus {
+            border-color: #ccc;
+            color: #fff;
+        }
+
+    }
+
+    input[type="submit"]{
+        position: absolute;
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        background: transparent url(/assets/images/icon-search-global.png) no-repeat 50% 50%;
+        right: 0;
+
+        display: block;
+        height: 100%;
+        width: 1.8em;
+        top: 0;
+        text-indent: -99999em;
+
+        opacity: 0.8;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+
+        &:hover, &:focus {
+            background-color: #ccc;
+            opacity: 1;
+            -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        }
+
+        &:active {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+//          @include mobile {
+//              display: none; // they've got a keyboard search submit
+//          }
+
+    }
+}

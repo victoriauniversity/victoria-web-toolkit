@@ -1,0 +1,353 @@
+// UTILITY CLASSES
+// -------------------------------------------------------------
+
+// Updates for SASS:
+//  - none!
+
+// Quick floats
+
+// @media screen and (min-with: 40em) { // DG - Moving to media query include; spelling was wrong anyway so didn't work
+
+.pull_right {
+	@include skinny {
+		float: right;
+	}
+}
+
+.pull_left {
+	@include skinny {
+		float: left;
+	}
+}
+
+// Visibility
+.invisible {
+  visibility: hidden;
+}
+
+.centered {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.no_border {
+    border:0!important;
+}
+
+.note { 
+    font-size:85%;
+    font-weight: normal;
+    // display: none;
+}
+
+%unselectable { 				
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: moz-none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+// Block level inputs
+@mixin input-block-level {
+    display: block;
+    width: 100%;
+    min-height: 28px;        // Make inputs at least the height of their button counterpart
+    @include box-sizing(border-box); // Makes inputs behave like true block-level elements
+}
+
+
+// Mixin for form field states
+@mixin formFieldState($textColor: #555, $borderColor: #ccc, $backgroundColor: #f5f5f5) {
+    // Set the text color
+    //> label,
+    .controls .help-block,
+    .controls .help-inline {
+        color: $textColor;
+    }
+
+    // Style inputs accordingly
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    select,
+    textarea {
+        color: $textColor;
+        border-color: $borderColor;
+        &:focus {
+            border-color: darken($borderColor, 10%);
+            @include box-shadow(0 0 6px lighten($borderColor, 20%));
+        }
+    }
+
+    // Give a small background color for input-prepend/-append
+    .input-prepend .add-on,
+    .input-append .add-on {
+        color: $textColor;
+        background-color: $backgroundColor;
+        border-color: $textColor;
+    }
+}
+
+
+// Webkit-style focus
+// ------------------
+@mixin tab-focus() {
+    // Default
+    outline: thin dotted #333;
+    // Webkit
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+// Center-align a block level element
+// ----------------------------------
+@mixin center-block() {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// IE7 inline-block
+// ----------------
+@mixin ie7-inline-block() {
+    *display: inline; // IE7 inline-block hack
+    *zoom: 1;
+}
+
+// IE7 likes to collapse whitespace on either side of the inline-block elements.
+// Ems because we're attempting to match the width of a space character. Left
+// version is for form buttons, which typically come after other elements, and
+// right version is for icons, which come before. Applying both is ok, but it will
+// mean that space between those elements will be .6em (~2 space characters) in IE7,
+// instead of the 1 space in other browsers.
+@mixin ie7-restore-left-whitespace() {
+    *margin-left: .3em;
+
+    &:first-child {
+        *margin-left: 0;
+    }
+}
+
+@mixin ie7-restore-right-whitespace() {
+    *margin-right: .3em;
+
+    &:last-child {
+        margin-left: 0;
+    }
+}
+
+
+// Sizing shortcuts
+// -------------------------
+@mixin size($height: 5px, $width: 5px) {
+    width: $width;
+    height: $height;
+}
+@mixin square($size: 5px) {
+    @include size($size, $size);
+}
+
+// Placeholder text
+// -------------------------
+@mixin placeholder($color: $placeholderText) {
+    :-moz-placeholder {
+        color: $color;
+    }
+    ::-webkit-input-placeholder {
+        color: $color;
+    }
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+@mixin hide-text {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.hide-text {
+    @include hide-text();
+}
+
+
+// Prevent text wrapping
+// -------------------------
+@mixin no_wrap {
+    white-space: nowrap;
+}
+
+.no_wrap {
+    @include no_wrap;
+}
+
+
+// Override display setting
+// -------------------------
+@mixin inline {
+    display: inline;
+}
+.inline {
+    @include inline;
+}
+
+@mixin block {
+    display: block;
+}
+.block { 
+    // TODO: This class name is conflicting with .block in _block_lists.scss
+    @include block;
+}
+
+
+// Positioning
+// -------------------------
+@mixin right {
+    float: right;
+}
+.right {
+    @include right;
+}
+
+@mixin left {
+    float: left;
+}
+.left {
+    @include left;
+}
+
+@mixin clear {
+    clear: both;
+}
+.clear {
+    @include clear;
+}
+
+// Show / Hide
+// -------------------------
+@mixin hide {
+    display: none;
+}
+.hide {
+    @include hide;
+}
+
+@mixin show {
+    display: block;
+}
+.show {
+    @include show;
+}
+
+.print-only {
+	@include hide;
+}
+
+
+
+// Margins / Padding
+// -------------------------
+@mixin no_margin { margin: 0 !important; }
+.no_margin       { @include no_margin; }
+
+@mixin no_padding { padding: 0 !important; }
+.no_padding       { @include no_padding; }
+
+
+
+// Style element like a standard link (if inheriting other styles - check if this can be combined with the placeholder below it
+// -------------------------
+
+@mixin look_linky {
+    color: $color_links;
+    border-bottom: 1px solid $color_links_border;
+    
+    &:hover,
+    a:hover & {
+        color: $color_links_hover;
+        border-bottom-color: $color_links_hover_border;
+    }
+}
+
+// Extendable styles for making headings within .link_blocks bule and underlined
+
+%heading_link {
+    
+    color: $color_links;
+    border-bottom: 1px solid $color_links_border;
+    
+    @include print-only { 				
+    	border-bottom: none;
+    	color: $color_text_print;
+    	text-decoration: underline !important; // important lets us remove it from the parent
+    }
+       
+    a.link_block:hover &,
+    &:hover {
+        color: $color_links_hover;
+        border-bottom-color: $color_links_hover_border;
+    }
+    
+}
+
+%mobile_tags {
+    // this needs to be twerked further to include the the wrapping list items and possibly enable a selected state
+    // also need to standardise the various similar styles into one 
+	// make links appear like tags on mobile (similar to homepage quicklink styling)
+	
+    //padding: 0.2em 0.4em;
+    //margin: 0 0.25em 0.25em 0;
+    //revised based on search facets
+    padding: 0.2em 0.4em;
+    margin: 0 0.2em 0.5em 0;
+
+    background: lighten($color_links,60%); 
+    font-size: px-to-em(15);
+    display: block;
+	
+	
+}
+
+.error_note {
+    color: $form_error_color;
+    font-weight: normal;
+}
+
+// show baseline grid background on any element
+//----------------------------------
+
+.baseline {
+   //@include debug-vertical-alignment;
+}

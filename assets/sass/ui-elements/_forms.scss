@@ -1,0 +1,975 @@
+// _forms.scss
+// -------------------------------------------------------------
+
+// moved variables to _variables.sass
+
+//--------------------------------------
+//    FORM RESET AND BASIC STYLES
+//    Input + Textarea + Select
+// --------------------------------------
+
+// Exclude input[type='submit'] from below, was screwing with .btn style
+
+// .entry form {
+//     margin-bottom: 2em;
+// }
+
+.widget form {
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+
+input[type='radio'],
+input[type='checkbox'],
+textarea,
+select {
+    display: inline-block;
+    @include ie7-inline-block;
+}
+
+
+label{
+    font-weight: bold;
+    display: inline-block;
+
+    input,
+    textarea,
+    select {
+        display: block;
+    }
+
+    em {
+        font-weight: normal;
+    }
+}
+
+
+
+// Mini reset for unique input types
+input[type='image'],
+input[type='checkbox'],
+input[type='radio'] {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 3px 0;
+    *margin-top: 0; /* IE7 */
+    line-height: normal;
+    //cursor: pointer; let the OS decide
+    border: 0 \9; /* IE9 and down */
+    @include border-radius(0);
+}
+
+// Reset the file input to browser defaults
+input[type='file'] {
+    width: auto;
+    padding: initial;
+    line-height: initial;
+    border: initial;
+    @include box-shadow(none);
+}
+
+
+// Set the height of select and file controls to match text inputs
+select,
+input[type='file'] {
+    // height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+    *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+    // line-height: 28px;
+}
+
+// Reset line-height for IE
+input[type='file'] {
+    line-height: 18px \9;
+}
+
+input[type='button'] {
+    @include box-shadow(none);
+}
+
+// Define placeholder colors
+::-webkit-input-placeholder {
+   //color: $color_heading;
+   color: $color_text_light;
+}
+
+:-moz-placeholder {
+   //color: $color_heading;
+   color: $color_text_light;
+}
+
+
+
+
+/*----------------------------------------------------------------------------
+    THIS IS WHERE THE FANCY STARTS!
+ ----------------------------------------------------------------------------*/
+
+
+@mixin vic-narrow-input-styles{
+    width: 100%;
+}
+
+
+// Base styles
+// --------------------------------
+
+// input[type='color'],
+// input[type='date'],
+// input[type='datetime'],
+// input[type='datetime-local'],
+// input[type='email'],
+// input[type='month'],
+// input[type='number'],
+// input[type='password'],
+// input[type='range'],
+// input[type='search'],
+// input[type='tel'],
+// input[type='text'],
+// input[type='time'],
+// input[type='url'],
+// input[type='week'],
+// textarea,
+// select{
+//     -webkit-appearance:none;
+//     @include border-radius(0);
+//     background-color: $page_background;
+//     //color: $color_links;
+//     //font-weight: bold;
+//     border-style: solid;
+//     border-width: $input_border_width;
+//     border-color: $input_border_color;
+
+//     .highlight_secondary & { // change border color when inside a highlighted element
+//         @include theme-color(
+//             $use: key-border,
+//             $property: border-color
+//         );
+//         &:focus {               
+//             border-color: $input_border_color_focus;
+//             outline: none;
+//         }
+        
+//     }
+
+//     // .error &{
+//     //     border-color: $form_error_border_color;
+//     // }
+    
+//     &:focus {               
+//         border-color: $input_border_color_focus;
+//         outline: none;
+//     }
+    
+// }
+
+input,
+textarea,
+select{
+    // -webkit-appearance:none; // moved down to select styling
+    @include border-radius(0);
+    //background-color: $page_background; 
+    //color: $color_links;
+    //font-weight: bold;
+    border-style: solid;
+    border-width: $input_border_width;
+    border-color: $input_border_color;
+
+    .highlight_secondary & { // change border color when inside a highlighted element
+        @include theme-color(
+            $use: key-border,
+            $property: border-color
+        );
+        &:focus { 				
+        	border-color: $input_border_color_focus;
+        	outline: none;
+        }
+        
+    }
+
+    // remove this once we are sure all forms have been migrated to new error handling pattern.
+    .error &{
+        border-color: $form_error_border_color;
+    }
+    // 
+    
+    &:focus { 				
+    	border-color: $input_border_color_focus;
+    	outline: none;
+    }
+    
+}
+
+// input[type='radio'] {
+//     -webkit-appearance:radio;
+//     background-color: transparent;
+// }
+        
+// DG - nearly every form is in the content column anyway
+//.form_large { // allow different sizing when inside the main content column
+        
+    input[type='color'],
+    input[type='date'],
+    input[type='datetime'],
+    input[type='datetime-local'],
+    input[type='email'],
+    input[type='month'],
+    input[type='number'],
+    input[type='password'],
+    input[type='range'],
+    input[type='search'],
+    input[type='tel'],
+    input[type='text'],
+    input[type='time'],
+    input[type='url'],
+    input[type='week'],
+    textarea {
+
+        width: 75%;
+    
+		&.small {
+            width: 30%;
+            min-width: 30%; // overriding default width for textarea
+			
+        }
+        
+        &.medium {
+            width: 50%;
+            min-width: 30%; // overriding default width for textarea
+        }
+        
+        &.large {
+             width: 100%;
+        }
+
+    }
+	
+	input[type='date'] {
+		
+		&.small { // too narrow when browser datepicker present
+            width: 33.5%;
+            min-width: 33.5%; 
+        }
+	}
+
+    select { // allow different sizing for selects when inside the main content column
+
+        width: 75%;
+        
+        &.medium{
+            width: 56%;
+        }
+        &.small{
+            width: 38%;
+        }
+        &.large{
+             width: 98%;
+        }
+    }
+
+//} // end .form_large
+
+
+
+
+
+input[type='color'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='email'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='range'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week']{
+    display: inline-block;
+    @include ie7-inline-block;
+    height: $input_inner_height;
+    padding: $input_vertical_padding $input_horizontal_padding;
+
+}
+
+label{
+    height: $input_inner_height;
+    padding:{
+        top: $input_vertical_padding;
+        bottom: $input_vertical_padding;
+    }
+}
+
+textarea {
+    min-width: 75%;
+    // height: 200px;
+    border-width: $input_border_width;
+    padding: $input_vertical_padding $input_horizontal_padding;
+}
+
+
+select {
+    // -moz-appearance: button !important;
+    -webkit-appearance:none; 
+    @include border-radius(0);
+    height: ( $input_inner_height + ($input_vertical_padding * 2) + ($input_border_width * 2) );
+    padding: $input_vertical_padding $input_vertical_padding $input_vertical_padding $input_horizontal_padding;
+    border-width: $input_border_width;
+    // cursor:pointer; let browser decide
+    width: 100%;
+	color: $color_links;
+    font-weight: bold;
+
+    .modern_ie &,
+    .old_ie &{
+        background-image: none;
+        padding-right: $input_vertical_padding;
+    }
+    .ie8 &{
+        height: ( $input_inner_height + ($input_vertical_padding * 2) + ($input_border_width * 2) ) - 1;
+    }
+	
+	&.clipped { // as wide as it needs to be
+		width: auto;
+	}
+}
+
+@mixin vic-select-arrow{
+    @include ui-background-image( $image: 'sprite-base/icons/ui-select.png', $image-retina: 'sprite-base/icons-retina/ui-select.png' );
+    background-repeat: no-repeat;
+    background-position: 96% 50%;
+}
+
+
+// Putting custom arrow on webkit only
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    
+    select{
+        
+        @include vic-select-arrow;
+        padding-right: 25px; 
+    }
+}
+
+
+
+
+
+
+// Generic form
+// -------------------------------------------------------------
+
+// Pretty select in IE
+// -------------------
+
+// .form_select{
+//     width: auto;
+//     padding: 0;
+//     select{
+//         // removing styles if the select is inside the .form_select (gets the same styling)
+//         border-width: 0;
+//         background: none;
+//         // padding: 0;
+//         height: 100%;
+//         padding: 0 0 0 $input_horizontal_padding;
+//     }
+//     // Fancy styling for IE
+//     .modern_ie &,
+//     .ie8 &{
+//         overflow: hidden;
+//         @include vic-select-arrow;
+//         select{
+//             width: 115% !important; // making the select wider than the container in order to not show the arrow on IE
+//         }
+//     }
+//     .ie8 &{
+//         select{
+//             height: $input_inner_height + $input_vertical_padding;
+//         }
+//     }
+//     // Because this technique doesn't work for IE6 & IE7, we'll fall back to default view
+//     .ie6 &, .ie7 &{
+//         border: none;
+//         background: none;
+//         select{
+//             width: 100%;
+//             height: $input_inner_height + $input_vertical_padding * 2;
+//         }
+//     }
+// }
+
+
+// Form text and error styling
+// --------------
+
+.form_error,
+.form_help,
+.widget_description{
+    margin-top: .5em;
+}
+
+.form_help--beside { // DG - Added for the eventuality that form help needs to sit alongside an input. 
+	display: inline-block;
+	margin-top: 0.3em; // might need to tweak this value depending on form field sizes
+}
+
+.form_error{
+    //display: none;
+    color: $form_error_color;
+    
+    // .error &{
+    //     display: block;
+    // }
+}
+
+.validation_error {
+    border-style: solid;
+    border-width: $input_border_width;
+    border-color: $form_error_border_color;
+}
+
+
+
+
+fieldset {
+
+    border-style: solid;
+    border-top-width: 1px;
+    border-color: $input_border_color;
+    padding: 1.5em 0 0;
+    margin-top: 1.5em;
+
+    .highlight_secondary & {
+        @include theme-color(
+            $use: key-border,
+            $property: border-color
+        );
+        
+    }
+
+    &:first-child{
+        margin-top: 0; // following our typespacing pattern kill margin-top if first element in a container
+        border-top-width: 0; // also kill the border
+    }
+
+    .widget & {
+        padding: 0 !important; // Kill it for widget fieldsets no matter what
+        border-width: 0 !important; // Kill it for widget fieldsets no matter what
+    }
+
+}
+
+
+legend{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.field_container{ 
+
+    @include ui-clearfix;
+    margin-bottom: 1em;
+
+    &:only-child {
+        margin-bottom: 0;
+    }
+    
+
+    .form_left_col{
+        select,
+        .form_select{
+            width: 100%;
+        }
+    }
+
+    > label{
+        display: block;
+        &.form_checkbox,
+        &.form_radio{
+            width: auto;
+        }
+    }
+    
+    > label,
+    .form_left_col{
+        width: 30%;
+        // padding-right: 3%; // this element is using border-box :-(
+        float: left;
+
+    }
+    
+    .field{
+        width: 67%;
+        float: right;
+        
+        .button {
+            margin-top: 0;
+        }
+    }
+
+    // select{
+    //     width: 50%;
+    // }
+    .form_search{
+        // DG - Don't think we actually need this
+        //.no_border_box &{
+        //    width: 59%;
+        //    padding-right: 10%;
+        //}
+
+        input[type='search'],
+        input[type='text']{
+            width: 81%; // this with is approx, as we can't have the border width as a %
+            padding-right: 15%;
+
+        }
+
+        position: relative;
+        
+		.button{
+            position: absolute;
+            right: 0;
+            top: 0;
+            @include border-radius(0 2px 2px 0);
+            margin: 0 !important;
+            height: 100% !important;
+            width: 15% !important;
+            padding: 0 !important;
+        }
+		
+    }
+    .link_list{
+        margin: 0;
+        li{
+            @include ui-clearfix;
+        }
+    }
+}
+
+.form_checkbox,
+.form_radio{
+    padding-left: 1.8em;
+    position: relative;
+    height: auto;
+    text-transform: none;
+    font-weight: bold;
+}
+
+.form_checkbox input[type="checkbox"],
+.form_radio input[type="radio"]{
+    top: 7px;
+    margin-top: 0;
+    position: absolute;
+    left: 0;
+}
+
+.form_checkbox,
+ input[type="checkbox"]{
+    font-weight: normal;
+}
+
+
+.form_radio,
+input[type="radio"]{
+    color: $color_links;
+}
+
+.radio_list {
+    //@extend .list;
+    //padding-left: 1.5em; 
+    list-style: none;
+		&>li { 
+			margin: 0 !important;
+		}
+
+		@include skinny {
+			&.small>li {
+				display: inline-block;
+				padding-right: 3%;
+				max-width: 30%;
+			}
+    }
+    
+}
+
+.form_actions {
+	border-style: solid;
+    border-width: 1px 0 0 0;
+    border-color: $input_border_color;
+	padding: 1.5em 0 0;
+    margin-top: 1.5em;
+}
+
+.form__field  { 
+    // the start of a slimmed down version of field_container, prior to some refactoring work on forms
+    
+    @include ui-clearfix;
+    margin-bottom: 1em;
+}
+
+.form__label--block {
+    @include block;
+}
+
+.form__input--submit-beside,
+.form__field--submit-beside {
+    
+    // Inline input/submit pattern
+    // - for use anywhere without being restricted by wrapping elements
+    // -------------------------------------------------------------
+    //  Currently working when used in narrow width elems, widgets. Needs further work for larger containers
+    //  E.g. My courses sidebar thingy. 
+    // TODO: phase out form__input container nomenclature, should be form__field
+    
+    width: 100%;
+    position: relative;
+
+    input[type='search'],
+    input[type='text'],
+    input[type='email'] {  
+
+        width:100%;
+        @include box-sizing(border-box);
+        height: 30px;
+
+    }
+
+    button,
+    input[type="submit"] {
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        height: 100%;
+        @include box-sizing(border-box);
+
+    }
+}
+
+.form__field--inline {
+    @extend .form__field;
+    
+    > label {
+        @extend .form__label--block;
+        @extend label;
+        float: left;
+        margin-right: 1em;
+    }
+
+    .form__input {
+        width: auto;
+    }
+
+    .form__button {
+        margin-top:0;
+    }
+}
+
+.search_options__button {
+    @include vic-select-arrow;
+    //padding-right: 25px;
+
+    background-position: 50% 50%;
+    background-color: $page_background;
+    padding: 0 15px;
+    height: 32px;
+    //line-height: 24px;
+    position: absolute;
+    right: 47px;
+    top: 2px;
+}
+
+
+
+
+
+// Mobile/narrow
+// -------------------------------------------------------------
+
+@mixin vic-narrow-form-styles{
+
+    label {
+            
+        padding-bottom: 0;
+        font-weight: normal;
+        // padding: 0;
+        font-size: px-to-em(11);
+        text-transform: uppercase;
+        &.form_checkbox,
+        &.form_radio {
+            font-size: 1em;
+            text-transform: none;
+            font-weight: bold;
+        }
+
+    }
+
+    .field_container {
+
+        margin-bottom: .5em;
+
+        label {
+            
+            padding-bottom: 0;
+            font-weight: normal;
+            // padding: 0;
+            font-size: px-to-em(11);
+            text-transform: uppercase;
+            &.form_checkbox,
+            &.form_radio {
+                font-size: 1em;
+                text-transform: none;
+                font-weight: bold;
+            }
+
+        }
+
+        label,
+        .form_left_col,
+        .field { 
+            float: none;
+            width: 100%;
+            > .small{
+                margin-top: .5em;
+                &:first-child{
+                    margin-top: 0;
+                }
+            }
+
+        }
+
+        .form_left_col{
+            margin-bottom: 1em;
+        }
+
+        .form_search input[type='text'] {
+            padding-right:0;
+            width: 100%;
+            @include box-sizing(border-box); // For when this is in a widget
+            height: 30px; // same as select elems
+        }
+
+        select{
+            width: 100%;
+            .modern_ie &,
+            .old_ie &{
+                padding-right: $input_vertical_padding;
+            }
+        }
+        textarea,
+        input[type='color'],
+        input[type='date'],
+        input[type='datetime'],
+        input[type='datetime-local'],
+        input[type='email'],
+        input[type='month'],
+        input[type='number'],
+        input[type='password'],
+        input[type='range'],
+        input[type='search'],
+        input[type='tel'],
+        input[type='text'],
+        input[type='time'],
+        input[type='url'],
+        input[type='week'] {
+            width: 100%;
+        }
+
+    }
+}
+
+@include mobile {
+    @include vic-narrow-form-styles;
+    label {
+        font-weight: bold !important;
+        text-transform: none !important;
+        font-size: 15px !important;
+        height: 26px !important;
+
+        &.form_checkbox,
+        &.form_radio{
+            height: auto !important;
+        }
+    }
+    .field_container{
+
+        margin-bottom: 0.75em;
+
+        &.half{
+            width: 47.5%;
+            float: left;
+
+            & + .half {
+                margin-left: 5%;
+            }
+
+        }
+        
+        // &.field_disabled { 				
+        // 	opacity: 0.5;
+        	
+        // 	label, input, select { cursor: pointer }
+        // }
+
+        .field{
+            display: table;
+            width: 100%;
+        }
+
+
+        input[type='color'],
+        input[type='date'],
+        input[type='datetime'],
+        input[type='datetime-local'],
+        input[type='email'],
+        input[type='month'],
+        input[type='number'],
+        input[type='password'],
+        input[type='range'],
+        input[type='search'],
+        input[type='tel'],
+        input[type='text'],
+        input[type='time'],
+        input[type='url'],
+        input[type='week'],
+        select{
+            height: ( $input_inner_height + ($input_vertical_padding * 4) + ($input_border_width * 2) )!important;
+            // @include display-box;
+            @include box-sizing(border-box);
+            width: 100%;
+            font-size: 15px;
+
+        }
+
+        .form_error{
+            margin-bottom: .5em;
+            display: table-header-group;
+        }
+        &.form_search{
+            display: block;
+        }
+
+        textarea,
+        select{
+            width: 100%;
+            @include box-sizing(border-box);
+        }
+    }
+    .form_checkbox{
+        label{
+            width: 85%;
+            float: left;
+            height: auto !important;
+        }
+    }
+    // .field_container{
+    //     select{
+    //         width: 100%;
+    //         @include box-sizing(border-box);
+    //     }
+    // }
+}
+
+// WIDGET SPECIFIC STUFF - MERGE WITH GENERIC FORMS SO BASIC APPEARANCE IS SHARED
+// -------------------------------------------------------------
+
+
+.widget_description{
+    @include mobile {
+        text-align: left;
+    }
+    clear: both;
+    text-align: center;
+    // color: inherit; 
+    // margin: 0.5em 0 0;
+    a {
+        // color: inherit;
+        // border-bottom: 1px solid;
+        // border-color: inherit;
+    }
+}
+
+.widget{
+    @include ui-clearfix;
+	
+	.primary & label { 
+		width: auto;
+	}
+}
+
+.col .widget,
+.widget_narrow {
+    @include vic-narrow-form-styles;
+}
+
+.widget_large{
+    .entry & form {
+        margin-top:0;
+    }
+
+    h2{
+        margin-bottom: 1em;
+    }
+}
+
+
+
+// Events page form elements
+// -------------------------------------------------------------
+.highlight_secondary.events_search_field {
+	
+	input[type="text"] {
+		border-color: #ccc; //it's in a primary highlight box so contrast needs tweak
+	}
+	 
+}
+
+
+	// #l2-cats { // TODO: check the id name after squiz form is refeactored
+	// 	@include skinny {
+	// 		margin-left: 1.2em; // don't need this
+	// 	} 
+	// } 
+
+
+// JQuery timePicker. Used as a polyfill when browser doesn't support features
+// ------------------------------
+
+div.time-picker {
+  position: absolute;
+  height: 191px;
+  width:4em; /* needed for IE */
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #aaa;
+  z-index: 99;
+  margin: 0;
+}
+
+div.time-picker-12hours {
+  width:6em; /* needed for IE */
+}
+
+// div.time-picker ul { // possibly don't need this
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+div.time-picker li {
+  cursor: pointer;
+  height: 10px;
+  font: 12px/1 $font_body;
+  padding: 4px 3px;
+}
+
+div.time-picker li.selected {
+  background: #0063CE;
+  color: #fff;
+}

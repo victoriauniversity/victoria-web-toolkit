@@ -1,0 +1,71 @@
+//_media-queries.scss
+
+// Using all means print inherits all the generic code - this is useful for things like type and floats on media going out to all devices
+
+@mixin teeny {
+   @media all and (max-width: 319px) {
+    @content;
+  }
+}
+
+
+@mixin phone_mobile {
+   @media all and (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+   @media all and (max-width: 759px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media all and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+
+@mixin skinny {
+  @media all and (min-width: 760px) {
+    @content;
+  }
+  .old_ie & {
+    @content;
+  }
+}
+
+@mixin skinny-only {
+    @media all and (min-width: 760px) and (max-width: 989px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+  @media all and (min-width : 990px) {
+    @content;
+  }
+  .old_ie & {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media all and (min-width : 1140px) {
+    @content;
+  }
+}
+
+@mixin full {
+  @media all and (min-width : 1232px) {
+    @content;
+  }
+}
+
+@mixin print-only {
+  @media print {
+    @content;
+  }
+}

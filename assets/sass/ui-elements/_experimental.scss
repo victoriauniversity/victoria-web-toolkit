@@ -1,0 +1,44 @@
+.alt_content {
+
+	.pull { 				
+		margin-bottom: 1em;
+	    @include box-sizing(border-box);   
+	}
+
+	p.pull { 				
+		font-size: 1.2em;
+	   font-family: $font_alt; 
+	}
+	
+	.pull + p { 				
+		margin-top: 0;
+	}
+	
+	
+	@include skinny {
+
+        .entry { 				
+        	padding-right: 20% !important;
+        	
+        	.intro, .page_title { 				
+        		margin-right: -20%;
+        	}
+        	
+        	.pull {
+            	        				
+        		float: right;
+        		margin: 0 -20% 0 5%;
+        		width: 40%;
+        		
+        	}
+    	}
+    	
+    	#page { 				
+    		padding-left: 0;
+    	}
+	
+	}
+	
+	
+
+}

@@ -1,0 +1,150 @@
+// generic styling for alert messages
+// -----------------------------------
+
+.alert {
+    position: relative;
+    text-align: center;
+    color: $alert_color;
+    padding: 3% 3%;
+    background-color: $alert_background_solid; // IE7
+    background-color: $alert_background; // RGBA all that grok it
+    
+    opacity: 1;
+    max-height: 50em;
+    overflow: hidden;
+    
+    @include box-sizing (border-box);
+    
+    @include transition (max-height, padding, margin, border-width 0.4s linear); // get it ready to move
+    
+    h2 {
+        text-align: center;
+    }
+
+}
+
+
+// the in page alert, normally sits under the first <h1>
+// ---------------------------------------------
+
+.alert {
+    
+    border: 1px solid darken($alert_background, 20%);
+    margin-bottom: 1.5em;
+    text-align: left;
+    font-weight: normal;
+   
+    h2 {
+        text-align: inherit;
+        width: 95%;
+    }
+    
+    a { 				
+        color: $alert_color !important;
+        text-decoration: underline;
+    }
+
+    p {
+        padding-right: 3em;
+
+    }
+    
+}
+
+
+// specific styling for the mobile full screen
+// alert message
+// --------------------------------------------
+
+.alert.major {
+
+    border: 0;
+    margin: 0;
+    text-align: center;
+    padding: 1em 4em;
+    max-height: 10em;
+    
+    @include mobile {
+        position: fixed;
+        min-width: 100%;
+        min-height: 101%;
+        z-index: 999;
+        padding: 4em 10% 2em;
+        font-size: 1.4em;
+        overflow: scroll;
+    }
+
+}
+
+html.js.alert_active { // specific tweaks on small screens when alert is active	- stops weird scrolling but is contingent on alerts NOT being too long (or they'll get cut off)			
+    @include mobile {
+        overflow: hidden;
+    }
+}
+
+
+// you can add a class of .close to any link in these to hide the alert - this is specific close button styling
+// --------------
+
+.alert .close_button {
+    white-space: nowrap;
+    color: $alert_color;
+    text-indent: -9999em;
+    position: absolute;
+    right: 0.3em;
+    top: 0.3em;
+    display: block;
+    text-decoration: none;
+    // DG - the close button text was being displayed inconsistently, have hidden now
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    margin:0;
+    
+    &.ie7 { 				
+        text-indent: 0;
+    }
+    
+    &:before { 				
+        content: "\00d7"; // closed cross
+        font-size: 1.5em;
+        text-indent: 0;
+        padding-left: 25%;
+        display: block;
+        color: #000;
+    }
+        
+    &:hover {
+
+    }
+
+}
+
+
+.alert.major .close_button { 	// Specific stuff for the major alert close tablet up			
+    
+    @include skinny {
+	   width: 4em;
+	   top: 0;
+	   right: 0;
+	   height: 100%;
+	   
+        &:before { 				
+            line-height: 220%;
+        }
+	   
+    }
+
+}
+
+
+.alert.dismissed { 	// zero out all vertical spacing		
+	
+	max-height: 0 ;
+	padding: 0 ;
+	margin: 0 ;
+	border-width: 0 ;
+	min-height: 0; // set on majors for mobile
+
+}
+

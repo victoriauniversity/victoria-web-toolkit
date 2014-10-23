@@ -1,0 +1,438 @@
+// /*
+//  * Social media 
+//  * ----------------------------------------------------------------------------
+//  * Feed components, buttons etc
+//  */
+
+
+// Social media directory
+//----------------------------------
+.directory {
+    @include ui-clearfix();
+    margin-bottom: 1em;
+}
+
+.block--channel {
+
+    display: block;
+    min-height: 85px;
+
+    &:last-of-type {
+        margin-bottom:0;
+        min-height: 70px;
+    }
+
+    h3 {
+        margin-top:0;
+        margin-bottom: 0.3em;
+    }
+
+    .icon { 
+    // TODO: refactor, think there is overlap with .directory icon stuff. This could be required for static feeds though 
+        float: left;
+        width: 58px;
+        height: 58px;
+        clear: right; 
+        margin-left: px-to-em(-70);
+        background: url('/assets/images/social-icons-sprite.png') no-repeat 0 0;
+
+        @include mobile {
+            margin-left:0!important;
+        }
+
+        @include retina{
+
+            background: url('/assets/images/social-icons-sprite-2x.png');
+            background-size: 295px 119px;
+            
+        }  
+
+        &.twitter {
+            background-position: -78px 0;
+        }
+
+        &.youtube {
+            background-position: -156px 0;
+        }
+
+        &.linkedin {
+            background-position: -236px 0;
+        }
+    }
+
+    .directory & {
+        float: left;
+        width:25%;
+        margin-top:2em;
+
+        @include mobile {
+            float: none;
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+
+        .icon { 
+
+            @include retina{
+
+                background: url('/assets/images/social-icons-sprite-2x.png') 0 -78px;
+                background-repeat: no-repeat;
+                background-size: 295px 119px;
+            }  
+            margin-left: 0;
+            background-position: 0 -78px;
+
+            &.twitter {
+                background-position: -78px -78px;
+            }
+
+            &.youtube {
+                background-position: -156px -78px;
+            }
+
+            &.linkedin {
+                background-position: -236px -78px;
+            }
+        }
+
+        .media {
+            margin:0;
+        }
+    }
+}
+
+// Social media feeds
+//----------------------------------
+
+.connect_wrapper { 
+    background-color: #EEEEEE;
+}
+
+.connect-feeds {
+    
+
+    @extend .columns;
+    @extend .columns3;
+
+    clear: both;
+
+    padding: {
+        left: $page_padding!important; 
+        right: $page_padding; 
+        top: 0;
+        bottom: px-to-em(16);
+    }
+
+    @include mobile {
+        padding-top: px-to-em(16);
+    }
+
+    p {font-size: px-to-em(13);}
+
+    .connect_intro { 
+    // nesting because specificity of .col heading declaration line 689, ../sass/_common.scss
+    // the above rule has now been removed DG 22/10/13
+
+        @extend .col;
+
+        padding-right:0;
+
+        h2 {
+            margin-top: 0.65em;
+            margin-bottom: 0.7em;
+        }
+
+    }
+
+    h3 {
+        margin-top: 0.9em;
+       // margin-bottom: 0.7em;   
+    }
+
+}
+
+.feeds_wrap {
+
+    @extend .wrap;
+}
+
+
+.feed {
+
+    width: 33%;
+    float: left;
+    display: block;
+    padding-left: 3%;
+    
+    @include box-sizing(border-box);
+   
+    @include mobile {
+        float: none;
+        width: 100% !important;
+        padding-top: px-to-em(16);
+        padding-left: 0;
+        padding-right: 0;
+        margin:0;
+        margin-bottom: 1em; // added during maori at vic to add space when stacking on mobile
+
+        .feed__header {
+            margin: 0;
+            padding:0;
+        }
+    }
+
+    &:first-child {
+        padding-left: 0;
+        clear: left;
+    }
+
+    
+
+    .feed__header {
+    
+        padding: 0 0 px-to-em(14) 0;
+        min-height: auto;
+
+        @include mobile {
+            padding-left: 3%;
+            
+        }
+
+        a {
+            @extend .h6;
+            font-size: 12px;
+
+            b { 
+                // for twitter handle
+                font-weight: normal;
+                color: #666;
+            }
+
+            .icon {
+                margin-left: 0;
+                margin-bottom: 1em;
+                margin-right: px-to-em(14);
+                float: left;
+                width: 58px;
+                height: 58px;
+                clear: right; 
+                background: url('/assets/images/social-icons-sprite.png') no-repeat 0 -990px;
+
+                @include mobile {
+                    margin-left:0!important;
+                }
+
+                @include retina{
+
+                    background: url('/assets/images/social-icons-sprite-2x.png');
+                    background-size: 295px 119px;
+                    
+                }
+
+                &.facebook {
+                    background-position: 0 0;
+                }  
+
+                &.twitter {
+                    background-position: -78px 0;
+                }
+            }
+        }
+    }
+
+    .feed__body {
+        margin-top: 0;
+        clear: both;
+        color: $color_text;
+
+        &:hover {
+            color: $color_links_hover;
+        }
+
+        @include mobile {   
+            margin-top: 0;
+            margin-left: 0;
+        }
+    }
+
+    .feed__footer {
+        margin: 0 0 1em 0;
+        font-size: px-to-em(12);
+        color: #666;
+
+        @include mobile {
+            margin: 0;
+        }
+    }
+
+    .actions {
+        float: right;
+    }
+
+    .action {
+        float: right;
+        margin-left: 1em;
+        color: #666;
+        &:hover {
+            text-decoration: underline;
+            .icon {
+                background-position: -16px 0!important;
+            }
+            .icon.retweet {
+                background-position: -94px 0!important;
+            }
+            .icon.fave {
+                background-position: -46px 0!important;
+            }
+            .icon.share {
+                background-position: -142px 0!important;
+            }
+        }
+
+        .icon {
+            width: 15px;
+            height: 15px;
+            margin-right: 2px;
+            top: 3px;
+            position: relative;
+            background: url('/assets/images/actions.png') no-repeat 0 0;
+
+            &.retweet {
+                background-position: -78px 0;
+            }
+
+            &.fave {
+                background-position: -30px 0;
+            }
+
+            &.share {
+                background-position: -126px 0;
+            }
+        }
+    }
+
+    
+
+}
+
+.feeds--basic {
+    // using a modifier to reuse code in different arrangement without having to duplicate assets in squiz
+    @extend .bleed;
+    background-color: $color_highlight_tertiary;
+
+    .feeds {
+        @extend .columns;
+        @extend .columns2;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .feed {
+        margin-top: 1em;
+    }
+
+    .feed:first-of-type {
+        padding-left:0;
+    }
+
+    .feed h3 {
+        display: none;
+    }
+
+}
+
+
+
+// DO NOT DELETE! 
+// This is only used for the static version of homepage feeds, keeping this incase we have to revert in a hurry
+
+// .connect_with_vic {
+    
+//     @extend .wrap;
+    
+//     clear: both;
+//     padding: {
+//             left: $page_padding; 
+//             right: $page_padding; 
+//         }
+            
+//     @include box-sizing(border-box);
+    
+//     @include ui-clearfix(true);
+    
+//     p {
+//         font-size: px-to-em(13);
+//         margin-bottom: 0.5em;
+//     }
+    
+//     .connect_intro {
+//         width: 33.3%;
+//         padding-top: px-to-em(14);
+//         padding-right: px-to-em(14);
+//     }
+    
+//     .connect_channel {
+//         padding: px-to-em(16) px-to-em(16) px-to-em(14) px-to-em(93);
+//         width: 33.3%;
+        
+//         background-color: rgba(255, 255, 255, 0.6);
+//         @include ui-clearfix(true);
+
+//         &.connect_channel--shade {
+//             background-color: rgba(255, 255, 255, 0.3);
+
+//         }
+
+//         @include mobile {
+//             &, &.connect_channel--shade {
+//                 background-color: transparent;
+//             }
+
+
+//         }
+
+//         a {
+            
+//             &:hover,
+//             &:focus {
+//                 color: $color_links_hover;
+//             }
+            
+//         }
+        
+//         @include mobile {
+//             padding-left: 3%;
+
+//             margin: {
+//                 left: -3%; 
+//                 right: -3%; 
+//             }
+            
+//             h3, p, .channel__button {
+//                 margin-left: 3.5em;
+//             }
+
+//             .channel__button {
+//                 margin-left: px-to-em(73);
+//             }
+            
+//         }
+        
+//     }
+    
+//     .connect_intro, .connect_channel {
+//         padding-bottom: 1em;
+//         display: table-cell;
+        
+//         @include mobile {
+//             display: block;
+//             width: 100%;
+//         }
+        
+//     }
+    
+// }
+
+// END DO NOT DELETE

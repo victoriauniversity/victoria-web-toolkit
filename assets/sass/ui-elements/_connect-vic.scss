@@ -1,0 +1,88 @@
+
+
+$tweet-background: #284c8f;
+
+// sets margin on all tweets at mobile
+// ------------------------------------
+.tweet_group {
+	@include mobile {
+		margin: {
+			left: 5%;
+			right: 5%;
+		}
+	}
+}
+
+
+// the collection of info for tweet
+// ---------------------------------
+span.tweet {
+	width: 19%;
+	margin-right: 1%;
+	float: left;
+	position: relative;
+	@include pie-clearfix();
+	@include box-sizing(border-box);
+	@include mobile {
+		width: 100%;
+		margin-bottom: 2.5em;
+	}
+
+	p {
+		background: $page_background;
+		color: $grey_dark;
+		padding: 6% 7%;
+		font-size: 13px;
+		font-weight: bold;
+
+		@include mobile {
+			padding: 3% 5%;
+		}
+
+		&:after {
+		    content: ' ';
+		    position: absolute;
+		    width: 0;
+		    height: 0;
+		    left: 50px;
+		    bottom: 12px;
+		    border: 6px solid;
+		    border-color: $white transparent transparent $white;
+		}
+		a {
+			color: #3468b0;
+		}
+	}
+	a {
+		color: #3468b0;
+	}
+	&.tweet_secondary {
+		p {
+			color: $white;
+			background: $tweet-background;
+			&:after {
+				border-color: $tweet-background transparent transparent $tweet-background;
+			}
+			a {
+				text-decoration: underline;
+				color: $white;
+			}
+		}
+	}
+}
+
+// twitter name
+// ---------------------------------
+.twitter_handle {
+	font-weight: bold;
+	font-size: 13px;
+	margin-left: 46px;
+}
+
+.twitter_avatar {
+	position: absolute;
+	left: 5px;
+	margin-top: 5px;
+
+}
+

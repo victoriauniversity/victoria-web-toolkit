@@ -1,0 +1,241 @@
+// _print.scss 
+// -------------------------------------------------------------
+
+
+@media print { 
+
+	* { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } // Black prints faster: h5bp.com/s
+	
+	a, a:visited { 
+	    text-decoration: none;
+    }
+	
+	%faux-link { 				
+		border: none !important;
+		color: red !important;
+	}
+	
+	abbr[title]:after { 
+	    content: " (" attr(title) ")"; 
+	   }
+	
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  // Don't show links for images, or javascript/internal links 
+	
+	pre, blockquote { 
+	  // border: 1px solid #999; 
+	  page-break-inside: avoid; }
+	
+	thead { display: table-header-group; } // h5bp.com/t 
+	
+	tr, img { page-break-inside: avoid; }
+		
+	@page { margin: 1.5cm; }
+	
+	p, h2, h3 { orphans: 3; widows: 3; }
+	
+	h2, h3 { page-break-after: avoid; }
+	
+	// Hide stuff we don't need to print
+	#masthead .global_nav,
+	#mobile_masthead,
+	#section_menu,
+	#big_search_wrapper,
+	.big_search_form,
+	.breadcrumb,
+	.button,
+	.mobile_only,
+	.site_footer .cols,
+	.fineprint nav,
+	.fineprint ul,
+	.slider ul li,
+	.slider_button,
+	.site_links,
+	.link_block_image,
+	.event_filters,
+	.filters,
+	.events_search_field,
+	.pagination,
+	.static_pagination,
+	.a-delete {
+		display: none !important;
+	}
+	
+	// Additional stuff we should consider losing for print
+	#hero,
+	aside.secondary,
+	.widget,
+	.promo {
+		display: none!important;
+	}
+	
+	.print-only, .js_hide {
+		display: block!important;
+	}
+	
+	body { 				
+		margin: 10mm 5mm 40mm 10mm;
+		
+		width: auto;
+	}
+	
+	#masthead {
+		width: 100%;
+		height: 10mm;
+		padding:0;
+		border-bottom: 0;
+		position: relative;
+		
+		img {
+			position: absolute;
+			width: 35mm;
+			left: 0mm;
+			height: auto;
+		}
+	}
+	
+	#wrapper {
+
+		
+		.has_big_search & {
+			border:0
+		}
+		
+	}
+	
+	#page {
+		width: auto!important;
+		
+		.old_ie & {
+			min-width:auto!important;
+		}
+	}
+
+	#content,
+	.entry,
+	.primary,
+	.col,
+	.link_block,
+	.bleed_box, 
+	.blocks {
+        
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+	}
+
+	.blocks a {
+		text-decoration: none;
+	}
+
+	// specific stuff for fees calc breakdown
+
+	.course_cart__list.columns3 {
+
+
+			width:auto!important;
+		
+
+		.col {
+			width: 20%!important;
+
+			&:first-child {
+				width: 55%!important; // 45% of 195mm 88mm
+
+			}
+
+
+		}
+
+	}
+	
+
+// 	#content > .secondary,
+// 	.highlight_primary,
+// 	.highlight_secondary,
+// 	.highlight_tertiary {
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// 	
+// 	.block_primary {
+// 		display: block;
+// 		clear: right;
+// 	}
+// 
+// 	.block_secondary {
+// 		float: left;
+// 		margin-right: 10mm;
+// 	}
+// 	
+// 	aside.secondary a.info_block {
+// 		display: block;
+// 		width: 100%;
+// 	}
+	
+	.slider ul { 
+		padding-left:0;
+		
+		li.active {
+			display: block
+		}
+	}
+	
+// 	.image_with_caption, .media {
+// 		margin: 10mm 0
+// 	}
+// 	
+// 	.media + p.caption {
+// 		margin-top:-10mm
+// 	}
+// 	
+// 	h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+// 		margin-top: 1em
+// 	}
+// 	
+// 	.left, .right {
+// 		float: none
+// 	}
+	
+	.site_footer, #masthead {
+		border-color: #000!important;
+		border-width: 0.25pt;
+	}
+	
+	.site_footer {
+		border-top-style: solid; 
+		margin-top: 5mm;
+		font-size: 8pt;
+		
+		padding: 0 !important;
+		
+	 .fineprint > * { 				
+	 	
+	 	display: none !important; 
+	 	
+	 	&.copyright { 				
+	 		display: block !important;
+	 	}
+	 	
+	 	&#template_index { 				
+	 		display: block !important;
+	 		text-align: left;
+	 		font-family: $font_body;
+	 		font-style: normal;
+	 		font-size: 13px;
+	 	}
+	 	
+	 }	
+		
+		.contact_info, .fineprint {
+			border:0
+		}
+		
+		h2 {
+			margin:0
+		}
+	}
+	
+	
+	
+}

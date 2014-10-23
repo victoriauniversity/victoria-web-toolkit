@@ -1,0 +1,33 @@
+// Sprite mixin
+// -------------------------------------------------------------
+
+// Generic sprite mixin
+@mixin custom-sprite( $icon, $sprite-map, $sprite-map-retina: false, $offset-x:0, $offset-y:0 ) {
+
+	background-image: sprite-url($sprite-map);
+	background-position: sprite-position($sprite-map, $icon, $offset-x, $offset-y);
+	background-repeat: no-repeat;
+	//min-width: image-width(sprite-file($sprite, $icon));
+
+	@if($sprite-map-retina != false){
+		@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 2) {
+
+			background-image: sprite-url($sprite-map-retina);
+			$w: image-width( sprite-clean-url($sprite-map-retina)  ) / 2;
+
+			background-size:  $w  auto;
+			@if (sprite-position($sprite-map, $icon) != sprite-position($sprite-map-retina, $icon)) {
+				$xpos: round(nth(sprite-position($sprite-map-retina, $icon), 1) / 2);
+				$ypos: round(nth(sprite-position($sprite-map-retina, $icon), 2) / 2);
+				$x_adjusted: $xpos +  $offset-x;
+				$y_adjusted: $ypos +  $offset-y;
+				background-position: $x_adjusted $y_adjusted;
+			}
+		}
+	}
+}
+
+$sprite-padding: 4; //px for standard screens.
+
+// IMPORTANT: Define your sprites in the sprite-maps partial
+@import "sprite-maps";

@@ -1,0 +1,80 @@
+// Featured researcher in right rail
+
+aside[role="complementary"] {
+
+	.researcher {
+		
+		padding: 0;
+
+		.slides {
+			background: #fff;;
+		}
+		
+		h5 {
+			text-transform: inherit;
+			letter-spacing: 0;
+			font-size: px-to-em(13,13); // +1 px due to secondary base font reduction
+			margin-top: 0.2em;
+		}
+		
+		dl {
+			dt {
+				display: inline;
+				font-weight: bold;
+			}
+		
+			dd {
+				display: inline;
+				margin:0;
+			}
+		}
+		
+		#content & .contacts_list {
+			font-size: px-to-em(13,13);// +1 px due to secondary base font reduction
+			
+			@include skinny {
+				li {
+					padding-left:0;
+				}
+			}
+			
+		}
+
+	
+
+	@include mobile {
+		padding: px-to-em(27) 0 1em 0;
+
+		h3 {
+			margin-top:0;
+		}
+		.contacts_list {
+			clear: none!important;
+		}
+
+		// Possibly move this to slider.scss
+		&.slides {
+			background-color: transparent!important;
+		}
+
+		.slider_img {
+			width: 30%;
+			float: left;
+			padding: 0 1em 1em 0;
+			height: auto;
+
+			img {
+				width: 100%;
+				height: auto;	
+				position: relative;		
+			}
+
+		}
+
+	}
+
+	}
+		
+}
+
+

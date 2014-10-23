@@ -1,0 +1,433 @@
+// Heading (course code) and academic year nav for course pages
+//----------------------------------
+
+header.course_page__header {
+	
+	@include ui-clearfix();
+		
+		h2 {line-height: 1.5;}
+
+		h2, nav {
+			float: left;
+			margin-bottom: 0;
+		}
+		
+		nav {
+			border-left: 1px solid $color_border;
+			margin-left: 1em;
+			padding-left: 1em;
+			padding-top: 0;
+
+			p {
+				float: left;
+				line-height: 2.6;
+				margin-bottom: 0;
+				margin-right: 0.5em;
+
+				@include mobile{
+					float: none;
+				}
+			}
+			
+			ul {
+				//@extend .static_pagination;	
+				
+				float: left;
+				@extend .facet_links;
+
+				// display: block;
+				
+				//@include inline-block-list;
+				
+				li {
+
+				// 	font-weight: bold;
+				// 	vertical-align: inherit;
+				// 	margin-left: 0;
+				 	margin-bottom: 0;
+				 	margin-top: 0.3em;
+				}
+				
+				// a {
+				// 	//@extend %mobile_tags;
+					
+				// }
+				
+			}
+			
+			@include mobile {
+				border:0;
+				clear: both;
+				margin-left:0;
+				padding-left:0;
+				
+				ul li {
+					margin-bottom:0;
+					
+				}
+			}
+			
+		}
+
+
+
+}
+
+
+.course_page {
+
+	h1.page_title {
+		margin-top: 0.5em;
+	}
+
+	.course_flag { 
+		display: inline-block; 
+		font-size: 60%;
+		@include font_display; // has to be set for IE to pick up normal font weight.
+		text-transform: none; 
+		font-weight: normal; 
+		border: 1px solid; 
+		padding: 3px 6px; 
+		margin-left: 0.3333em; 
+		vertical-align: middle; 
+	}
+
+	.course_flag.flag_limited { 
+		color: #f00; 
+		border-color: #f00; 
+	}
+
+	.course_flag.flag_pending { 
+		color: #af6622; 
+		border-color: #af6622; 
+	}
+	
+	.columns3 .col {
+	
+		@include mobile {
+			// overidding default .col mobile styling just for the schedule listing
+			float: left;
+			width: 50% !important;
+			
+			&:first-child {
+				width: 100%!important;
+			}
+			
+		}
+	
+	}
+	
+}
+
+.course_cart__list { // TODO consolidate with complementary styling 
+
+	@extend .divider_list;
+	border-bottom:0!important;
+	clear: both;
+
+	& > li {
+		position: relative;
+		//border:0!important;
+
+		a {
+			//margin-right: 2.2em;
+
+			.primary & {
+				padding:0;
+			}
+
+			&.a-delete {
+				position: absolute;
+				top: 50%;
+				right: 0;
+				border: 1px solid $color_links_border;
+				//color: #ccc;
+				//background-color: rgba(255,255,255,0.5);
+				background-color: #fff;
+				width: 1em;
+				height: 1em;
+				margin: -0.5em 0 0 0;
+				padding: 0;
+				@include opacity(0.3);
+				font-size: 1.6em;
+
+				&:hover {
+					@include opacity(1);
+				}
+
+
+				&:after {
+
+					content: '\00d7';
+					display: block;
+					margin: -0.22em 0.22em;
+				}
+
+				.primary & {
+					right: 0.4em;
+				}
+
+			}
+
+			@include mobile{
+				margin-right: 3em;
+
+				&.a-delete {
+					font-size: 2.2em;
+					top: 48%;
+				}
+
+			}
+
+
+
+		}
+
+		p {
+
+			a {
+				display: inline;
+				margin: 0;
+			}
+
+		}
+
+		h3 {
+		    display: inline;
+		}
+
+		h3::after {
+		    content: ':';
+		}
+
+		h6 {
+			margin-bottom: 0;
+		}
+
+	}
+
+	.row {
+
+		
+		.primary & {
+
+			&.rule {
+			border-top-width: 4px;
+
+			}
+
+			&.header {
+				border:0;
+
+				h2 {
+					float: left;
+					margin-bottom:0;
+				}
+
+				.field {
+					float: right;
+				}
+
+				&:hover {
+					background-color: transparent!important;
+				}
+			}
+
+			&.footer {
+				border: 0;
+
+				&, 
+				&:hover {
+					background-color: $color_border;
+				}
+			}
+
+		}
+
+
+	}
+
+	.primary &.columns--divider .row {
+
+		
+
+
+	}
+
+}
+
+.course_cart__totals { // todo use either inside or outside course cart
+		
+		//font-weight: bold;
+
+		.primary & .row {
+
+			&:first-child {
+				border-width: 4px;
+			}
+
+
+		}
+
+
+		
+	}
+
+
+
+	
+aside[role="complementary"] {
+
+	.course_cart {
+
+		header {padding:0!important}
+
+		header a  {
+			padding: 6%;
+			display: block;
+			
+			h2 {
+				border-bottom: 1px solid rgba(255,255,255,0.6);
+				color: $white;
+				display: inline-block;
+				
+				&:after {
+					content: "\003e"; // arrow icon
+					display: inline-block;
+					margin-left: 0.3em;
+				}
+			}
+		}
+
+		dl.course_cart__totals {
+
+			//@extend .h6;
+			margin-top: 0;
+			@extend .rule;
+			@extend .rule--thin;
+
+
+			dt {
+					padding-left: 0;
+
+			}
+
+			dd {
+				margin-left:0;
+				text-align: right;
+				font-weight: bold;
+				//@extend .h6;
+			}
+
+			dt, dd {
+				padding-top: 0.5em;
+	       		padding-bottom: 0.5em;
+	       		border-bottom: 1px solid $color_border;
+
+			}
+
+			@include mobile {
+
+	   			dt, dd {
+	       			padding-top: 0.5em!important;
+	           		padding-bottom: 0.5em!important;
+	           		text-align: left;
+
+	           		// overidding default .col mobile styling for a 2 col arrangement
+			        float: left;
+			        width: 50% !important;
+
+	   			}
+
+	   		}	
+
+		}
+		
+
+	}
+
+	.course__list {
+	
+		@extend .course_cart__list;
+
+		& > li {
+			border:0!important;
+
+			a:first-child {
+				margin-right: 0;
+			}
+		} 
+
+	}
+
+	.course_cart__list a {
+		&:first-child {
+				margin-right: 2.2em;
+		} 
+	}
+
+	.course_cart__item {
+		border:0
+	}
+
+	
+
+}
+
+// Keith's additions
+
+.course_page {
+
+	.block { 
+	    margin-top: 1.4286em;
+	    padding-top: 1.4286em;
+	}
+
+	.block h2, .block dd, .block p {
+	    margin-bottom: 0.7143em;
+	}   
+
+	.block dl {
+	    margin-top: 0;
+	}
+	
+	.course_requirements__block {
+		@extend .block;
+		border-bottom: 1px solid #ddd;
+	}
+
+}
+
+.course_page dt {
+    float: left;
+    margin-right: 0.25em;
+    clear: both;
+}
+
+.course_page dt::after {
+    content: ': ';
+}
+
+.course_page .page_title:first-child {
+    margin-top: 0;
+}
+
+
+
+// /* 
+// 	to make this next bit work, add the course_cart__item class to the <li>s in the fees calculator widget 
+// 	and delete the margin-right rule from .course_cart__list>li a
+// */
+
+// .course_cart__item a {
+// 	margin-right: 2.2em;
+// }
+
+//.course_cart__list>li {
+    // /* delete border-top rule */
+    //border-top: 0 !important;
+//}
+
+.widget_narrow .form_search select {
+    width: 84%;
+}

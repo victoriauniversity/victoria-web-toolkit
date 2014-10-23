@@ -1,0 +1,44 @@
+
+
+// Icons
+//----------------------------------
+
+.icon {
+    display: inline-block;
+    text-indent: -9999px;
+    &.search {
+        background: url(/assets/images/icon-search-mobile-normal.png) no-repeat 50% 48%;
+        height: 50px;
+        width: 50px;
+        @include retina {
+            background: url(/assets/images/icon-search-mobile-retina.png) no-repeat 50% 48%;
+            background-size: 22px 21px;
+        }
+    }
+    &.menu {
+        background: url(/assets/images/icon-menu-mobile-standard.png) no-repeat 50% 50%;
+        height: 50px;
+        width: 50px;
+        @include retina {
+            background: url(/assets/images/icon-menu-mobile-retina.png) no-repeat 50% 50%;
+            background-size: 22px 18px;
+        }
+    }
+    &.timetable {
+        background: url(/assets/images/icon-timetables.png) no-repeat;
+        height: 12px;
+        width: 12px;
+    }
+    &.twitter_avatar {
+        background: url(/assets/images/ui-vic-twitter.png) no-repeat 50% 50%;
+        background-size: 42px 30px;
+        height: 30px;
+        width: 42px;
+    }
+    &.global_search {
+        background: url(/assets/images/icon-search-global.png) no-repeat;
+        height: 19px;
+        width: 19px;
+    }
+}
+

@@ -1,0 +1,230 @@
+    
+// ------------------------------------------------------------------- *
+// COLOURS
+// -------
+
+$button_primary_background:         #3468b0;
+$button_primary_background_hover:   darken($button_primary_background,10%);
+$button_primary_color:              #fff;
+$button_primary_border:             false;
+
+$button_secondary_background:       #282828;
+$button_secondary_background_hover: lighten($button_secondary_background,10%);
+$button_secondary_color:            #fff;
+$button_secondary_border:           false;
+
+$button_tertiary_background:        rgba(0,0,0,0.1);
+$button_tertiary_background_hover:  rgba(0,0,0,0.2);
+$button_tertiary_color:             $color_heading;
+$button_tertiary_border:            false;
+
+
+@mixin button-colors(
+    $background-color: false,
+    $background-color-hover:false,
+    $color: false,
+    $color-hover: false,
+    $border-color: false
+    ){
+    @if $background-color {
+        background-color: $background-color;
+    }
+    @if $background-color-hover {
+        &:hover{
+            background-color: $background-color-hover;
+        }
+    }
+    @if $color {
+        color: $color;
+    }
+    @if $color-hover {
+
+        &:hover {
+            color: $color-hover;
+        }
+    }
+    @if $border-color {
+        border: 1px solid $border-color;
+        padding: {
+            top: px-to-em(6);
+            bottom: px-to-em(6);
+        }
+    }
+}
+
+button,
+input[type="submit"],
+.button{
+    cursor: pointer;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    @include border-radius(2px);
+    font-weight: bold;
+    text-decoration: none !important; // Yep nuke it, ignore all inheritance
+    white-space: nowrap;
+    border: 0 none;
+
+    // padding, height and line-height all contribute to the buttons' height and vertical alignment
+    // Be careful if changing any of this. Some of it is adjusted for IE7 further down v.
+    padding: px-to-em(5) px-to-em(9);
+    height: px-to-em(19);
+    line-height: 1.3em;
+
+    margin-right: px-to-em(4);
+    margin-top: .5em;
+    display: inline-block;
+    @include box-sizing(content-box);
+
+    @include transition(background-color 100ms ease-in-out);
+
+    // Removing extra padding in Firefox
+    // OBS: this removes the highlight outline
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+
+    &:active {
+        position: relative;
+        top: 1px;
+      }
+
+    // Sizes
+    &.large{
+        font-size: px-to-em(16);
+    }
+
+    &.x_large{
+        font-size: px-to-em(18);
+    }
+    
+    &.mini{
+        padding: px-to-em(3) px-to-em(4) px-to-em(2)
+    }
+
+    // Colors
+    &,
+    &.primary,
+    &.primary:visited{
+        @include button-colors(
+            $background-color: $button_primary_background,
+            $background-color-hover: $button_primary_background_hover,
+            $color: $button_primary_color!important,
+            $color-hover: $button_primary_color,
+            $border-color: $button_primary_border
+        );
+    }
+
+    &.secondary,
+    &.secondary:visited {
+        @include button-colors(
+            $background-color: $button_secondary_background,
+            $background-color-hover: $button_secondary_background_hover,
+            $color: $button_secondary_color!important,
+            $border-color: $button_secondary_border
+        );
+    }
+
+    &.tertiary,
+    &.tertiary:visited{
+        @include button-colors(
+            $background-color: $button_tertiary_background,
+            $background-color-hover: $button_tertiary_background_hover,
+            $color: $button_tertiary_color!important,
+            $border-color: $button_tertiary_border
+        );
+
+        .ie8 & {
+            background-color: #ccc;
+        }
+
+    }
+
+    &.transparent,
+    &.transparent:visited {
+        @include button-colors(
+            $background-color: transparent,
+            $background-color-hover: transparent,
+            $color: $color-links !important,
+            $color-hover: $color-links-hover,
+            $border-color: none
+        );
+    }
+    
+    &.more-items {
+         margin-top: 0.75em;
+    }
+
+
+    &.disabled{
+        opacity: 0.4;
+    }
+}
+
+
+
+button{
+    line-height: 1.1em;
+}
+
+// Styles for IE6 and IE7
+.no_border_box{
+    .button{
+        line-height: 1.2em;
+
+    }
+    input[type="submit"],
+    button{
+        height: 30px;
+        float: left;
+
+        &.large{
+            height: 37px;
+        }
+        &.x_large{
+            height: 41px;
+        }
+    }
+    input[type="submit"]{
+        padding: {
+            top: 0;
+            bottom: 0;
+        }
+        line-height: 1;
+    }
+    button{
+        padding-top: px-to-em(4);
+    }
+}
+
+// Footer buttons
+// Only adding styles to make sure button styles are not overridden by link styles
+.site_footer{
+    .button{
+
+        &, &.primary{
+            color: $button_primary_color;
+        }
+
+        &.secondary{
+            color: $button_secondary_color;
+        }
+
+        &.tertiary{
+            color: $button_tertiary_color;
+        }
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    .link_list{
+        .button{
+            &, .old_ie &{
+                padding: px-to-em(9) px-to-em(16);
+                display: inline-block;
+                margin-top: 0.5em;
+            }
+        }
+    }
+}

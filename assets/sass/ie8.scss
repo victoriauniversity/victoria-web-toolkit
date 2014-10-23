@@ -1,0 +1,29 @@
+// Less than IE8 Only // -------------------------------------------------------------
+
+@font-face {
+    font-family: 'National-Regular';
+    font-weight: normal;
+    src: url('/assets/fonts/NationalWebLF-Regular.eot');
+    src: url('/assets/fonts/NationalWebLF-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/assets/fonts/NationalWebLF-Regular.woff') format('woff'), /* Modern Browsers */
+         url('/assets/fonts/NationalWebLF-Regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'National-Semibold';
+    font-weight: normal;
+    src: url('/assets/fonts/NationalWebLF-Semibold.eot');
+    src: url('/assets/fonts/NationalWebLF-Semibold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/assets/fonts/NationalWebLF-Semibold.woff') format('woff'), /* Modern Browsers */
+         url('/assets/fonts/NationalWebLF-Semibold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'National-Extrabold';
+    font-weight: normal;
+    src: url('/assets/fonts/NationalWebLF-Extrabold.eot');
+    src: url('/assets/fonts/NationalWebLF-Extrabold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/assets/fonts/NationalWebLF-Extrabold.woff') format('woff'), /* Modern Browsers */
+         url('/assets/fonts/NationalWebLF-Extrabold.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
