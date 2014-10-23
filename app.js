@@ -38,7 +38,13 @@ if (process.env.NODE_ENV === 'production') {
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
         layoutsDir: 'views/layouts/',
-        partialsDir: 'views/partials/'
+        partialsDir: [  
+                    'views/partials/',
+                    'views/partials/_inc',
+                    'views/partials/_1_atoms',
+                    'views/partials/_2_mocules',
+                    'views/partials/_3_organisms'
+                    ] 
     }));
 
     // Locate the views
