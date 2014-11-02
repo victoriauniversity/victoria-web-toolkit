@@ -8,6 +8,5 @@ Thumbs.db
 /assets/.sass-cache/
 .sass-cache/
 
-# don't track the node modules (use npm install in a clean repo to obtain)
-node_modules/
+
 
