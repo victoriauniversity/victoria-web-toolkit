@@ -75,11 +75,9 @@
 //  */
 // app.listen(process.env.PORT || port);
 // console.log('Express started on port ' + port);
-// console.log(process.env.NODE_ENV);
+// // console.log(process.env.NODE_ENV);
 
-var http = require('http')
-var port = process.env.PORT || 1337;
-http.createServer(function(req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World\n');
-}).listen(port);
+var port = process.env.port || 1337;
+app.listen(port, function(){
+  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+});
