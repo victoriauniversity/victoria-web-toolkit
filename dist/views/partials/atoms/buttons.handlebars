@@ -1,0 +1,62 @@
+<h2 class="rule">Buttons</h2>
+<p>The button suite should be consistent across anchors, inputs and button elements. There are 4 style options and 3 size options, x-large remains unused at this stage but may prove useful.</p>
+
+<p>The standard
+    <code class="language-css">.button</code> without other classes is the default primary action. There is no inheritance logic to change styling simply add
+    <code>.secondary</code>,
+    <code>.tertiary</code>, or
+    <code>.transparent</code> to modify. Buttons with
+    <code>.transparent</code> look like simple links but behave as buttons and maintain the large hit state - they should stack nicely next to other more important actions.</p>
+   
+
+<div class="highlight example">
+{{>buttons/anchor_primary}}
+{{>buttons/anchor_secondary}}
+{{>buttons/anchor_tertiary}}
+{{>buttons/anchor_transparent}}
+</div>
+
+<pre>
+<code class="language-markup">{{>buttons/anchor_primary}}
+{{>buttons/anchor_secondary}}
+
+{{>buttons/anchor_tertiary}}
+
+{{>buttons/anchor_transparent}}</code></pre>
+
+
+ <p>It's probably worth reserving .secondary buttons for an alternative to primary blue buttons rather than a companion. Use it for other non-core actions on a page like sidebar or footer interactions.</p>
+
+<div class="highlight_tertiary">
+                <p>A standard pattern may look a bit like this:</p>
+                <p>
+                <a class='button'>Next Step</a>
+                <a class='button tertiary'>Skip this</a>
+                <a class='button transparent'>Hold up, go back</a>
+                </p>
+                </div>
+
+
+<h3>Anchors, inputs and buttons</h3>
+
+<p>The same classes above are avaible to use with <code>anchor input</code> and <code>button</code> elements</p>
+
+
+<div class="highlight example">
+{{>buttons/button_primary}}<br>
+{{>buttons/anchor_primary_disabled}}<br>
+{{>buttons/input_secondary_large}}<br>
+{{>buttons/button_tertiary_x_large}}<br>
+
+</div>
+
+<pre>
+<code class="language-markup">{{>buttons/button_primary}}
+{{>buttons/anchor_primary_disabled}}
+
+{{>buttons/input_secondary_large}}
+
+{{>buttons/button_tertiary_x_large}}</code></pre>
+
+
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20100429 at Wed Dec 12 02:14:48 2012
+ By root
+Copyright (C) 2012 by original authors @ fontello.com
+</metadata>
+<defs>
+<font id="testicons" horiz-adv-x="979" >
+  <font-face 
+    font-family="testicons"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="2 0 6 9 0 0 0 0 0 0"
+    ascent="850"
+    descent="-150"
+    bbox="16 -45 963 745"
+    underline-thickness="50"
+    underline-position="-100"
+    unicode-range="U+F08E-F08E"
+  />
+<missing-glyph 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".notdef" 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" 
+ />
+    <glyph glyph-name="uniF08E" unicode="&#xf08e;" 
+d="M786 288q46 -35 99 -36v-139q0 -52 -27.5 -89t-69.5 -56q-29 -13 -61 -13h-553q-52 0 -89.5 27.5t-56.5 69.5q-12 28 -12 61v474q0 52 27.5 89.5t69.5 55.5q28 13 61 13h299q-3 -29 -3 -30v-45q0 -11 3 -24h-299q-24 0 -41.5 -17.5t-17.5 -41.5v-474q0 -24 17.5 -41.5
+t41.5 -17.5h553q23 0 41 17.5t18 41.5v175zM372 224q0 13 8 21l396 397h-138q-13 0 -21 8.5t-8 20.5v44q-1 12 8.5 21t20.5 9h296q12 0 20.5 -9t8.5 -21v-296q0 -11 -8.5 -20.5t-20.5 -8.5h-44q-13 0 -21.5 8.5t-8.5 20.5v138l-397 -395q-8 -9 -21 -9q-10 0 -21 9l-41 41
+q-8 8 -8 21z" />
+  </font>
+</defs></svg>
