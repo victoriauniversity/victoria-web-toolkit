@@ -58,9 +58,17 @@ app.use(express.compress());
     app.use('/assets', express.static(__dirname + '/assets'));
 // }
 
+
+app.engine('handlebars', exphbs({defaultLayout: ''}));
+
+
 // Set Handlebars
 app.set('view engine', 'handlebars');
 
+
+app.get('/', function (req, res) {
+    res.render('home');
+});
 
 app.set('title', 'Fuckers');
 app.get('title'); // "My Site"
@@ -74,25 +82,25 @@ app.get('title'); // "My Site"
 // })
 
 // Index Page
-app.get('/', function (req, res) {
-    // response.send('Shaking');
-    res.render('index');
-    console.log('bootie');
-});
+// app.get('/', function (req, res) {
+//     // response.send('Shaking');
+//     res.render('index');
+//     console.log('bootie');
+// });
 
 
-app.get('/rage', function (req, res) {
-    // response.send('Shaking');
-    res.render('home');
-    console.log('bootie');
-});
+// app.get('/rage', function (req, res) {
+//     // response.send('Shaking');
+//     res.render('home');
+//     console.log('bootie');
+// });
 
 
-app.get('/test', function (req, res) {
-    res.send('Shaking');
-    // res.render('index');
-    console.log('bootie');
-});
+// app.get('/test', function (req, res) {
+//     res.send('Shaking');
+//     // res.render('index');
+//     console.log('bootie');
+// });
 
 
 /*
