@@ -59,11 +59,11 @@ app.use(express.compress());
 // }
 
 
-app.engine('handlebars', exphbs({defaultLayout: ''}));
+app.engine('html', require('ejs').renderFile);
 
 
 // Set Handlebars
-app.set('view engine', 'handlebars');
+app.set('view engine', 'ejs');
 
 
 app.get('/', function (req, res) {
