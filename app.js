@@ -4,13 +4,13 @@
  * Express Dependencies
  */
 var express = require('express');
-var app = express();
 var port = 1337;
 
 /*
  * Use Handlebars for templating
  */
 var exphbs = require('express-handlebars');
+var app = express();
 var hbs;
 
 // For gzip compression
@@ -26,7 +26,6 @@ if (process.env.NODE_ENV === 'production') {
         layoutsDir: 'dist/views/layouts/',
         partialsDir: [
             'dist/views/partials/',
-            'dist/views/partials/_inc',
             'dist/views/partials/atoms',
             'dist/views/partials/_2_mocules',
             'dist/views/partials/_3_organisms'
@@ -46,7 +45,6 @@ if (process.env.NODE_ENV === 'production') {
         layoutsDir: 'views/layouts/',
         partialsDir: [
             'views/partials/',
-            'views/partials/_inc',
             'views/partials/atoms',
             'views/partials/_2_mocules',
             'views/partials/_3_organisms'
@@ -69,10 +67,23 @@ app.get('title'); // "My Site"
 /*
  * Routes
  */
+
+
+app.use(function(req, res, next) {
+  res.send('Hello World yo muppet');
+})
+
 // Index Page
 app.get('/', function (req, res) {
     // response.send('Shaking');
     res.render('index');
+    console.log('bootie');
+});
+
+
+app.get('/rage', function (req, res) {
+    // response.send('Shaking');
+    res.render('home');
     console.log('bootie');
 });
 
