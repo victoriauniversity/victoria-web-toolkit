@@ -3,10 +3,16 @@
 Thumbs.db
 .tmp
 
+#error logs
+azure.err
+diagnostics.zip
+
 # don't track the compiled CSS
 /assets/css/
 /assets/.sass-cache/
 .sass-cache/
 
 
+# don't track the node modules (use npm install in a clean repo to obtain)
+node_modules/
 
