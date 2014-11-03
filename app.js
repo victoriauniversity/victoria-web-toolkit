@@ -64,7 +64,7 @@ app.set('view engine', 'handlebars');
  */
 // Index Page
 app.get('/', function (request, response) {
-    resquest.send('Shaking');
+    response.send('Shaking');
     // response.render('index');
     console.log('bootie');
   
