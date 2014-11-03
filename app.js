@@ -64,9 +64,9 @@ app.set('view engine', 'handlebars');
  */
 // Index Page
 app.get('/', function (request, response, next) {
-    response.render('index.handlebars');
+    response.render('index');
     console.log('bootie');
-    console.log(response.render('index'));
+  
 });
 
 
