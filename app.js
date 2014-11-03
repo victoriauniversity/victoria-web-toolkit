@@ -63,7 +63,7 @@ app.set('view engine', 'handlebars');
  * Routes
  */
 // Index Page
-app.get('/', function (request, response, next) {
+app.get('/', function (request, response) {
     response.render('index');
     console.log('bootie');
   
