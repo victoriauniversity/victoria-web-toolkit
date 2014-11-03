@@ -72,7 +72,7 @@ app.get('title'); // "My Site"
 // Index Page
 app.get('/', function (req, res) {
     // response.send('Shaking');
-    res.render('index.html');
+    res.render('index');
     console.log('bootie');
 });
 
