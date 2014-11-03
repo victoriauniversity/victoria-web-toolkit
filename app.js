@@ -74,4 +74,4 @@ app.get('/', function (request, response, next) {
  */
 app.listen(process.env.PORT || port);
 console.log('Express started on port ' + port);
-//console.log(process.env.NODE_ENV);
+console.log(process.env.NODE_ENV);
