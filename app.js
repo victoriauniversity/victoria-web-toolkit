@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
         layoutsDir: 'dist/views/layouts/',
         partialsDir: 'dist/views/partials/'
     }));
-
+    console.log('babie');
     // Locate the views
     app.set('views', __dirname + '/dist/views');
     
@@ -73,4 +73,4 @@ app.get('/', function (request, response, next) {
  */
 app.listen(process.env.PORT || port);
 console.log('Express started on port ' + port);
-console.log(process.env.NODE_ENV);
+//console.log(process.env.NODE_ENV);
