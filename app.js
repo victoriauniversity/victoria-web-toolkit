@@ -70,9 +70,9 @@ app.get('title'); // "My Site"
  * Routes
  */
 // Index Page
-app.get('/', function (request, response) {
+app.get('/', function (req, res) {
     // response.send('Shaking');
-    response.render('index');
+    res.render('index');
     console.log('bootie');
 
 
