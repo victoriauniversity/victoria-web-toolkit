@@ -78,7 +78,7 @@ app.get('/', function (req, res) {
 
 
 app.get('/test', function (req, res) {
-    response.send('Shaking');
+    res.send('Shaking');
     // res.render('index');
     console.log('bootie');
 });
