@@ -19,26 +19,26 @@ app.use(express.compress());
 /*
  * Config for Production and Development
  */
-if (process.env.NODE_ENV === 'production') {
-    // Set the default layout and locate layouts and partials
-    app.engine('handlebars', exphbs({
-        defaultLayout: 'main',
-        layoutsDir: 'dist/views/layouts/',
-        partialsDir: [
-            'dist/views/partials/',
-            'dist/views/partials/atoms',
-            'dist/views/partials/_2_mocules',
-            'dist/views/partials/_3_organisms'
-        ]
-    }));
+// if (process.env.NODE_ENV === 'production') {
+//     // Set the default layout and locate layouts and partials
+//     app.engine('handlebars', exphbs({
+//         defaultLayout: 'main',
+//         layoutsDir: 'dist/views/layouts/',
+//         partialsDir: [
+//             'dist/views/partials/',
+//             'dist/views/partials/atoms',
+//             'dist/views/partials/_2_mocules',
+//             'dist/views/partials/_3_organisms'
+//         ]
+//     }));
 
-    // Locate the views
-    app.set('views', __dirname + '/dist/views');
+//     // Locate the views
+//     app.set('views', __dirname + '/dist/views');
     
-    // Locate the assets
-    app.use(express.static(__dirname + '/dist/assets/'));
+//     // Locate the assets
+//     app.use(express.static(__dirname + '/dist/assets/'));
 
-} else {
+// } else {
     app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
@@ -56,7 +56,7 @@ if (process.env.NODE_ENV === 'production') {
     
     // Locate the assets
     app.use('/assets', express.static(__dirname + '/assets'));
-}
+// }
 
 // Set Handlebars
 app.set('view engine', 'handlebars');
@@ -69,9 +69,9 @@ app.get('title'); // "My Site"
  */
 
 
-app.use(function(req, res, next) {
-  res.send('Hello World yo muppet');
-})
+// app.use(function(req, res, next) {
+//   res.send('Hello World yo muppet');
+// })
 
 // Index Page
 app.get('/', function (req, res) {
