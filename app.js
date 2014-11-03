@@ -67,7 +67,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', function (req, res) {
-    res.render('home');
+    res.render('home.html');
 });
 
 app.set('title', 'Fuckers');
