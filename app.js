@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
         layoutsDir: 'dist/views/layouts/',
         partialsDir: 'dist/views/partials/'
     }));
-    console.log('babie');
+
     // Locate the views
     app.set('views', __dirname + '/dist/views');
     
@@ -38,20 +38,20 @@ if (process.env.NODE_ENV === 'production') {
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
         layoutsDir: 'views/layouts/',
-        partialsDir: [  
-                    'views/partials/',
-                    'views/partials/_inc',
-                    'views/partials/atoms',
-                    'views/partials/_2_mocules',
-                    'views/partials/_3_organisms'
-                    ] 
+        partialsDir: [
+            'views/partials/',
+            'views/partials/_inc',
+            'views/partials/atoms',
+            'views/partials/_2_mocules',
+            'views/partials/_3_organisms'
+        ]
     }));
 
     // Locate the views
     app.set('views', __dirname + '/views');
     
     // Locate the assets
-    app.use('/assets',express.static(__dirname + '/assets'));
+    app.use('/assets', express.static(__dirname + '/assets'));
 }
 
 // Set Handlebars
@@ -65,6 +65,7 @@ app.set('view engine', 'handlebars');
 // Index Page
 app.get('/', function (request, response, next) {
     response.render('index');
+    console.log('babie');
 });
 
 
