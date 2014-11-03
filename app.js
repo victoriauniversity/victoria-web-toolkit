@@ -64,7 +64,8 @@ if (process.env.NODE_ENV === 'production') {
 app.set('view engine', 'handlebars');
 
 
-
+app.set('title', 'Fuckers');
+app.get('title'); // "My Site"
 /*
  * Routes
  */
@@ -73,6 +74,8 @@ app.get('/', function (request, response) {
     // response.send('Shaking');
     response.render('index');
     console.log('bootie');
+
+
   
 });
 
