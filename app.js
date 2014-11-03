@@ -24,7 +24,13 @@ if (process.env.NODE_ENV === 'production') {
     app.engine('handlebars', exphbs({
         defaultLayout: 'main',
         layoutsDir: 'dist/views/layouts/',
-        partialsDir: 'dist/views/partials/'
+        partialsDir: [
+            'dist/views/partials/',
+            'dist/views/partials/_inc',
+            'dist/views/partials/atoms',
+            'dist/views/partials/_2_mocules',
+            'dist/views/partials/_3_organisms'
+        ]
     }));
 
     // Locate the views
