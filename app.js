@@ -39,17 +39,17 @@ app.use(express.compress());
 //     app.use(express.static(__dirname + '/dist/assets/'));
 
 // } else {
-    app.engine('handlebars', exphbs({
-        // Default Layout and locate layouts and partials
-        defaultLayout: 'main',
-        layoutsDir: 'views/layouts/',
-        partialsDir: [
-            'views/partials/',
-            'views/partials/atoms',
-            'views/partials/_2_mocules',
-            'views/partials/_3_organisms'
-        ]
-    }));
+    // app.engine('handlebars', exphbs({
+    //     // Default Layout and locate layouts and partials
+    //     defaultLayout: 'main',
+    //     layoutsDir: 'views/layouts/',
+    //     partialsDir: [
+    //         'views/partials/',
+    //         'views/partials/atoms',
+    //         'views/partials/_2_mocules',
+    //         'views/partials/_3_organisms'
+    //     ]
+    // }));
 
     // Locate the views
     app.set('views', __dirname + '/views');
