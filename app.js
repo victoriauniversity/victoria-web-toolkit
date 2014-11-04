@@ -42,7 +42,7 @@ var theLayoutsPath = path.resolve('views/layouts/');
 
 
 // } else {
-    app.engine('hbs', exphbs({
+    app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
         layoutsDir: theLayoutsPath,
@@ -76,12 +76,10 @@ var thePath = path.normalize(__dirname + '/assets');
 
 
 // Set Handlebars
-app.set('view engine', 'hbs');
+app.set('view engine', 'handlebars');
 
-
-
-app.set('title', 'Fuckers');
-app.get('title'); // "My Site"
+// app.set('title', 'Fuckers');
+// app.get('title'); // "My Site"
 /*
  * Routes
  */
@@ -95,7 +93,7 @@ app.get('title'); // "My Site"
 app.get('/', function (request, response, next) {
    
     //response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
-    response.render('index');
+    response.render('home');
     console.log('bootie');
     console.log(theLayoutsPath);
 });
