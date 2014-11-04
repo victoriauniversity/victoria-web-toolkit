@@ -42,10 +42,10 @@ app.set('view engine', 'handlebars');
 var path = require('path');
 var theLayoutsPath = path.normalize('views/');
 
-var thePartialsPath = path.resolve('views/partials/');
-var theAtomsPath = path.resolve('views/partials/atoms/');
-var theMoleculesPath = path.resolve('views/partials/_2_molecules/');
-var theOrganismsPath = path.resolve('views/partials/_3_organisms/');
+var thePartialsPath     = path.normalize('views/partials/');
+var theAtomsPath        = path.normalize('views/partials/atoms/');
+var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
+var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
 
 // } else {
