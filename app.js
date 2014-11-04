@@ -38,13 +38,13 @@ app.use(express.compress());
 //     // Locate the assets
 //     app.use(express.static(__dirname + '/dist/assets/'));
 var path = require('path');
-var theLayoutsPath = path.resolve('views/layouts');
+var theLayoutsPath = path.resolve('views/');
 
 
 // } else {
     app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
-        defaultLayout: '',
+        defaultLayout: 'home',
         layoutsDir: theLayoutsPath,
         partialsDir: [
             'views/partials/',
@@ -70,7 +70,7 @@ var thePath = path.normalize(__dirname + '/assets');
    app.use('/assets/', express.static(thePath));
    
 
-   app.use('/views/', express.static(__dirname + '/views/'));
+   // app.use('/views/', express.static(__dirname + '/views/'));
 
 // }
 
@@ -93,7 +93,7 @@ app.set('view engine', 'handlebars');
 app.get('/', function (request, response, next) {
    
     //response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
-    response.render('home');
+    response.render('');
     console.log('boobies');
     console.log(theLayoutsPath);
 });
