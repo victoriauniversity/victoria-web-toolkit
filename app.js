@@ -62,7 +62,7 @@ var theOrganismsPath = path.resolve('views/partials/_3_organisms/');
     }));
 
     // Locate the views
-    app.set('views', __dirname + '/views');
+    app.set('views', theLayoutsPath);
     
     // Locate the assets
 
@@ -73,8 +73,7 @@ var thePath = path.normalize(__dirname + '/assets');
 
 
 // app.use(express.static(__dirname + '/assets'));
-
-   app.use('/assets/', express.static(thePath));
+app.use('/assets/', express.static(thePath));
    
 
    // app.use('/views/', express.static(__dirname + '/views/'));
