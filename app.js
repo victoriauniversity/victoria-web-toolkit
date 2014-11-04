@@ -60,7 +60,7 @@ var thePath = path.normalize(__dirname + '/assets');
 
 
 
-app.use('/assets', express.static(path.normalize(__dirname + '/assets')));
+app.use(express.static(path.normalize(__dirname + '/assets')));
 
    // app.use('/assets', express.static(__dirname + '/assets'));
    
@@ -80,7 +80,7 @@ app.get('title'); // "My Site"
  * Routes
  */
 
-
+app.use(logger());
 // app.use(function(req, res, next) {
 //   res.send('Hello World yo muppet');
 // })
