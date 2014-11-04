@@ -181,13 +181,13 @@ require('express-debug')(app, {/* settings */});
 app.engine('html', exphbs({
     // extname: '.handlebars',
     defaultLayout: '',
-    layoutsDir: theLayoutsPath,
-    partialsDir: [
-        thePartialsPath,
-        theAtomsPath,
-        theMoleculesPath,
-        theOrganismsPath
-    ],
+    layoutsDir: theLayoutsPath
+    // partialsDir: [
+    //     thePartialsPath,
+    //     theAtomsPath,
+    //     theMoleculesPath,
+    //     theOrganismsPath
+    // ],
 }));
     // // extname: '.handlebars',
     // defaultLayout: '',
