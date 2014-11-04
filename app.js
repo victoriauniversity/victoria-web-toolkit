@@ -39,7 +39,7 @@ app.use(express.compress());
 //     app.use(express.static(__dirname + '/dist/assets/'));
 
 // } else {
-    app.engine('hbs', exphbs({
+    app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
         layoutsDir: 'views/layouts/',
@@ -66,7 +66,7 @@ app.use('/assets', express.static(path.join(__dirname + '/assets')));
 
 
 // Set Handlebars
-app.set('view engine', 'hbs');
+app.set('view engine', 'handlebars');
 
 
 
@@ -86,7 +86,7 @@ app.get('/', function (request, response, next) {
     console.log('path');
    // response.send('path');
    // print('tet');
-    response.render('index');
+    response.render('main');
     console.log('bootie');
     console.log(path);
 });
