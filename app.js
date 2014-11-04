@@ -18,12 +18,6 @@ var hbs;
 
 // app.set('view engine', 'handlebars');
 
-var app = express(),
-    hbs = exphbs.create({ /* config */ });
-
-// Register `hbs.engine` with the Express app.
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
 
 /*
  * Config for Production and Development
@@ -54,10 +48,8 @@ var theAtomsPath        = path.normalize('views/partials/atoms/');
 var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
 var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
-
-// } else {
-    app.engine('handlebars', exphbs({
-        // Default Layout and locate layouts and partials
+var app = express(),
+    hbs = exphbs.create({
         defaultLayout: '',
         layoutsDir: theLayoutsPath,
         partialsDir: [
@@ -66,7 +58,24 @@ var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
             theMoleculesPath,
             theOrganismsPath
         ],
-    }));
+    });
+
+// Register `hbs.engine` with the Express app.
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// } else {
+    // app.engine('handlebars', exphbs({
+    //     // Default Layout and locate layouts and partials
+    //     defaultLayout: '',
+    //     layoutsDir: theLayoutsPath,
+    //     partialsDir: [
+    //         thePartialsPath,
+    //         theAtomsPath,
+    //         theMoleculesPath,
+    //         theOrganismsPath
+    //     ],
+    // }));
 
     // Locate the views
     app.set('views', theLayoutsPath);
