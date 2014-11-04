@@ -42,12 +42,12 @@ var path = require('path');
     app.engine('hbs', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
-        layoutsDir: '/views/layouts/',
+        layoutsDir: 'views/layouts/',
         partialsDir: [
-            '/views/partials/',
-            '/views/partials/atoms/',
-            '/views/partials/_2_mocules/',
-            '/views/partials/_3_organisms/'
+            'views/partials/',
+            'views/partials/atoms/',
+            'views/partials/_2_mocules/',
+            'views/partials/_3_organisms/'
         ]
     }));
 
@@ -56,13 +56,13 @@ var path = require('path');
     
     // Locate the assets
 
-var thePath = __dirname + '/assets';
+var thePath = path.normalize(__dirname + '/assets');
 
 
 
 // app.use(express.static(__dirname + '/assets'));
 
-   app.use('/assets/', express.static(__dirname + '/assets/'));
+   app.use('/assets/', express.static(thePath));
    
 
    app.use('/views/', express.static(__dirname + '/views/'));
