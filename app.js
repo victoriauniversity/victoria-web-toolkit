@@ -80,7 +80,7 @@ app.get('title'); // "My Site"
  * Routes
  */
 
-app.use(logger());
+
 // app.use(function(req, res, next) {
 //   res.send('Hello World yo muppet');
 // })
