@@ -193,8 +193,9 @@ var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
 
 app.get('/', function (req, res) {
-    res.render('home');
-    console.log('boobies');
+    // res.render('home');
+     res.send('Shaking');
+    console.log('bos');
 });
 
 app.listen(process.env.PORT || port);
