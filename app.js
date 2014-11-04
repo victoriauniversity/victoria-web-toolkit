@@ -16,6 +16,13 @@ var hbs;
 // For gzip compression
 //app.use(express.compress());
 
+// app.set('view engine', 'handlebars');
+
+var app = express(),
+    hbs = exphbs.create({ /* config */ });
+
+// Register `hbs.engine` with the Express app.
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 /*
