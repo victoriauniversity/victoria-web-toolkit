@@ -162,14 +162,14 @@ var port = 1337;
 // });
 
 var path = require('path');
-var theLayoutsPath = path.normalize('');
-var thePartialsPath     = path.normalize('views/partials/');
-var theAtomsPath        = path.normalize('views/partials/atoms/');
-var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
-var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
+// var theLayoutsPath = path.normalize('');
+// var thePartialsPath     = path.normalize('views/partials/');
+// var theAtomsPath        = path.normalize('views/partials/atoms/');
+// var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
+// var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
 var express = require('express');
-var ejs = require('ejs');
+//var ejs = require('ejs');
 var exphbs  = require('express-handlebars');
 
 var app = express();
@@ -178,17 +178,17 @@ require('express-debug')(app, {/* settings */});
 
 // app.engine('html', require('ejs').renderFile);
  
-app.engine('html', exphbs({
+app.engine('html', exphbs({}));
     // extname: '.handlebars',
-    defaultLayout: '',
-    layoutsDir: theLayoutsPath
+    // defaultLayout: '',
+    // layoutsDir: theLayoutsPath
     // partialsDir: [
     //     thePartialsPath,
     //     theAtomsPath,
     //     theMoleculesPath,
     //     theOrganismsPath
     // ],
-}));
+
     // // extname: '.handlebars',
     // defaultLayout: '',
     // layoutsDir: theLayoutsPath,
@@ -216,6 +216,6 @@ app.get('/', function (req, res) {
 
 app.listen(process.env.PORT || port);
 console.log('Express started on port ' + port);
-console.log(theLayoutsPath);
+// console.log(theLayoutsPath);
 // // console.log(process.env.NODE_ENV);
 
