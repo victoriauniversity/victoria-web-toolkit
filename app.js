@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // /*
 //  * Express Dependencies
@@ -174,6 +174,8 @@ var exphbs  = require('express-handlebars');
 
 var app = express();
 
+require('express-debug')(app, {/* settings */});
+
 // app.engine('html', require('ejs').renderFile);
  
 app.engine('html', exphbs({
@@ -204,9 +206,12 @@ var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
 
 app.get('/', function (req, res) {
-     res.render('home');
-     // res.send('Shaking');
-    console.log('bos');
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('bos');
+    res.render('home');
 });
 
 app.listen(process.env.PORT || port);
