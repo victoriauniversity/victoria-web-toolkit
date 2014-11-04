@@ -39,17 +39,17 @@ app.use(express.compress());
 //     app.use(express.static(__dirname + '/dist/assets/'));
 
 // } else {
-    // app.engine('handlebars', exphbs({
-    //     // Default Layout and locate layouts and partials
-    //     defaultLayout: 'main',
-    //     layoutsDir: 'views/layouts/',
-    //     partialsDir: [
-    //         'views/partials/',
-    //         'views/partials/atoms',
-    //         'views/partials/_2_mocules',
-    //         'views/partials/_3_organisms'
-    //     ]
-    // }));
+    app.engine('hbs', exphbs({
+        // Default Layout and locate layouts and partials
+        defaultLayout: 'main',
+        layoutsDir: 'views/layouts/',
+        partialsDir: [
+            'views/partials/',
+            'views/partials/atoms',
+            'views/partials/_2_mocules',
+            'views/partials/_3_organisms'
+        ]
+    }));
 
     // Locate the views
     app.set('views', __dirname + '/views');
@@ -59,16 +59,10 @@ app.use(express.compress());
 // }
 
 
-app.engine('html', require('ejs').renderFile);
-
-
 // Set Handlebars
-app.set('view engine', 'ejs');
+app.set('view engine', 'hbs');
 
 
-app.get('/', function (req, res) {
-    res.render('home.html');
-});
 
 app.set('title', 'Fuckers');
 app.get('title'); // "My Site"
@@ -82,11 +76,11 @@ app.get('title'); // "My Site"
 // })
 
 // Index Page
-// app.get('/', function (req, res) {
-//     // response.send('Shaking');
-//     res.render('index');
-//     console.log('bootie');
-// });
+app.get('/', function (req, res) {
+    // response.send('Shaking');
+    res.render('index');
+    console.log('bootie');
+});
 
 
 // app.get('/rage', function (req, res) {
