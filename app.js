@@ -44,7 +44,7 @@ var theLayoutsPath = path.resolve('views/layouts/');
 // } else {
     app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
-        defaultLayout: 'main',
+        defaultLayout: '',
         layoutsDir: theLayoutsPath,
         partialsDir: [
             'views/partials/',
