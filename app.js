@@ -42,7 +42,7 @@ app.use(express.compress());
     app.engine('hbs', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
-        layoutsDir: 'views/layouts/',
+        layoutsDir: path.normalize('views/layouts/'),
         partialsDir: [
             'views/partials/',
             'views/partials/atoms',
@@ -55,12 +55,12 @@ app.use(express.compress());
     app.set('views', __dirname + '/views');
     
     // Locate the assets
-var path = require ('path');
+var path = require('path');
 var thePath = path.normalize(__dirname + '/assets');
 
 
 
-app.use('/assets', express.static(__dirname + '/assets'));
+app.use('/assets', express.static(path.normalize(__dirname + '/assets')));
 
    // app.use('/assets', express.static(__dirname + '/assets'));
    
