@@ -171,6 +171,7 @@ var path = require('path');
 var express = require('express');
 //var ejs = require('ejs');
 var exphbs  = require('express-handlebars');
+ // Handlebars = require('handlebars');
 
 var app = express();
 
