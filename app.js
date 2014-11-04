@@ -37,7 +37,7 @@ app.use(express.compress());
     
 //     // Locate the assets
 //     app.use(express.static(__dirname + '/dist/assets/'));
-
+var path = require('path');
 // } else {
     app.engine('hbs', exphbs({
         // Default Layout and locate layouts and partials
@@ -55,7 +55,7 @@ app.use(express.compress());
     app.set('views', __dirname + '/views');
     
     // Locate the assets
-var path = require('path');
+
 var thePath = path.normalize(__dirname + '/assets');
 
 
