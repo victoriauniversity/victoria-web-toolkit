@@ -55,9 +55,10 @@ app.use(express.compress());
     app.set('views', __dirname + '/views');
     
     // Locate the assets
-   var path = express.static(__dirname + '/assets');
+var path = require ('path');
+app.use('/assets', express.static(path.join(__dirname + '/assets')));
 
-   app.use('/assets', express.static(__dirname + '/assets'));
+   // app.use('/assets', express.static(__dirname + '/assets'));
    
 
 
@@ -81,10 +82,11 @@ app.get('title'); // "My Site"
 // })
 
 // Index Page
-app.get('/', function (req, res) {
-    console.log(path);
-    // response.send('Shaking');
-    res.render('index');
+app.get('/', function (request, response, next) {
+    console.log('path');
+   // response.send('path');
+   // print('tet');
+    response.render('index');
     console.log('bootie');
     console.log(path);
 });
