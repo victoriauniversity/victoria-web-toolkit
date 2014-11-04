@@ -168,33 +168,34 @@ var theAtomsPath        = path.normalize('views/partials/atoms/');
 var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
 var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
-var express = require('express'),
-    exphbs  = require('express-handlebars');
+var express = require('express');
+var ejs  = require('ejs');
+    // exphbs  = require('express-handlebars');
 
 var app = express();
 
-app.engine('handlebars', exphbs({
+app.engine('html', require('ejs').renderFile);
 
-    extname: '.handlebars',
-    defaultLayout: 'main',
-    layoutsDir: theLayoutsPath,
-    partialsDir: [
-        thePartialsPath,
-        theAtomsPath,
-        theMoleculesPath,
-        theOrganismsPath
-    ],
 
-}));
+    // // extname: '.handlebars',
+    // defaultLayout: '',
+    // layoutsDir: theLayoutsPath,
+    // partialsDir: [
+    //     thePartialsPath,
+    //     theAtomsPath,
+    //     theMoleculesPath,
+    //     theOrganismsPath
+    // ],
 
-app.set('view engine', 'handlebars');
+
+app.set('view engine', 'ejs');
 
 var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
 
 app.get('/', function (req, res) {
-    // res.render('home');
-     res.send('Shaking');
+     res.render('home.html');
+     // res.send('Shaking');
     console.log('bos');
 });
 
