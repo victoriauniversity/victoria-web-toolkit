@@ -56,7 +56,11 @@ app.use(express.compress());
     
     // Locate the assets
 var path = require ('path');
-app.use('/assets', express.static(path.join(__dirname + '/assets')));
+var thePath = path.normalize(__dirname + '/assets');
+
+
+
+app.use('/assets', express.static(__dirname + '/assets'));
 
    // app.use('/assets', express.static(__dirname + '/assets'));
    
@@ -88,7 +92,7 @@ app.get('/', function (request, response, next) {
    // print('tet');
     response.render('index');
     console.log('bootie');
-    console.log(path);
+    console.log(thePath);
 });
 
 
