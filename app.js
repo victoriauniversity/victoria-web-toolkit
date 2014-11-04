@@ -56,7 +56,7 @@ app.use(express.compress());
     
     // Locate the assets
    var path = express.static(__dirname + '/assets');
-   console.log(path);
+
    app.use('/assets', express.static(__dirname + '/assets'));
    
 
@@ -82,9 +82,11 @@ app.get('title'); // "My Site"
 
 // Index Page
 app.get('/', function (req, res) {
+    console.log(path);
     // response.send('Shaking');
     res.render('index');
     console.log('bootie');
+    console.log(path);
 });
 
 
