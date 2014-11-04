@@ -40,7 +40,7 @@ app.set('view engine', 'handlebars');
 //     // Locate the assets
 //     app.use(express.static(__dirname + '/dist/assets/'));
 var path = require('path');
-var theLayoutsPath = path.resolve('views/');
+var theLayoutsPath = path.normalize('views/');
 
 var thePartialsPath = path.resolve('views/partials/');
 var theAtomsPath = path.resolve('views/partials/atoms/');
@@ -51,7 +51,7 @@ var theOrganismsPath = path.resolve('views/partials/_3_organisms/');
 // } else {
     app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
-        defaultLayout: 'home',
+        defaultLayout: 'main',
         layoutsDir: theLayoutsPath,
         partialsDir: [
             thePartialsPath,
@@ -65,12 +65,7 @@ var theOrganismsPath = path.resolve('views/partials/_3_organisms/');
     app.set('views', theLayoutsPath);
     
     // Locate the assets
-
 var thePath = path.normalize(__dirname + '/assets');
-
-
-
-
 
 // app.use(express.static(__dirname + '/assets'));
 app.use('/assets/', express.static(thePath));
@@ -99,7 +94,7 @@ app.use('/assets/', express.static(thePath));
 app.get('/', function (request, response, next) {
    
     //response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
-    response.render('');
+    response.render('index');
     console.log('boobies');
     console.log(theLayoutsPath);
      console.log(thePartialsPath);
