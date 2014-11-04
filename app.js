@@ -176,9 +176,9 @@ var app = express();
 
 // app.engine('html', require('ejs').renderFile);
  
-app.engine('handlebars', exphbs({
+app.engine('html', exphbs({
     // extname: '.handlebars',
-    defaultLayout: 'main',
+    defaultLayout: '',
     layoutsDir: theLayoutsPath,
     partialsDir: [
         thePartialsPath,
@@ -198,13 +198,13 @@ app.engine('handlebars', exphbs({
     // ],
 
 
-app.set('view engine', 'handlebars');
+app.set('view engine', 'html');
 
 var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
 
 app.get('/', function (req, res) {
-     res.render('index');
+     res.render('home');
      // res.send('Shaking');
     console.log('bos');
 });
