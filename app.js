@@ -169,14 +169,24 @@ var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
 var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
 var express = require('express');
-var ejs  = require('ejs');
-    // exphbs  = require('express-handlebars');
+var ejs = require('ejs');
+var exphbs  = require('express-handlebars');
 
 var app = express();
 
-app.engine('html', require('ejs').renderFile);
-
-
+// app.engine('html', require('ejs').renderFile);
+ 
+app.engine('handlebars', exphbs({
+    // extname: '.handlebars',
+    defaultLayout: 'main',
+    layoutsDir: theLayoutsPath,
+    partialsDir: [
+        thePartialsPath,
+        theAtomsPath,
+        theMoleculesPath,
+        theOrganismsPath
+    ],
+}));
     // // extname: '.handlebars',
     // defaultLayout: '',
     // layoutsDir: theLayoutsPath,
@@ -194,7 +204,7 @@ var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
 
 app.get('/', function (req, res) {
-     res.render('home.html');
+     res.render('index.handlebars');
      // res.send('Shaking');
     console.log('bos');
 });
