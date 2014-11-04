@@ -162,7 +162,7 @@ var port = 1337;
 // });
 
 var path = require('path');
-var theLayoutsPath = path.normalize('/views');
+var theLayoutsPath = path.normalize('\views');
 var thePartialsPath     = path.normalize('views/partials/');
 var theAtomsPath        = path.normalize('views/partials/atoms/');
 var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
