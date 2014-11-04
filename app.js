@@ -198,13 +198,13 @@ app.engine('handlebars', exphbs({
     // ],
 
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'handlebars');
 
 var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
 
 app.get('/', function (req, res) {
-     res.render('index.handlebars');
+     res.render('index');
      // res.send('Shaking');
     console.log('bos');
 });
