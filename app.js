@@ -38,17 +38,20 @@ app.use(express.compress());
 //     // Locate the assets
 //     app.use(express.static(__dirname + '/dist/assets/'));
 var path = require('path');
+var theLayoutsPath = path.resolve('views/layouts/');
+
+
 // } else {
     app.engine('hbs', exphbs({
         // Default Layout and locate layouts and partials
         defaultLayout: 'main',
-        layoutsDir: 'views/layouts/',
+        layoutsDir: theLayoutsPath,
         partialsDir: [
             'views/partials/',
             'views/partials/atoms/',
             'views/partials/_2_mocules/',
             'views/partials/_3_organisms/'
-        ]
+        ],
     }));
 
     // Locate the views
@@ -57,6 +60,8 @@ var path = require('path');
     // Locate the assets
 
 var thePath = path.normalize(__dirname + '/assets');
+
+
 
 
 
@@ -92,7 +97,7 @@ app.get('/', function (request, response, next) {
     //response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
     response.render('index');
     console.log('bootie');
-    console.log(thePath);
+    console.log(theLayoutsPath);
 });
 
 
