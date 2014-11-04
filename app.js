@@ -51,7 +51,7 @@ var theOrganismsPath = path.resolve('views/partials/_3_organisms/');
 // } else {
     app.engine('handlebars', exphbs({
         // Default Layout and locate layouts and partials
-        defaultLayout: 'main',
+        defaultLayout: '',
         layoutsDir: theLayoutsPath,
         partialsDir: [
             thePartialsPath,
@@ -94,7 +94,7 @@ app.use('/assets/', express.static(thePath));
 app.get('/', function (request, response, next) {
    
     //response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
-    response.render('index');
+    response.render('home');
     console.log('boobies');
     console.log(theLayoutsPath);
      console.log(thePartialsPath);
