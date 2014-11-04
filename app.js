@@ -40,6 +40,11 @@ app.use(express.compress());
 var path = require('path');
 var theLayoutsPath = path.resolve('views/');
 
+var thePartialsPath = path.resolve('views/partials/');
+var theAtomsPath = path.resolve('views/partials/atoms/');
+var theMoleculesPath = path.resolve('views/partials/_2_molecules/');
+var theOrganismsPath = path.resolve('views/partials/_3_organisms/');
+
 
 // } else {
     app.engine('handlebars', exphbs({
@@ -47,10 +52,10 @@ var theLayoutsPath = path.resolve('views/');
         defaultLayout: 'home',
         layoutsDir: theLayoutsPath,
         partialsDir: [
-            'views/partials/',
-            'views/partials/atoms/',
-            'views/partials/_2_mocules/',
-            'views/partials/_3_organisms/'
+            thePartialsPath,
+            theAtomsPath,
+            theMoleculesPath,
+            theOrganismsPath
         ],
     }));
 
@@ -96,6 +101,11 @@ app.get('/', function (request, response, next) {
     response.render('');
     console.log('boobies');
     console.log(theLayoutsPath);
+     console.log(thePartialsPath);
+      console.log(theAtomsPath);
+       console.log(theMoleculesPath);
+        console.log(theOrganismsPath);
+
 });
 
 
