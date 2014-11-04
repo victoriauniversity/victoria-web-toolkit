@@ -55,8 +55,12 @@ app.use(express.compress());
     app.set('views', __dirname + '/views');
     
     // Locate the assets
-   var path =  app.use('/assets', express.static(__dirname + '/assets'));
+   var path = path.join(__dirname + '/assets');
+
+   // app.use('/assets', express.static(__dirname + '/assets'));
    console.log(path);
+
+   app.use('/assets', express.static());
 // }
 
 
