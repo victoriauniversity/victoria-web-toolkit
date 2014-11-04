@@ -65,6 +65,7 @@ var thePath = path.normalize(__dirname + '/assets');
    app.use('/assets', express.static(__dirname + '/assets'));
    
 
+   app.use('/views', express.static(__dirname + '/views'));
 
 // }
 
