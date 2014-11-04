@@ -175,6 +175,7 @@ var app = express();
 
 app.engine('handlebars', exphbs({
 
+    extname: '.handlebars',
     defaultLayout: 'main',
     layoutsDir: theLayoutsPath,
     partialsDir: [
