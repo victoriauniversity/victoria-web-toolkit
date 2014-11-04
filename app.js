@@ -89,8 +89,8 @@ app.get('title'); // "My Site"
 // Index Page
 app.get('/', function (request, response, next) {
    
-    response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
-    // response.render('index');
+    //response.send('<img style="background:black;" src="/assets/images/logo_desktop.png">');
+    response.render('index');
     console.log('bootie');
     console.log(thePath);
 });
