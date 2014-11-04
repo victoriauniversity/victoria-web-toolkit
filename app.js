@@ -216,5 +216,6 @@ app.get('/', function (req, res) {
 
 app.listen(process.env.PORT || port);
 console.log('Express started on port ' + port);
+console.log(theLayoutsPath);
 // // console.log(process.env.NODE_ENV);
 
