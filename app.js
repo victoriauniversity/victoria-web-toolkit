@@ -14,7 +14,9 @@ var app = express();
 var hbs;
 
 // For gzip compression
-app.use(express.compress());
+//app.use(express.compress());
+
+app.set('view engine', 'handlebars');
 
 /*
  * Config for Production and Development
@@ -81,7 +83,7 @@ var thePath = path.normalize(__dirname + '/assets');
 
 
 // Set Handlebars
-app.set('view engine', 'handlebars');
+
 
 // app.set('title', 'Fuckers');
 // app.get('title'); // "My Site"
