@@ -8,7 +8,7 @@ azure.err
 diagnostics.zip
 
 # don't track the compiled CSS
-/assets/css/
+
 /assets/.sass-cache/
 .sass-cache/
 
