@@ -175,7 +175,7 @@ var hbs  = require('express-hbs');
 
 var app = express();
 
-require('express-debug')(app, {/* settings */});
+// require('express-debug')(app, {/* settings */});
 
 // app.engine('html', require('ejs').renderFile);
  
@@ -193,7 +193,7 @@ app.engine('handlebars', hbs.express3({
     // // extname: '.handlebars',
     layoutsDir: __dirname + '/views/layouts',
     partialsDir:  [ __dirname + '/views/partials',
-                    __dirname + '/views/partials/atoms', 
+                    __dirname + '/views/partials/atoms',
                     __dirname + '/views/partials/organisms'
 
         // thePartialsPath,
