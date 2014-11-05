@@ -163,10 +163,10 @@ var port = 1337;
 
 var path = require('path');
 var theLayoutsPath = 'views/layouts';
-var thePartialsPath     = path.normalize(__dirname + '/views/partials');
-var theAtomsPath        = path.normalize(__dirname + '/views/partials/atoms');
-var theMoleculesPath    = path.normalize(__dirname + '/views/partials/_2_molecules');
-var theOrganismsPath    = path.normalize(__dirname + '/views/partials/_3_organisms');
+var thePartialsPath     = path.resolve(__dirname + '/views/partials');
+var theAtomsPath        = path.resolve(__dirname + '/views/partials/atoms');
+var theMoleculesPath    = path.resolve(__dirname + '/views/partials/_2_molecules');
+var theOrganismsPath    = path.resolve(__dirname + '/views/partials/_3_organisms');
 
 var express = require('express');
 //var ejs = require('ejs');
