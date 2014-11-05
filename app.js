@@ -191,7 +191,6 @@ app.engine('handlebars', hbs.express3({
     // ],
 
     // // extname: '.handlebars',
-    defaultLayout: 'main',
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: [
         thePartialsPath,
@@ -220,6 +219,7 @@ app.get('/', function (req, res) {
 
 app.listen(process.env.PORT || port);
 console.log('Express started on port ' + port);
-// console.log(theLayoutsPath);
+
+console.log(theLayoutsPath);
 // // console.log(process.env.NODE_ENV);
 
