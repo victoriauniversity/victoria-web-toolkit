@@ -163,10 +163,6 @@ var port = 1337;
 
 var path = require('path');
 var theLayoutsPath = 'views/layouts';
-var thePartialsPath     = path.normalize('views/partials/');
-var theAtomsPath        = path.normalize('views/partials/atoms/');
-var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
-var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
 var express = require('express');
 //var ejs = require('ejs');
@@ -193,10 +189,11 @@ app.engine('handlebars', hbs.express3({
     // // extname: '.handlebars',
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: [
-        thePartialsPath,
-        theAtomsPath,
-        theMoleculesPath,
-        theOrganismsPath
+       __dirname + '/views/partials/',
+       __dirname + '/views/partials/atoms/',
+       __dirname + '/views/partials/_2_molecules/',
+       __dirname + '/views/partials/_3_organisms/'
+
     ],
 }));
 
