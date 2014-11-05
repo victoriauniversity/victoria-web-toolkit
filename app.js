@@ -162,11 +162,11 @@ var port = 1337;
 // });
 
 var path = require('path');
-// var theLayoutsPath = path.normalize('');
-// var thePartialsPath     = path.normalize('views/partials/');
-// var theAtomsPath        = path.normalize('views/partials/atoms/');
-// var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
-// var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
+var theLayoutsPath = 'views/layouts';
+var thePartialsPath     = path.normalize('views/partials/');
+var theAtomsPath        = path.normalize('views/partials/atoms/');
+var theMoleculesPath    = path.normalize('views/partials/_2_molecules/');
+var theOrganismsPath    = path.normalize('views/partials/_3_organisms/');
 
 var express = require('express');
 //var ejs = require('ejs');
@@ -179,7 +179,7 @@ require('express-debug')(app, {/* settings */});
 
 // app.engine('html', require('ejs').renderFile);
  
-app.engine('html', hbs.express3({}));
+app.engine('handlebars', hbs.express3({
     // extname: '.handlebars',
     // defaultLayout: '',
     // layoutsDir: theLayoutsPath
@@ -191,17 +191,17 @@ app.engine('html', hbs.express3({}));
     // ],
 
     // // extname: '.handlebars',
-    // defaultLayout: '',
-    // layoutsDir: theLayoutsPath,
-    // partialsDir: [
-    //     thePartialsPath,
-    //     theAtomsPath,
-    //     theMoleculesPath,
-    //     theOrganismsPath
-    // ],
+    defaultLayout: 'main',
+    layoutsDir: 'views/layouts',
+    partialsDir: [
+        thePartialsPath,
+        theAtomsPath,
+        theMoleculesPath,
+        theOrganismsPath
+    ],
+}));
 
-
-app.set('view engine', 'html');
+app.set('view engine', 'handlebars');
 
 var thePath = path.normalize(__dirname + '/assets');
 app.use('/assets/', express.static(thePath));
@@ -212,7 +212,7 @@ app.get('/', function (req, res) {
     // res.status(500).send('Something broke!');
     //res.send('Shaking');
     //console.log('bos');
-    res.render('home');
+    res.render('index');
 });
 
 app.listen(process.env.PORT || port);
