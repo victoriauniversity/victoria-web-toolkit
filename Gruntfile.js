@@ -63,33 +63,6 @@ module.exports = function (grunt) {
             },
         },
 
-        // Clean Config
-        clean: {
-            dist: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '.tmp',
-                        'dist/*',
-                        '!dist/.git*'
-                    ]
-                }]
-            },
-            server: ['.tmp'],
-        },
-
-        // Hint Config
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
-            },
-            all: [
-                'Gruntfile.js',
-                'assets/js/**/*.js',
-                '!assets/js/vendor/*',
-                'test/spec/**/*.js'
-            ]
-        },
 
         // Sass Config
         sass: {
@@ -104,6 +77,13 @@ module.exports = function (grunt) {
                 options: {
                     style: 'nested',//nested, compact, compressed, expanded
                     lineComments: true
+                },
+                files: sassFiles
+            }, 
+            prod: {
+                options: {
+                    style:'compressed',//nested, compact, compressed, expanded
+                    lineNumbers:false,
                 },
                 files: sassFiles
             }
@@ -138,149 +118,12 @@ module.exports = function (grunt) {
                 path: '',
                 app: ''
             }
-        },
-
-        // Rev Config
-        rev: {
-            dist: {
-                files: {
-                    src: [
-                        'dist/assets/js/**/*.js',
-                        'dist/assets/css/**/*.css',
-                        'dist/assets/images/**/*.{png,jpg,jpeg,gif,webp}',
-                        'dist/assets/fonts/**/*.*'
-                    ]
-                }
-            }
-        },
-
-        // Usemin Config
-        useminPrepare: {
-            options: {
-                dest: 'dist/assets'
-            },
-            html: ['assets/{,*/}*.html', 'views/**/*.handlebars']
-        },
-        usemin: {
-            options: {
-                dirs: ['dist/assets'],
-                basedir: 'dist/assets',
-            },
-            html: ['dist/assets/{,*/}*.html', 'dist/views/**/*.handlebars'],
-            css: ['dist/assets/css/{,*/}*.css']
-        },
-
-        // Imagemin Config
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'assets/images',
-                    src: '**/*.{png,jpg,jpeg}',
-                    dest: 'dist/assets/images'
-                }]
-            }
-        },
-
-        // SVGmin Config
-        svgmin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'assets/images',
-                    src: '{,*/}*.svg',
-                    dest: 'dist/assets/images'
-                }]
-            }
-        },
-
-        // CSSmin config
-        cssmin: {
-            // This task is pre-configured if you do not wish to use Usemin
-            // blocks for your CSS. By default, the Usemin block from your
-            // `index.html` will take care of minification, e.g.
-            //
-            //     <!-- build:css({.tmp,app}) styles/main.css -->
-            //
-            // dist: {
-            //     files: {
-            //         'dist/assets/styles/main.css': [
-            //             '.tmp/styles/{,*/}*.css',
-            //             'assets/styles/{,*/}*.css'
-            //         ]
-            //     }
-            // }
-        },
-
-        // HTML Config
-        htmlmin: {
-            dist: {
-                options: {
-                    /*removeCommentsFromCDATA: true,
-                    // https://github.com/yeoman/grunt-usemin/issues/44
-                    //collapseWhitespace: true,
-                    collapseBooleanAttributes: true,
-                    removeAttributeQuotes: true,
-                    removeRedundantAttributes: true,
-                    useShortDoctype: true,
-                    removeEmptyAttributes: true,
-                    removeOptionalTags: true*/
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'assets',
-                    src: '*.html',
-                    dest: 'dist/assets'
-                }]
-            }
-        },
-
-        // Copy Config
-        // Put files not handled in other tasks here
-        copy: {
-            dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: 'assets',
-                    dest: 'dist/assets',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        'images/**/*.{webp,gif}',
-                        'fonts/{,*/}*.*',
-                    ]
-                }, {
-                    expand: true,
-                    dot: true,
-                    cwd: 'views',
-                    dest: 'dist/views/',
-                    src: '**/*.handlebars',
-                }]
-            },
-            styles: {
-                expand: true,
-                dot: true,
-                cwd: 'assets/',
-                dest: '.tmp/',
-                src: '{,*/}*.css'
-            },
-        },
-
-        // Concurrent Config
-        concurrent: {
-            dist: [
-                'copy:styles',
-                'svgmin',
-                'htmlmin'
-            ]
-        },
+        }
     });
 
     // Register Tasks
-    // Workon
-    grunt.registerTask('work', 'Start working on this project.', [
-        // 'jshint',
+    // Work
+    grunt.registerTask('dev', 'Start working on this project.', [
         'sass:dev',
         'bless:css',
         'express:dev',
@@ -294,21 +137,24 @@ module.exports = function (grunt) {
     grunt.registerTask('restart', 'Restart the server.', [
         'express:dev',
         'watch'
+
     ]);
     
 
     // Build
-    grunt.registerTask('build', 'Build production ready assets and views.', [
-        'clean:dist',
-        'concurrent:dist',
-        'useminPrepare',
-        'imagemin',
-        'concat',
-        'cssmin',
-        'uglify',
-        'copy:dist',
-        'rev',
-        'usemin',
-    ]);
+    grunt.registerTask('prod', 'Build production ready assets and views.',  function() {
+        grunt.task.run('sass:prod', 'bless:css');
+        grunt.log.writeln('grunt restart - restarts the grunt server - you may need to do this');
+    });
+
+    
+
+    grunt.registerTask('default', 'My "default" task description.', function() {
+        grunt.log.writeln('grunty: Here is what you can do!' + "\n");
+        grunt.log.writeln('grunt dev - this task complies the sass with line numbers and split the style.css into two sheets.');
+        grunt.log.writeln('            Also runs the watch task and opens the browser, livereload is active.');
+        grunt.log.writeln('grunt prod -  this task complies the sass, splits the style.css into two sheets then minifies the new sheets.');
+        grunt.log.writeln('grunt restart - restarts the grunt server');
+    });
 
 };
