@@ -170,7 +170,7 @@ var path = require('path');
 
 var express = require('express');
 //var ejs = require('ejs');
-var exphbs  = require('express-handlebars');
+var hbs  = require('express-hbs');
  // Handlebars = require('handlebars');
 
 var app = express();
@@ -179,7 +179,7 @@ require('express-debug')(app, {/* settings */});
 
 // app.engine('html', require('ejs').renderFile);
  
-app.engine('html', exphbs({}));
+app.engine('html', hbs.express3({}));
     // extname: '.handlebars',
     // defaultLayout: '',
     // layoutsDir: theLayoutsPath
