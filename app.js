@@ -192,11 +192,15 @@ app.engine('handlebars', hbs.express3({
 
     // // extname: '.handlebars',
     layoutsDir: __dirname + '/views/layouts',
-    partialsDir: [
-        thePartialsPath,
-        theAtomsPath,
-        theMoleculesPath,
-        theOrganismsPath
+    partialsDir:  [ __dirname + '/views/partials',
+                    __dirname + '/views/partials/atoms', 
+                    __dirname + '/views/partials/_2_molecules',
+                    __dirname + '/views/partials/_3_organisms'
+
+        // thePartialsPath,
+        // theAtomsPath,
+        // theMoleculesPath,
+        // theOrganismsPath
     ],
 }));
 
