@@ -194,7 +194,6 @@ app.engine('handlebars', hbs.express3({
     layoutsDir: __dirname + '/views/layouts',
     partialsDir:  [ __dirname + '/views/partials',
                     __dirname + '/views/partials/atoms', 
-                    __dirname + '/views/partials/molecules',
                     __dirname + '/views/partials/organisms'
 
         // thePartialsPath,
