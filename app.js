@@ -192,7 +192,7 @@ app.engine('handlebars', hbs.express3({
 
     // // extname: '.handlebars',
     defaultLayout: 'main',
-    layoutsDir: 'views/layouts',
+    layoutsDir: __dirname + '/views/layouts',
     partialsDir: [
         thePartialsPath,
         theAtomsPath,
@@ -212,7 +212,10 @@ app.get('/', function (req, res) {
     // res.status(500).send('Something broke!');
     //res.send('Shaking');
     //console.log('bos');
-    res.render('index');
+    res.render('index', {
+        title: 'Design Patterns',
+        layout: 'main'
+    });
 });
 
 app.listen(process.env.PORT || port);
