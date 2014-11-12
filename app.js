@@ -87,6 +87,18 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/template-library', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('template-lib', {
+        title: 'Template Library',
+        layout: 'main'
+    });
+});
+
 // Test page
 app.get('/test', function (req, res) {
     

@@ -1,0 +1,239 @@
+
+<h2 class="rule">Forms</h2>
+
+
+<h3>Text inputs and textareas</h3>
+<p>Notes on help text:</p>
+<ul>
+    <li><strong>Inline</strong> - Only use the inline style to denote that a field is required.</li>
+    <li><strong>Help</strong> - Use the help style to give context or directions for a particular field, like a character count.</li>
+    <li><strong>Placeholder</strong> - Use placeholder text to give an actual example of what you might write (do not include additional text, such as "ex:" or "e.g.").</li>
+</ul>
+
+
+
+<div class="hightlight example">
+        <form class="highlight highlight_tertiary form_large" action="/" style="width: 72%;">
+        <div class="field_container">
+            <label for="first_name">First name <em>(required)</em></label>
+            <div class="field">
+                <input type="text" id="first_name" aria-required="true" class="">
+                 <p class="form_help">This is help text under the form field</p>
+            </div>
+        </div>
+         <div class="field_container">
+            <label for="bio">Bio</label>
+            <div class="field">
+                <textarea id="bio" placeholder="Placeholder text - Born and raised in the halls of Asgard..." rows="5"></textarea>
+            </div>
+        </div>
+         <div class="field_container">
+            <label for="url">URL</label>
+            <div class="field">
+                <input type="url" id="url" class="form_text" placeholder="www.thor.com" disabled="">
+                <p class="form_help">Disabled with placeholder text</p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<pre>
+<code class="language-markup">
+<form class="highlight highlight_tertiary form_large" action="/">
+    <div class="field_container">
+        <label for="first_name">First name <em>(required)</em></label>
+        <div class="field">
+            <input type="text" id="first_name" aria-required="true" class="">
+             <p class="form_help">This is help text under the form field</p>
+        </div>
+    </div>
+     <div class="field_container">
+        <label for="bio">Bio</label>
+        <div class="field">
+            <textarea id="bio" placeholder="Placeholder text - Born and raised in the halls of Asgard..." rows="5"></textarea>
+        </div>
+    </div>
+     <div class="field_container">
+        <label for="url">URL</label>
+        <div class="field">
+            <input type="url" id="url" class="form_text" placeholder="www.thor.com" disabled="">
+            <p class="form_help">Disabled with placeholder text</p>
+        </div>
+    </div>
+</form>
+</code>
+</pre>
+
+
+
+<h3>Checkbox, radio, and select</h3>
+
+<div class="hightlight example">
+    <form class="highlight highlight_tertiary form_large" action="/" style="width: 72%;">
+        <div class="field_container">
+            <label for="notifications">Notifications</label>
+            <div class="field">
+                <ul class="radio_list validation_error">
+                    <li>
+                        <label class="form_radio">
+                            <input type="radio" required="required" name="notifications">Send me email</label>
+                    </li>
+                    <li>
+                        <label class="form_radio">
+                            <input type="radio" name="notifications">Don't send me email</label>
+                    </li>
+                    <li>
+                        <label class="form_radio">
+                            <input type="radio" name="notifications">Send me flowers</label>
+                    </li>
+                </ul>
+                <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
+
+            </div>
+        </div>
+        <div class="field_container">
+            <label for="gender">Gender</label>
+            <div class="field">
+                    <select class="small" id="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+            </div>
+         </div>
+
+
+    </form>
+</div>
+
+
+
+<div class="hightlight example" style="padding: 20px;">
+    <form class="highlight highlight_tertiary form_large" action="/" style="width: 72%;">
+        <h2>Apply online</h2>
+        <p>This has been given a class of <code>.highlight_teritiary</code> to provide the grey background and indentation. Typically this paragrpagh would be used to disclose any important details to the application eg. “You’ll need to have your Student ID number handy!”</p>
+        <fieldset>
+            <!-- <legend>Personal details</legend> -->
+            <div class="field_container">
+                <label for="first_name">First name(s) <em>(required)</em></label>
+                <div class="field">
+                    <input type="text" id="first_name" aria-required="true" class="validation_error">
+                    <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
+                </div>
+
+            </div>
+            <div class="field_container">
+                <label for="last_name">Last name <em>(required)</em></label>
+                <div class="field">
+                    <input class="medium" type="text" id="last_name" required="required">
+                    <p class="form_help">This is help text under the form field.</p>
+                </div>
+            </div>
+            <div class="field_container half">
+                <label for="dob">Date of Birth</label>
+                <div class="field">
+                        <input type="date" id="dob" class="form_text small" placeholder="DD/MM/YYYY">
+                </div>
+            </div>
+
+            <div class="field_container">
+                <label for="dob">Disabled field</label>
+                <div class="field">
+                        <input type="text" id="dob" class="form_text small disabled" disabled="">
+                </div>
+            </div>
+
+            <div class="field_container">
+                <label for="dob">Disabled select box</label>
+                <div class="field">
+                        <select class="small disabled" disabled="" id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                        
+                </div>
+            </div>
+
+            <div class="field_container half">
+                <label for="gender">Gender</label>
+                <div class="field">
+                        <select class="small" id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <!-- <legend>Contact details</legend> -->
+            <div class="field_container">
+                <label for="email">Email</label>
+                <div class="field">
+                    <input type="email" id="email" class="form_text">
+                </div>
+            </div>
+
+
+            <div class="field_container">
+            </div>
+        </fieldset>
+        <fieldset>
+            <!-- <legend>About you</legend> -->
+            <div class="field_container">
+                <label for="url">URL</label>
+                <div class="field">
+                    <input type="url" id="url" class="form_text" placeholder="http://yourdomain.com">
+                </div>
+            </div>
+            <div class="field_container">
+                <label for="bio">Bio</label>
+                <div class="field">
+                    <textarea id="bio" style="margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <!-- <legend>Subscriptions</legend> -->
+            <div class="field_container">
+                 <label for="subject">Subject</label>
+                 <div class="field">
+                        <select name="" id="subject">
+                            <option>All subjects</option>
+                            <option>Design</option>
+                            <option>Development</option>
+                        </select>
+                </div>
+            </div>
+            <div class="field_container">
+                <label for="notifications">Notifications</label>
+                <div class="field">
+                    <ul class="radio_list validation_error">
+                        <li><label class="form_radio"><input type="radio" required="required" name="notifications"> Send me email</label></li>
+                        <li><label class="form_radio"><input type="radio" name="notifications"> Don't send me email</label></li>
+                        <li><label class="form_radio"><input type="radio" name="notifications"> Send me flowers</label></li>
+                    </ul>
+                    <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
+                
+                </div>
+            </div>
+
+        </fieldset>
+        <fieldset>
+            <!-- <legend>Terms and conditions</legend> -->
+            <div class="field_container">
+                <div class="field">
+                    <label class="form_checkbox" for="terms_agree">
+                        <input type="checkbox" id="terms_agree">I accept the terms of service and agree that you can get in touch from time to time with things related to this application.
+                    </label>
+                </div>
+            </div>
+            <div class="field_container form_actions">
+                <div class="field">
+                    <input type="submit" value="Submit" class="button primary">
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
