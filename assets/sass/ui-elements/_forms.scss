@@ -343,7 +343,7 @@ select {
 }
 
 @mixin vic-select-arrow{
-    @include ui-background-image( $image: "sprite-base/icons/ui-select.png", $image-retina: "sprite-base/icons-retina/ui-select.png" );
+    @include ui-background-image( $image: "/assets/images/sprite-base/icons/ui-select.png", $image-retina: "sprite-base/icons-retina/ui-select.png" );
     background-repeat: no-repeat;
     background-position: 96% 50%;
 }

@@ -8769,7 +8769,7 @@ select {
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   /* line 355, ../../sass/ui-elements/_forms.scss */
   select {
-    background-image: url('assets/images/sprite-base/icons/ui-select.png');
+    background-image: url("/assets/images/sprite-base/icons/ui-select.png");
     background-repeat: no-repeat;
     background-position: 96% 50%;
     padding-right: 25px; } }
@@ -9011,7 +9011,7 @@ input[type="radio"] {
 
 /* line 675, ../../sass/ui-elements/_forms.scss */
 .search_options__button {
-  background-image: url('assets/images/sprite-base/icons/ui-select.png');
+  background-image: url("/assets/images/sprite-base/icons/ui-select.png");
   background-repeat: no-repeat;
   background-position: 96% 50%;
   background-position: 50% 50%;

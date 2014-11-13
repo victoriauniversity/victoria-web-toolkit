@@ -13,7 +13,7 @@
 
 
 <div class="hightlight example">
-        <form class="highlight highlight_tertiary form_large" action="/" style="width: 72%;">
+        <form class="highlight highlight_tertiary form_large shrinko" action="/">
         <div class="field_container">
             <label for="first_name">First name <em>(required)</em></label>
             <div class="field">
@@ -32,6 +32,30 @@
             <div class="field">
                 <input type="url" id="url" class="form_text" placeholder="www.thor.com" disabled="">
                 <p class="form_help">Disabled with placeholder text</p>
+            </div>
+        </div>
+        <div class="field_container">
+            <label for="url">Small</label>
+            <div class="field">
+                <input type="url" id="url" class="form_text small" placeholder="Small text box">
+            </div>
+        </div>
+        <div class="field_container">
+            <label for="url">Medium</label>
+            <div class="field">
+                <input type="url" id="url" class="form_text medium" placeholder="Medium text box">
+            </div>
+        </div>
+                <div class="field_container">
+            <label for="url">Default</label>
+            <div class="field">
+                <input type="url" id="url" class="form_text" placeholder="Default text box">
+            </div>
+        </div>
+        <div class="field_container">
+            <label for="url">Large</label>
+            <div class="field">
+                <input type="url" id="url" class="form_text large" placeholder="Large text box">
             </div>
         </div>
     </form>
@@ -60,6 +84,30 @@
             <p class="form_help">Disabled with placeholder text</p>
         </div>
     </div>
+    <div class="field_container">
+        <label for="url">Small</label>
+        <div class="field">
+            <input type="url" id="url" class="form_text small" placeholder="Small text box">
+        </div>
+    </div>
+    <div class="field_container">
+        <label for="url">Medium</label>
+        <div class="field">
+            <input type="url" id="url" class="form_text medium" placeholder="Medium text box">
+        </div>
+    </div>
+            <div class="field_container">
+        <label for="url">Default</label>
+        <div class="field">
+            <input type="url" id="url" class="form_text" placeholder="Default text box">
+        </div>
+    </div>
+    <div class="field_container">
+        <label for="url">Large</label>
+        <div class="field">
+            <input type="url" id="url" class="form_text large" placeholder="Large text box">
+        </div>
+    </div>
 </form>
 </code>
 </pre>
@@ -67,173 +115,269 @@
 
 
 <h3>Checkbox, radio, and select</h3>
+<p>Notes on select:</p>
+<ul>
+    <li><strong>Small</strong> - Use the small style to create shorter select boxes</li>
+    <li><strong>Field</strong> - Use the field style inside a field_contanier to set the field part width of the form</li>
+</ul>
+
 
 <div class="hightlight example">
-    <form class="highlight highlight_tertiary form_large" action="/" style="width: 72%;">
+    <form class="highlight highlight_tertiary form_large shrinko" action="/" >
+        <div class="field_container">
+            <div class="field">
+                <label class="form_checkbox" for="terms_agree"><input type="checkbox" id="terms_agree">I would like to recieve updates from my favourite super heros.</label>
+            </div>
+        </div>
+        <div class="field_container">
+            <label for="notifications">Notifications</label>
+            <div class="field">
+                <ul class="radio_list">
+                    <li>
+                        <label class="form_radio">
+                            <input type="radio" required="required" name="notifications">Emails</label>
+                    </li>
+                    <li>
+                        <label class="form_radio">
+                            <input type="radio" name="notifications">Telepathic signals</label>
+                    </li>
+                    <li>
+                        <label class="form_radio">
+                            <input type="radio" name="notifications">Sky writing</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="field_container">
+            <label for="gender">Thor (1966 series) #272</label>
+            <div class="field">
+                    <select class="" id="gender">
+                        <option>Near Mint condition - $30</option>
+                        <option>Very fine (+) condition - $25</option>
+                        <option>Very fine (-) condition - $20</option>
+                    </select>
+            </div>
+         </div>
+        <div class="field_container">
+            <label for="gender">I like my comics</label>
+            <div class="field">
+                    <select class="small" id="gender">
+                        <option>Digital</option>
+                        <option>Paperback</option>
+                    </select>
+            </div>
+         </div>
+         <div class="field_container half">
+            <label for="dob">Date of Birth</label>
+            <div class="field">
+                    <input type="date" id="dob" class="form_text small" placeholder="DD/MM/YYYY">
+            </div>
+        </div>
+    </form>
+</div>
+
+<pre>
+<code class="language-markup">
+ <form class="highlight highlight_tertiary form_large" action="/" >
+    <div class="field_container">
+        <div class="field">
+            <label class="form_checkbox" for="terms_agree"><input type="checkbox" id="terms_agree">I would ... favourite super heros.</label>
+        </div>
+    </div>
+    <div class="field_container">
+        <label for="notifications">Notifications</label>
+        <div class="field">
+            <ul class="radio_list">
+                <li>
+                    <label class="form_radio"><input type="radio" required="required" name="notifications">Emails</label>
+                </li>
+                <li>
+                    <label class="form_radio"><input type="radio" name="notifications">Telepathic signals</label>
+                </li>
+                <li>
+                    <label class="form_radio"><input type="radio" name="notifications">Sky writing</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="field_container">
+        <label for="gender">Thor (1966 series) #272</label>
+        <div class="field">
+                <select class="" id="gender">
+                    <option>Near Mint condition - $30</option>
+                    <option>Very fine (+) condition - $25</option>
+                    <option>Very fine (-) condition - $20</option>
+                </select>
+        </div>
+     </div>
+    <div class="field_container">
+        <label for="gender">I like my comics</label>
+        <div class="field">
+                <select class="small" id="gender">
+                    <option>Digital</option>
+                    <option>Paperback</option>
+                </select>
+        </div>
+    </div>
+    <div class="field_container half">
+        <label for="dob">Date of Birth</label>
+        <div class="field">
+                <input type="date" id="dob" class="form_text small" placeholder="DD/MM/YYYY">
+        </div>
+    </div>
+</form>
+</code>
+</pre>
+
+<h3>Error state</h3>
+<p>Error state is set with validation_error class</p>
+<div class="hightlight example">
+    <form class="highlight highlight_tertiary form_large shrinko" action="/" >
+        <div class="field_container">
+            <label for="first_name">First name <em>(required)</em></label>
+            <div class="field">
+                    <input type="text" id="first_name" aria-required="true" class="validation_error" required="required">
+                    <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
+
+            </div>
+        </div>
         <div class="field_container">
             <label for="notifications">Notifications</label>
             <div class="field">
                 <ul class="radio_list validation_error">
                     <li>
-                        <label class="form_radio">
-                            <input type="radio" required="required" name="notifications">Send me email</label>
+                        <label class="form_radio"><input type="radio" required="required" name="notifications">Emails</label>
                     </li>
                     <li>
-                        <label class="form_radio">
-                            <input type="radio" name="notifications">Don't send me email</label>
+                        <label class="form_radio"><input type="radio" name="notifications">Telepathic signals</label>
                     </li>
                     <li>
-                        <label class="form_radio">
-                            <input type="radio" name="notifications">Send me flowers</label>
+                        <label class="form_radio"><input type="radio" name="notifications">Sky writing</label>
                     </li>
                 </ul>
+                 <p class="form_error">This is a custom error message</p>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<pre>
+<code class="language-markup">
+<form class="highlight highlight_tertiary form_large shrinko" action="/" >
+    <div class="field_container">
+        <label for="first_name">First name <em>(required)</em></label>
+        <div class="field">
+                <input type="text" id="first_name" aria-required="true" class="validation_error" required="required">
                 <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
 
+        </div>
+    </div>
+    <div class="field_container">
+        <label for="notifications">Notifications</label>
+        <div class="field">
+            <ul class="radio_list validation_error">
+                <li>
+                    <label class="form_radio"><input type="radio" required="required" name="notifications">Emails</label>
+                </li>
+                <li>
+                    <label class="form_radio"><input type="radio" name="notifications">Telepathic signals</label>
+                </li>
+                <li>
+                    <label class="form_radio"><input type="radio" name="notifications">Sky writing</label>
+                </li>
+            </ul>
+             <p class="form_error">This is a custom error message</p>
+        </div>
+
+    </div>
+</form>    
+</code>
+</pre>
+
+<h3>Feild sets</h3>
+<p>With fieldsets you can group related fields together, also add helper text to the start of a form where an expected pattern may have changed, in this example the optional fields as apposed to required.</p>
+
+
+<div class="hightlight example">
+    <form class="highlight highlight_tertiary form_large shrinko" action="/">
+        <fieldset>
+            <div class="field_container">
+                <p class="form_help">All fields are required except those marked optional.</p>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="field_container">
+                <label for="first_name">Name</label>
+                <div class="field">
+                    <input type="text" id="first_name" aria-required="true" class="">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="field_container">
+                <label for="first_name">Address</label>
+                <div class="field">
+                    <textarea id="bio" placeholder="" rows="5"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="field_container">
+                <label for="first_name">Email
+                    <em>(optional)</em>
+                </label>
+                <div class="field">
+                    <input type="text" id="first_name" aria-required="true" class="">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<pre>
+<code class="language-markup">
+<form class="highlight highlight_tertiary form_large" action="/">
+    <fieldset>
+        <div class="field_container">
+            <p class="form_help">All fields are required except those marked optional.</p>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="field_container">
+            <label for="first_name">Name</label>
+            <div class="field">
+                <input type="text" id="first_name" aria-required="true" class="">
             </div>
         </div>
+    </fieldset>
+    <fieldset>
         <div class="field_container">
-            <label for="gender">Gender</label>
+            <label for="first_name">Address</label>
             <div class="field">
-                    <select class="small" id="gender">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
+                <textarea id="bio" placeholder="" rows="5"></textarea>
             </div>
-         </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="field_container">
+            <label for="first_name">Email
+                <em>(optional)</em>
+            </label>
+            <div class="field">
+                <input type="text" id="first_name" aria-required="true" class="">
+            </div>
+        </div>
+    </fieldset>
+</form>
+</code>
+</pre>
+    
 
 
-    </form>
-</div>
 
 
 
-<div class="hightlight example" style="padding: 20px;">
-    <form class="highlight highlight_tertiary form_large" action="/" style="width: 72%;">
-        <h2>Apply online</h2>
-        <p>This has been given a class of <code>.highlight_teritiary</code> to provide the grey background and indentation. Typically this paragrpagh would be used to disclose any important details to the application eg. “You’ll need to have your Student ID number handy!”</p>
-        <fieldset>
-            <!-- <legend>Personal details</legend> -->
-            <div class="field_container">
-                <label for="first_name">First name(s) <em>(required)</em></label>
-                <div class="field">
-                    <input type="text" id="first_name" aria-required="true" class="validation_error">
-                    <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
-                </div>
-
-            </div>
-            <div class="field_container">
-                <label for="last_name">Last name <em>(required)</em></label>
-                <div class="field">
-                    <input class="medium" type="text" id="last_name" required="required">
-                    <p class="form_help">This is help text under the form field.</p>
-                </div>
-            </div>
-            <div class="field_container half">
-                <label for="dob">Date of Birth</label>
-                <div class="field">
-                        <input type="date" id="dob" class="form_text small" placeholder="DD/MM/YYYY">
-                </div>
-            </div>
-
-            <div class="field_container">
-                <label for="dob">Disabled field</label>
-                <div class="field">
-                        <input type="text" id="dob" class="form_text small disabled" disabled="">
-                </div>
-            </div>
-
-            <div class="field_container">
-                <label for="dob">Disabled select box</label>
-                <div class="field">
-                        <select class="small disabled" disabled="" id="gender">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                        
-                </div>
-            </div>
-
-            <div class="field_container half">
-                <label for="gender">Gender</label>
-                <div class="field">
-                        <select class="small" id="gender">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                </div>
-            </div>
-        </fieldset>
-        <fieldset>
-            <!-- <legend>Contact details</legend> -->
-            <div class="field_container">
-                <label for="email">Email</label>
-                <div class="field">
-                    <input type="email" id="email" class="form_text">
-                </div>
-            </div>
 
 
-            <div class="field_container">
-            </div>
-        </fieldset>
-        <fieldset>
-            <!-- <legend>About you</legend> -->
-            <div class="field_container">
-                <label for="url">URL</label>
-                <div class="field">
-                    <input type="url" id="url" class="form_text" placeholder="http://yourdomain.com">
-                </div>
-            </div>
-            <div class="field_container">
-                <label for="bio">Bio</label>
-                <div class="field">
-                    <textarea id="bio" style="margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
-                </div>
-            </div>
 
-        </fieldset>
-
-        <fieldset>
-            <!-- <legend>Subscriptions</legend> -->
-            <div class="field_container">
-                 <label for="subject">Subject</label>
-                 <div class="field">
-                        <select name="" id="subject">
-                            <option>All subjects</option>
-                            <option>Design</option>
-                            <option>Development</option>
-                        </select>
-                </div>
-            </div>
-            <div class="field_container">
-                <label for="notifications">Notifications</label>
-                <div class="field">
-                    <ul class="radio_list validation_error">
-                        <li><label class="form_radio"><input type="radio" required="required" name="notifications"> Send me email</label></li>
-                        <li><label class="form_radio"><input type="radio" name="notifications"> Don't send me email</label></li>
-                        <li><label class="form_radio"><input type="radio" name="notifications"> Send me flowers</label></li>
-                    </ul>
-                    <p class="form_error">This error message shows above the field on mobile. That way it's not covered by the keyboard.</p>
-                
-                </div>
-            </div>
-
-        </fieldset>
-        <fieldset>
-            <!-- <legend>Terms and conditions</legend> -->
-            <div class="field_container">
-                <div class="field">
-                    <label class="form_checkbox" for="terms_agree">
-                        <input type="checkbox" id="terms_agree">I accept the terms of service and agree that you can get in touch from time to time with things related to this application.
-                    </label>
-                </div>
-            </div>
-            <div class="field_container form_actions">
-                <div class="field">
-                    <input type="submit" value="Submit" class="button primary">
-                </div>
-            </div>
-
-        </fieldset>
-    </form>
-</div>

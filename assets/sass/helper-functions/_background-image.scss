@@ -1,7 +1,7 @@
 
 @mixin ui-background-image( $image, $image-retina: false ){
 
-    background-image: image-url( $image );
+    background-image: url( $image );
 
     @if $image-retina {
         // http://css-tricks.com/snippets/css/retina-display-media-query/
