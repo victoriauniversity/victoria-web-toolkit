@@ -10,7 +10,7 @@ $(function() {
 		var $arrow = $this.find('.code_toggle');
 		$arrow.toggleClass('open');
 		
-		var $pre = $this.nextAll('pre');
+		var $pre = $this.next('pre');
 		$pre.toggleClass('hido');
 
 	});
