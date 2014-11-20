@@ -104,12 +104,12 @@ app.get('/test', function (req, res) {
     
     //console.error(err.stack);
     // res.status(500).send('Something broke!');
-    res.send('Testies');
+    //res.send('Testies');
     //console.log('bos');
-    // res.render('index', {
-    //     title: 'Design Patterns',
-    //     layout: 'main'
-    // });
+    res.render('test', {
+        title: 'Design Patterns',
+        layout: 'main'
+    });
 });
 
 
