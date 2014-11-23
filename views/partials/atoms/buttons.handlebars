@@ -1,4 +1,4 @@
-<h2 class="rule">Buttons</h2>
+<h2 class="rule" id="buttons">Buttons</h2>
 <p>The button suite should be consistent across anchors, inputs and button elements. There are 4 style options and 3 size options, x-large remains unused at this stage but may prove useful.</p>
 
 <p>The standard
@@ -7,7 +7,7 @@
     <code>.tertiary</code>, or
     <code>.transparent</code> to modify. Buttons with
     <code>.transparent</code> look like simple links but behave as buttons and maintain the large hit state - they should stack nicely next to other more important actions.</p>
-   
+<p>The <code>.secondary</code> buttons is an alternative to <code>.primary</code> buttons rather than a companion. Use it for other non-core actions on a page like sidebar or footer interactions.</p>   
 
 <div class="highlight example">
 {{>buttons/anchor_primary}}
@@ -24,17 +24,29 @@
 
 {{>buttons/anchor_transparent}}</code></pre>
 
+<h4>Buttons and forms</h4>
+<p>On a form that spans more than one page:
+</p>
 
- <p>It's probably worth reserving .secondary buttons for an alternative to primary blue buttons rather than a companion. Use it for other non-core actions on a page like sidebar or footer interactions.</p>
+<ul>
+<li>the final submit button should be <code>.primary</code>
+</li>
+<li>the "go to next page" button on the intermediary pages should be <code>.secondary</code>
+</li>
+<li>the "go back" button should be <code>.transparent</code></li>
+</ul>
 
 <div class="highlight_tertiary">
                 <p>A standard pattern may look a bit like this:</p>
                 <p>
-                <a class='button'>Next Step</a>
-                <a class='button tertiary'>Skip this</a>
+                <a class='button'>Final step</a>
+                <a class='button tertiary'>Next step</a>
                 <a class='button transparent'>Hold up, go back</a>
                 </p>
                 </div>
+
+
+
 
 
 <h3>Anchors, inputs and buttons</h3>

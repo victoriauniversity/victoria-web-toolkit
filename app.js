@@ -87,6 +87,7 @@ app.get('/', function (req, res) {
     });
 });
 
+// Template library
 app.get('/template-library', function (req, res) {
     
     //console.error(err.stack);
@@ -95,6 +96,19 @@ app.get('/template-library', function (req, res) {
     //console.log('boom');
     res.render('template-lib', {
         title: 'Template Library',
+        layout: 'main'
+    });
+});
+
+
+app.get('/digital-brand', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('digital_brand', {
+        title: 'Digital Brand Guidelines',
         layout: 'main'
     });
 });
