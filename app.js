@@ -95,7 +95,19 @@ app.get('/template-library', function (req, res) {
     //res.send('Shaking');
     //console.log('boom');
     res.render('template-lib', {
-        title: 'Template Library',
+        title: 'Template library',
+        layout: 'main'
+    });
+});
+
+app.get('/pattern-library', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('pattern_library', {
+        title: 'Pattern library',
         layout: 'main'
     });
 });
