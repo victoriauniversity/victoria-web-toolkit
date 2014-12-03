@@ -124,6 +124,19 @@ app.get('/content-writing', function (req, res) {
     });
 });
 
+app.get('/web-writing', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('web-writing', {
+        title: 'Writing for the web',
+        layout: 'main'
+    });
+});
+
+
 
 
 app.get('/digital-brand', function (req, res) {
