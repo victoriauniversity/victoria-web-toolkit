@@ -112,6 +112,19 @@ app.get('/pattern-library', function (req, res) {
     });
 });
 
+app.get('/content-writing', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('content-writing', {
+        title: 'Content writing guide',
+        layout: 'main'
+    });
+});
+
+
 
 app.get('/digital-brand', function (req, res) {
     
