@@ -100,6 +100,20 @@ app.get('/template-library', function (req, res) {
     });
 });
 
+
+app.get('/section-page', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('section-page', {
+        title: 'Section Page',
+        layout: 'main'
+    });
+});
+
+
 app.get('/pattern-library', function (req, res) {
     
     //console.error(err.stack);
@@ -111,6 +125,46 @@ app.get('/pattern-library', function (req, res) {
         layout: 'main'
     });
 });
+
+app.get('/user-needs', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('user-needs', {
+        title: 'User needs',
+        layout: 'main'
+    });
+});
+
+
+app.get('/how-users-read', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('how-users-read', {
+        title: 'How users read',
+        layout: 'main'
+    });
+});
+
+
+
+app.get('/elements', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('elements', {
+        title: 'Elements library',
+        layout: 'main'
+    });
+});
+
 
 app.get('/content-writing', function (req, res) {
     
@@ -136,7 +190,17 @@ app.get('/web-writing', function (req, res) {
     });
 });
 
-
+app.get('/wayfinding', function (req, res) {
+    
+    //console.error(err.stack);
+    // res.status(500).send('Something broke!');
+    //res.send('Shaking');
+    //console.log('boom');
+    res.render('wayfinding', {
+        title: 'Common wayfinding elements',
+        layout: 'main'
+    });
+});
 
 
 app.get('/digital-brand', function (req, res) {
