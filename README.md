@@ -1,4 +1,8 @@
 ## Introduction
-Victoria Node Express app template
+Victoria Node Express app for Victoria web toolkit
 
-to do: make better readme
+http://toolkit.victoria.ac.nz/
+
+
+####To do's: 
+* make better readme
