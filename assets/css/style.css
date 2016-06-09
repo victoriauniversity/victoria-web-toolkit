@@ -1,4 +1,4 @@
-@import url('style-blessed1.css?z=1417644590211');
+@import url('style-blessed1.css?z=1465512216729');
 
     /* line 761, ../../sass/ui-elements/_forms.scss */
     .modern_ie .col .widget .field_container select, .modern_ie .translation dd .widget .field_container select, .translation .modern_ie dd .widget .field_container select,
@@ -709,7 +709,7 @@ body {
   display: block;
   font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: 500; }
-  /* line 17, D:\node_app_template\assets\sass\helper-functions\_ie-friendly-fonts.scss */
+  /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .homepage .nav_quicklinks a {
     font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -724,7 +724,7 @@ body {
     /* line 100, ../../sass/page-specific/_homepage.scss */
     .homepage .nav_quicklinks ul {
       *zoom: 1; }
-      /* line 38, C:\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.1\stylesheets\compass\utilities\general\_clearfix.scss */
+      /* line 38, /Users/irwinna/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/general/_clearfix.scss */
       .homepage .nav_quicklinks ul:after {
         content: "";
         display: table;
@@ -750,7 +750,7 @@ body {
     /* line 120, ../../sass/page-specific/_homepage.scss */
     .homepage .nav_quicklinks ul {
       *zoom: 1; }
-      /* line 38, C:\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.1\stylesheets\compass\utilities\general\_clearfix.scss */
+      /* line 38, /Users/irwinna/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/general/_clearfix.scss */
       .homepage .nav_quicklinks ul:after {
         content: "";
         display: table;
@@ -1043,7 +1043,7 @@ body {
   max-width: 45em;
   margin: 0 auto 2em;
   text-align: center; }
-  /* line 6, D:\node_app_template\assets\sass\helper-functions\_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .welcome {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -1056,7 +1056,7 @@ body {
 .homepage .entry {
   clear: both;
   *zoom: 1; }
-  /* line 38, C:\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.1\stylesheets\compass\utilities\general\_clearfix.scss */
+  /* line 38, /Users/irwinna/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/general/_clearfix.scss */
   .homepage .entry:after {
     content: "";
     display: table;
@@ -1121,7 +1121,7 @@ body {
   margin-bottom: 1em;
   *zoom: 1;
   float: right; }
-  /* line 38, C:\Ruby193\lib\ruby\gems\1.9.1\gems\compass-core-1.0.1\stylesheets\compass\utilities\general\_clearfix.scss */
+  /* line 38, /Users/irwinna/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.1/stylesheets/compass/utilities/general/_clearfix.scss */
   .homepage .homepage_feature:after {
     content: "";
     display: table;
@@ -1645,7 +1645,7 @@ header.course_page__header nav {
   padding: 3px 6px;
   margin-left: 0.3333em;
   vertical-align: middle; }
-  /* line 6, D:\node_app_template\assets\sass\helper-functions\_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .course_page .course_flag {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
