@@ -393,7 +393,7 @@ h1, .h1 {
   line-height: 0.93;
   letter-spacing: -0.03em;
   margin-bottom: 0.47em; }
-  /* line 28, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 28, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 h1, .ie8 .h1 {
     font-family: "National-Extrabold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -457,7 +457,7 @@ h2, .h2 {
   line-height: 1.15;
   margin-top: 1.5em;
   margin-bottom: 0.6em; }
-  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 h2, .ie8 .h2 {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -469,7 +469,7 @@ h2, .h2 {
     text-transform: uppercase;
     font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: 600; }
-    /* line 28, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+    /* line 28, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
     .ie8 aside[role="complementary"] h2, .ie8 #section_menu h2, .ie8 aside[role="complementary"] .h2, .ie8 #section_menu .h2 {
       font-family: "National-Extrabold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
       font-weight: normal; }
@@ -484,7 +484,7 @@ h3, .h3, .pullquote q {
   font-weight: normal;
   line-height: 1.3;
   margin-top: 1.5em; }
-  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 h3, .ie8 .h3, .ie8 .pullquote q, .pullquote .ie8 q {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -499,7 +499,7 @@ h4, .h4 {
   font-weight: normal;
   margin-top: 1.6em;
   margin-bottom: 0.8em; }
-  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 h4, .ie8 .h4 {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -527,7 +527,7 @@ h6, .h6, .feed .feed__header a {
   text-transform: uppercase;
   font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: 600; }
-  /* line 28, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 28, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .widget h2, .ie8
   .news_container h2, .ie8
   .nav_quicklinks h2, .ie8
@@ -1615,7 +1615,7 @@ a.vic_logo {
           font-size: 18px;
           font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
           font-weight: 500; }
-          /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+          /* line 17, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
           .ie8 nav#mobile_masthead ul li a {
             font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
             font-weight: normal; }
@@ -2396,7 +2396,7 @@ footer[role='contentinfo'] ul {
     display: inline-block;
     float: right;
     margin-right: 0.5em; }
-    /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+    /* line 17, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
     .ie8 #menu_toggle:after {
       font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
       font-weight: normal; }
@@ -2566,7 +2566,7 @@ footer[role='contentinfo'] ul {
   font-weight: 600;
   border-top: none;
   line-height: 1.2; }
-  /* line 28, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 28, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 #section_menu h2.menu_title {
     font-family: "National-Extrabold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -2822,7 +2822,7 @@ footer[role='contentinfo'] ul {
     font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: 500;
     font-size: 19px; }
-    /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+    /* line 17, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
     .ie8 #section_menu .section_tree > li > a:first-child {
       font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
       font-weight: normal; }
@@ -3476,7 +3476,7 @@ form.loading input[type="text"] {
     .facet_links li a, header.course_page__header nav ul li a {
       font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
       font-weight: normal; }
-      /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+      /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
       .ie8 .facet_links li a, .ie8 header.course_page__header nav ul li a, header.course_page__header nav .ie8 ul li a {
         font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
         font-weight: normal; }
@@ -6069,7 +6069,7 @@ table.universal {
   .old_ie #hero.grid .info {
     padding-left: 0.7em;
     padding-right: 0.7em; }
-  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 #hero.grid .info {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -6489,7 +6489,7 @@ table.universal {
   font-size: 18px;
   text-align: center;
   z-index: 3; }
-  /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 17, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .slider_button {
     font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -6574,7 +6574,7 @@ aside[role="complementary"] .researcher {
   font-weight: 600;
   font-size: 1.3em;
   text-transform: uppercase; }
-  /* line 28, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 28, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .secondary .tabs a {
     font-family: "National-Extrabold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -7306,7 +7306,7 @@ a.link_block p,
       font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
       font-weight: 500;
       font-size: 18px; }
-      /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+      /* line 17, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
       .ie8 .breadcrumb > li:after {
         font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
         font-weight: normal; }
@@ -7620,7 +7620,7 @@ aside[role='complementary'] .info_block {
     font-size: 1.71429em;
     line-height: 1;
     margin-bottom: 7px; }
-    /* line 28, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+    /* line 28, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
     .ie8 .promo .promo_headline, .ie8
     .promo h2 {
       font-family: "National-Extrabold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
@@ -10000,7 +10000,7 @@ body {
   display: block;
   font-family: "National", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: 500; }
-  /* line 17, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 17, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .homepage .nav_quicklinks a {
     font-family: "National-Semibold", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -10334,7 +10334,7 @@ body {
   max-width: 45em;
   margin: 0 auto 2em;
   text-align: center; }
-  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .welcome {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
@@ -10936,7 +10936,7 @@ header.course_page__header nav {
   padding: 3px 6px;
   margin-left: 0.3333em;
   vertical-align: middle; }
-  /* line 6, /Users/irwinna/Code/victoria_web_toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
+  /* line 6, /Users/irwinna/Code/victoria-web-toolkit/assets/sass/helper-functions/_ie-friendly-fonts.scss */
   .ie8 .course_page .course_flag {
     font-family: "National-Regular", "Segoe WP Semibold", "Nimbus Sans L", Arial, "Helvetica Neue", "Helvetica", sans-serif;
     font-weight: normal; }
